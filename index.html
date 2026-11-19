@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CASP 2024 中英對照 RCT 評讀教學，以中文護理研究示範尋找證據、判斷與書寫理由。">
   <title>RCT 文獻評讀｜CASP 2024</title>
-  <link rel="stylesheet" href="styles.css?v=20261119-editorial">
+  <link rel="stylesheet" href="styles.css?v=20261119-reveal">
   <script defer src="assets/evidence.js"></script>
   <script defer src="content.js?v=20261119-editorial"></script>
-  <script defer src="app.js?v=20261119-editorial"></script>
+  <script defer src="app.js?v=20261119-reveal"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">跳到本題內容</a>
@@ -42,12 +42,14 @@
         <section class="teaching-pane" aria-label="提問與教師解析">
           <div class="prompt-block"><span class="eyebrow">評讀問題</span><h3 id="prompt"></h3><p id="plain"></p></div>
           <details class="consider-block"><summary>CASP 考量點 <span>中英對照</span></summary><div id="considerContent"></div></details>
-          <div id="guideCard" class="guide-card"><span class="guide-symbol">？</span><h3>文獻查證</h3><p>請指出頁碼、段落或表圖，並說明哪些資訊足夠、哪些仍不清楚。展開後可查看本題「是／否／無法判斷」的參考結果與理由。</p><button id="revealButton" class="primary">顯示判讀結果與教師解析</button></div>
+          <div id="guideCard" class="guide-card"><span class="guide-symbol">？</span><h3>文獻查證</h3><p>請指出頁碼、段落或表圖，並說明哪些資訊足夠、哪些仍不清楚。完成文獻查證後，可展開教師解析。</p><button id="revealButton" class="primary">顯示教師解析</button></div>
           <div id="analysisContent" hidden>
-            <div class="judgment-block"><div class="block-heading"><span class="eyebrow">本題參考判讀結果</span><span id="verdict" class="verdict"></span></div><div id="answerOptions" class="answer-options" aria-label="本題三選一判讀結果"></div><p id="answerReason" class="answer-reason"></p><div id="subAnswers" class="sub-answers"></div><h3 id="coreTitle"></h3><div id="coreContent"></div></div>
+            <div class="judgment-block"><span class="eyebrow">教師解析</span><h3 id="coreTitle"></h3><div id="coreContent"></div></div>
             <details class="deep-block"><summary>深入說明 <span>概念 · 細節 · 常見誤解</span></summary><div id="deepContent"></div></details>
-            <details class="writing-block"><summary>評讀紀錄範例 <span>判斷＋依據＋理由</span></summary><blockquote id="writingContent"></blockquote></details>
             <div class="transfer-block"><span class="eyebrow">評讀要點</span><p id="transferContent"></p></div>
+            <button id="showResultButton" class="primary result-toggle" aria-expanded="false" aria-controls="resultPanel">顯示判讀結果</button>
+            <section id="resultPanel" class="judgment-block" aria-label="本題參考判讀結果" hidden><div class="block-heading"><span class="eyebrow">本題參考判讀結果</span><span id="verdict" class="verdict"></span></div><div id="answerOptions" class="answer-options" aria-label="本題三選一判讀結果"></div><p id="answerReason" class="answer-reason"></p><div id="subAnswers" class="sub-answers"></div></section>
+            <details id="writingPanel" class="writing-block" hidden><summary>評讀紀錄範例 <span>判斷＋依據＋理由</span></summary><blockquote id="writingContent"></blockquote></details>
           </div>
         </section>
       </div>

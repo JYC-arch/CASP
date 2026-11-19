@@ -4,7 +4,7 @@
  const $ = id => document.getElementById(id);
  const questions = window.CASP_QUESTIONS;
  const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let current = 0, evidenceIndex = 0, mode = 'guide', highlights = false, zoom = 100;
+ let current = 0, evidenceIndex = 0, mode = 'guide', highlights = false, zoom = 100, answerShown = false;
  const q = () => questions[current];
  const palette = id => window.CASP_PALETTE[id-1];
  const ev = () => q().evidence[evidenceIndex];
@@ -13,6 +13,7 @@
   $('questionNav').innerHTML = window.CASP_SECTIONS.map(section => `<div class="nav-group"><div class="nav-label">${section.id} · ${section.title}</div>${questions.filter(x=>x.section===section.id).map(x=>`<button class="nav-item" data-question="${x.id}" style="--item-color:${palette(x.id).color}" aria-current="${x.id===q().id?'step':'false'}" title="第 ${x.id} 題：${escape(x.short)}"><span class="num">${String(x.id).padStart(2,'0')}</span><span>${escape(x.short)}</span></button>`).join('')}</div>`).join('');
  }
  function renderQuestion() {
+  answerShown = false;
   const question = q();
   const color = palette(question.id);
   document.documentElement.style.setProperty('--question-accent',color.color);
@@ -53,6 +54,14 @@
   $('analysisMode').setAttribute('aria-pressed',String(isAnalysis));
   $('guideCard').hidden = isAnalysis;
   $('analysisContent').hidden = !isAnalysis;
+  renderResult();
+ }
+ function renderResult() {
+  $('resultPanel').hidden = !answerShown;
+  $('writingPanel').hidden = !answerShown;
+  if(!answerShown)$('writingPanel').open=false;
+  $('showResultButton').setAttribute('aria-expanded',String(answerShown));
+  $('showResultButton').textContent=answerShown?'隱藏判讀結果':'顯示判讀結果';
  }
  function highlightMarkup(rectangles) {
   return rectangles.map(r=>`<span class="highlight" style="left:${r[0]}%;top:${r[1]}%;width:${r[2]}%;height:${r[3]}%"></span>`).join('');
@@ -85,7 +94,7 @@
   renderMarks();
   if($('pageImage').complete) requestAnimationFrame(focusViewport);
  }
- function setMode(next) {mode=next;highlights=next==='analysis';renderMode();renderEvidence();$('announcement').textContent=`第 ${q().id} 題，${mode==='guide'?'引導觀察':'示範解析'}模式`;}
+ function setMode(next) {mode=next;highlights=next==='analysis';if(next==='guide')answerShown=false;renderMode();renderEvidence();$('announcement').textContent=`第 ${q().id} 題，${mode==='guide'?'引導觀察':'示範解析'}模式`;}
  function selectQuestion(id) {
   const index=questions.findIndex(x=>x.id===Number(id));
   if(index<0)return;
@@ -105,6 +114,7 @@
  $('questionNav').addEventListener('click',e=>{const b=e.target.closest('[data-question]');if(b)selectQuestion(b.dataset.question);});
  $('evidenceTabs').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b){evidenceIndex=Number(b.dataset.evidence);renderEvidence();}});
  $('guideMode').onclick=()=>setMode('guide');$('analysisMode').onclick=()=>setMode('analysis');$('revealButton').onclick=()=>setMode('analysis');
+ $('showResultButton').onclick=()=>{answerShown=!answerShown;renderResult();$('announcement').textContent=answerShown?`第 ${q().id} 題，參考判讀結果：${window.CASP_ANSWERS[q().id-1].answer}`:`第 ${q().id} 題，已隱藏判讀結果`;};
  $('highlightButton').onclick=()=>{highlights=!highlights;renderEvidence();};
  $('zoomIn').onclick=()=>{zoom=Math.min(250,zoom+25);renderEvidence();};$('zoomOut').onclick=()=>{zoom=Math.max(100,zoom-25);renderEvidence();};
  $('previousButton').onclick=()=>selectQuestion(q().id-1);$('nextButton').onclick=()=>current===questions.length-1?showSummary():selectQuestion(q().id+1);
