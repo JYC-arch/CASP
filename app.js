@@ -6,13 +6,18 @@
  const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let current = 0, evidenceIndex = 0, mode = 'guide', highlights = false, zoom = 100;
  const q = () => questions[current];
+ const palette = id => window.CASP_PALETTE[id-1];
  const ev = () => q().evidence[evidenceIndex];
  const asset = () => window.CASP_EVIDENCE[ev().key];
  function nav() {
-  $('questionNav').innerHTML = window.CASP_SECTIONS.map(section => `<div class="nav-group"><div class="nav-label">${section.id} · ${section.title}</div>${questions.filter(x=>x.section===section.id).map(x=>`<button class="nav-item" data-question="${x.id}" aria-current="${x.id===q().id?'step':'false'}" title="第 ${x.id} 題：${escape(x.short)}"><span class="num">${String(x.id).padStart(2,'0')}</span><span>${escape(x.short)}</span></button>`).join('')}</div>`).join('');
+  $('questionNav').innerHTML = window.CASP_SECTIONS.map(section => `<div class="nav-group"><div class="nav-label">${section.id} · ${section.title}</div>${questions.filter(x=>x.section===section.id).map(x=>`<button class="nav-item" data-question="${x.id}" style="--item-color:${palette(x.id).color}" aria-current="${x.id===q().id?'step':'false'}" title="第 ${x.id} 題：${escape(x.short)}"><span class="num">${String(x.id).padStart(2,'0')}</span><span>${escape(x.short)}</span></button>`).join('')}</div>`).join('');
  }
  function renderQuestion() {
   const question = q();
+  const color = palette(question.id);
+  document.documentElement.style.setProperty('--question-accent',color.color);
+  document.documentElement.style.setProperty('--question-soft',color.soft);
+  document.documentElement.style.setProperty('--mark-fill',color.mark);
   const section = window.CASP_SECTIONS.find(s=>s.id===question.section);
   nav();
   $('sectionLabel').textContent = `${section.id} · ${section.full}`;
@@ -76,7 +81,7 @@
   renderMarks();
   if($('pageImage').complete) requestAnimationFrame(focusViewport);
  }
- function setMode(next) {mode=next;highlights=next==='analysis';renderMode();renderEvidence();}
+ function setMode(next) {mode=next;highlights=next==='analysis';renderMode();renderEvidence();$('announcement').textContent=`第 ${q().id} 題，${mode==='guide'?'引導觀察':'示範解析'}模式`;}
  function selectQuestion(id) {
   const index=questions.findIndex(x=>x.id===Number(id));
   if(index<0)return;

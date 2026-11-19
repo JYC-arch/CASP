@@ -7,6 +7,19 @@ window.CASP_SECTIONS = [
   {id:'C', title:'研究結果', full:'結果是什麼？'},
   {id:'D', title:'臨床應用', full:'結果對於當地是否有幫助？'}
 ];
+window.CASP_PALETTE = [
+ {color:'#23756c',soft:'#e9f4f1',mark:'rgba(46,153,129,.22)'},
+ {color:'#3869a0',soft:'#eaf1fa',mark:'rgba(78,139,210,.23)'},
+ {color:'#936819',soft:'#fbf2dc',mark:'rgba(223,173,43,.26)'},
+ {color:'#80549b',soft:'#f2ebf8',mark:'rgba(163,113,200,.23)'},
+ {color:'#ab543e',soft:'#fbede7',mark:'rgba(215,123,91,.23)'},
+ {color:'#3f794b',soft:'#ebf4e9',mark:'rgba(111,169,88,.24)'},
+ {color:'#a34670',soft:'#faeaf1',mark:'rgba(210,103,155,.23)'},
+ {color:'#5264a5',soft:'#edf0fb',mark:'rgba(117,132,218,.25)'},
+ {color:'#9a602d',soft:'#fcf0e2',mark:'rgba(225,153,67,.25)'},
+ {color:'#397b86',soft:'#e8f4f6',mark:'rgba(76,173,190,.23)'},
+ {color:'#76703c',soft:'#f4f3e5',mark:'rgba(174,171,78,.25)'}
+];
 window.CASP_QUESTIONS = [
 {
  id:1, section:'A', short:'清楚的研究問題', topic:'PICO · 從研究目的開始',
