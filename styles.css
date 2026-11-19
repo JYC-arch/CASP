@@ -8,3 +8,23 @@
 @media(max-width:1150px){.app-shell{grid-template-columns:200px minmax(0,1fr)}.sidebar{padding:25px 12px 20px 17px}main{padding:24px 20px}.lesson-grid{gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.topbar{padding:0 22px}.question-heading h2{font-size:1.35rem}.question-number{min-width:46px;font-size:2.5rem}.pane-title{padding:14px 12px}.page-viewport{padding:10px;height:380px}.reader-tools{padding:7px 9px;flex-wrap:wrap}.mode-switch button{padding:7px 12px}.projector .lesson-grid{grid-template-columns:1fr}.projector .page-viewport{height:450px}}
 @media(max-width:850px){.topbar{height:auto;min-height:76px;padding:13px 18px;flex-wrap:wrap;gap:10px}.brand small{font-size:.7rem}.top-tools{gap:0}.quiet{padding:6px 9px}.app-shell,.projector .app-shell{display:block}.sidebar{position:static;height:auto;padding:20px 18px;border-right:0;border-bottom:1px solid var(--line)}.side-heading{display:none}#questionNav{display:flex;gap:6px;overflow-x:auto}.nav-group{display:contents}.nav-label,.nav-item span:not(.num){display:none}.nav-item{display:block;min-width:40px;width:40px;padding:9px 0;text-align:center;margin:0}.nav-item .num{font-size:.94rem}.summary-button{width:auto;font-size:.8rem;padding:7px 10px;margin-top:12px}.side-footer{display:none}main{padding:21px 18px}.lesson-grid{grid-template-columns:1fr}.lesson-top{gap:10px}.lesson-top>.eyebrow{font-size:.75rem}.mode-switch button{padding:7px 10px;font-size:.85rem}.question-heading{margin:22px 0;gap:12px}.question-heading h2{font-size:1.4rem}.question-number{font-size:2.4rem}.page-viewport{height:420px}.teaching-pane{margin-top:8px}.pane-title p{font-size:.8rem}.version-note{font-size:.75rem}.projector .page-viewport{height:440px}dialog{padding:20px}dialog table{font-size:.85rem}dialog td,dialog th{padding:9px 7px}}
 @media print{.topbar,.sidebar,.lesson-top,.reader-tools,.evidence-tabs,.lesson-footer,button{display:none!important}.app-shell{display:block}main{padding:0}.lesson-grid{display:block}.page-viewport{height:auto;overflow:visible}.paper{width:70%!important;margin:auto;box-shadow:none}details{break-inside:avoid}dialog{position:static;max-height:none}.version-note{font-size:10pt}}
+
+/* Keep the source visible while reading longer appraisal explanations. */
+@media(min-width:851px){
+ .reading-pane{position:sticky;top:16px;height:min(calc(100dvh - 32px),900px);max-height:calc(100dvh - 32px);display:flex;flex-direction:column}
+ .reading-pane .pane-title,.reading-pane .evidence-tabs,.reading-pane .reader-tools{flex-shrink:0}
+ .reading-pane .page-viewport{flex:1 1 0;height:auto;min-height:140px}
+ .reading-pane .evidence-caption{flex-shrink:0;max-height:28dvh;overflow-y:auto}
+}
+.mobile-reference{display:none}
+.answer-options[hidden]{display:none}
+@media(max-width:850px){
+ .reading-pane{position:static;height:auto;max-height:none}
+ .mobile-reference{display:block;position:fixed;right:18px;bottom:18px;z-index:15;box-shadow:0 3px 15px #193a4640}
+ main{padding-bottom:85px}
+}
+@media(min-width:851px) and (max-width:1150px){
+ .projector .reading-pane{position:static;height:650px;max-height:none}
+ .projector .mobile-reference{display:block;position:fixed;right:18px;bottom:18px;z-index:15}
+}
+@media print{.reading-pane{position:static;height:auto;max-height:none;display:block}.mobile-reference{display:none!important}.reading-pane .evidence-caption{max-height:none;overflow:visible}}
