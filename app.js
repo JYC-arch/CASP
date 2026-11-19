@@ -83,6 +83,7 @@
   current=index;evidenceIndex=0;zoom=100;highlights=mode==='analysis';renderQuestion();
   if(location.hash!==`#q${q().id}`)history.replaceState(null,'',`#q${q().id}`);
   if(window.innerWidth<850)$('lesson').scrollIntoView({behavior:'smooth'});
+  else window.scrollTo({top:0,behavior:'auto'});
  }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
  function showCourse() {
