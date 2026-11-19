@@ -28,8 +28,12 @@
   $('prompt').textContent = question.prompt;
   $('plain').textContent = question.plain;
   $('considerContent').innerHTML = question.consider.map(item=>`<div class="consider-item"><p>${escape(item[0])}</p><p class="en" lang="en">${escape(item[1])}</p></div>`).join('');
-  $('verdict').textContent = question.verdict;
-  $('verdict').className = 'verdict ' + question.tone;
+  const answer = window.CASP_ANSWERS[question.id-1];
+  $('verdict').textContent = answer.answer;
+  $('verdict').className = 'verdict ' + (answer.answer==='是'?'yes':answer.answer==='否'?'no':'uncertain');
+  $('answerOptions').innerHTML = ['是','否','無法判斷'].map(option=>`<span class="answer-option ${option===answer.answer?'selected':''}"${option===answer.answer?' aria-current="true"':''}>${option===answer.answer?'☑':'☐'} ${option}</span>`).join('');
+  $('answerReason').textContent = answer.reason;
+  $('subAnswers').innerHTML = answer.parts?`<p class="sub-answer-title">分項判讀</p>${answer.parts.map(item=>`<div><span>${escape(item[0])}</span><strong>${escape(item[1])}</strong></div>`).join('')}`:'';
   $('coreTitle').textContent = question.coreTitle;
   $('coreContent').innerHTML = `<ul>${question.core.map(s=>`<li>${escape(s)}</li>`).join('')}</ul>`;
   $('deepContent').innerHTML = question.deep.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4><p>${escape(item[1])}</p></div>`).join('');
@@ -98,7 +102,8 @@
   showInfo('教材來源 · 版本說明',`<h2>原題有依據，解說有區分。</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文為教學翻譯，參照你提供的 <a href="assets/casp-rct-2020-zh.pdf" target="_blank" rel="noopener">2020 中文譯本</a>（翻譯：黃廷宇 MD；編輯：韓彥辰 MD）。非 CASP 官方中文版。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；框選與閱讀線索為教學新增標示，未修改原文。</p><h3>判讀說明</h3><p>「是／否／無法判斷」需連同理由閱讀。「部分符合」「依情境而定」是教師摘要標籤，並非 CASP 新增選項。紙本單選時，請依整體考量並註明各子項限制；不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
-  showInfo('評讀總結 · 第二節紙本實作',`<h2>從「我覺得」，走到「我的依據是」。</h2><table><thead><tr><th>優點</th><th>疑慮</th><th>未知／待釐清</th></tr></thead><tbody><tr><td>PICO 可辨識<br>電腦亂數產生組別<br>有樣本數規劃<br>多個時間點追蹤</td><td>依執行率排除分析<br>介入與資料收集者相同<br>表一部分數字不一致<br>未直接報告 CI</td><td>分派隱蔽操作細節<br>部分角色的盲法<br>完整安全與成本資料<br>長期與在地成效</td></tr></tbody></table><div class="info-note"><strong>教學結論</strong><br>本研究提供部分疼痛與伸膝角度改善的訊號，但仍須考慮分析排除、盲法及報告限制；不能僅憑顯著 p 值直接全面推廣。</div><h3>第二節：四組、四篇不同文獻</h3><p>各組閱讀自己分配到的文章，使用紙本 CASP 表。每組約 18–20 人，可再以 4–5 人為小隊找證據，再回大組核對。</p><ol><li>每人先讀、圈畫證據，再參與討論。</li><li>每題記錄：<strong>判斷＋頁碼／段落／表圖＋理由</strong>。</li><li>沒有交代時，指出缺少的資訊；不用猜測補齊。</li><li>每人以自己的文字手寫，並保留文獻圈畫；不以 AI 代作評讀。</li></ol><h3>書寫格式</h3><p>我的判斷：是／否／無法判斷。<br>我的依據：第＿＿頁，＿＿段／表＿＿／圖＿＿。<br>我的理由：原文顯示＿＿；仍缺少＿＿，因此＿＿。</p><p class="source-note">不同文章的報告完整程度不同。評量以證據定位與理由是否成立為主，不以「是」的數量比較組別。</p>`);
+  const answerTable = `<h3>11 題參考判讀結果</h3><table><thead><tr><th>題目</th><th>結果</th><th>主要理由</th></tr></thead><tbody>${questions.map((item,i)=>`<tr><td>第 ${item.id} 題：${escape(item.short)}</td><td>${escape(window.CASP_ANSWERS[i].answer)}</td><td>${escape(window.CASP_ANSWERS[i].reason)}</td></tr>`).join('')}</tbody></table><p class="source-note">以上為教師依全文提出的參考判讀；第 4 題仍需分別記錄各角色結果。不將各題結果加總計分。</p>`;
+  showInfo('評讀總結 · 第二節紙本實作',`<h2>從「我覺得」，走到「我的依據是」。</h2><table><thead><tr><th>優點</th><th>疑慮</th><th>未知／待釐清</th></tr></thead><tbody><tr><td>PICO 可辨識<br>電腦亂數產生組別<br>有樣本數規劃<br>多個時間點追蹤</td><td>依執行率排除分析<br>介入與資料收集者相同<br>表一部分數字不一致<br>未直接報告 CI</td><td>分派隱蔽操作細節<br>部分角色的盲法<br>完整安全與成本資料<br>長期與在地成效</td></tr></tbody></table><div class="info-note"><strong>教學結論</strong><br>本研究提供部分疼痛與伸膝角度改善的訊號，但仍須考慮分析排除、盲法及報告限制；不能僅憑顯著 p 值直接全面推廣。</div>${answerTable}<h3>第二節：四組、四篇不同文獻</h3><p>各組閱讀自己分配到的文章，使用紙本 CASP 表。每組約 18–20 人，可再以 4–5 人為小隊找證據，再回大組核對。</p><ol><li>每人先讀、圈畫證據，再參與討論。</li><li>每題記錄：<strong>判斷＋頁碼／段落／表圖＋理由</strong>。</li><li>沒有交代時，指出缺少的資訊；不用猜測補齊。</li><li>每人以自己的文字手寫，並保留文獻圈畫；不以 AI 代作評讀。</li></ol><h3>書寫格式</h3><p>我的判斷：是／否／無法判斷。<br>我的依據：第＿＿頁，＿＿段／表＿＿／圖＿＿。<br>我的理由：原文顯示＿＿；仍缺少＿＿，因此＿＿。</p><p class="source-note">不同文章的報告完整程度不同。評量以證據定位與理由是否成立為主，不以「是」的數量比較組別。</p>`);
  }
  $('questionNav').addEventListener('click',e=>{const b=e.target.closest('[data-question]');if(b)selectQuestion(b.dataset.question);});
  $('evidenceTabs').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b){evidenceIndex=Number(b.dataset.evidence);renderEvidence();}});
