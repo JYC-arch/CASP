@@ -74,7 +74,7 @@
   $('evidenceTabs').innerHTML = q().evidence.map((item,i)=>`<button data-evidence="${i}" aria-pressed="${i===evidenceIndex}">${escape(item.label)}</button>`).join('');
   $('readingLocation').textContent = '張雪玲等（2023）· 護理雜誌';
   $('pageLabel').textContent = `期刊 p.${evidence.page+44} ／ PDF 第 ${evidence.page} 頁`;
-  $('evidenceCaption').textContent = highlights?evidence.quote:'先閱讀原頁，找出能支持判斷的資訊。需要時可顯示標示，或切換其他證據位置。';
+  $('evidenceCaption').textContent = highlights?evidence.quote:'檢視原文相關段落、表格或流程圖，確認支持判讀的資料。可顯示標示或切換其他證據位置。';
   $('pageImage').alt = `示範文獻原頁：期刊第 ${evidence.page+44} 頁。${highlights?evidence.quote:'請觀察與本題相關的段落或表圖。'}`;
   $('pageImage').onload = focusViewport;
   $('pageImage').src = window.CASP_PAGES[evidence.page].src;
@@ -95,15 +95,12 @@
   else window.scrollTo({top:0,behavior:'auto'});
  }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
- function showCourse() {
-  showInfo('45 分鐘 · 課堂導覽',`<h2>從熟悉的 PICO，走到有依據的判斷。</h2><p>第一節：全班用同一篇中文 RCT 練習閱讀路徑。第二節：四組各讀不同文獻，以紙本圈畫與手寫完成評讀。</p><div class="info-note"><strong>先回憶 1A Ask、2A Acquire</strong><br>臨床問題如何形成？檢索時用了哪些 PICO 關鍵概念？<br><small>此處暫以 1A／2A 指 Ask／Acquire，教師可依原課程調整。</small></div><table><thead><tr><th>時間</th><th>教學內容</th><th>操作建議</th></tr></thead><tbody><tr><td>0–5 分</td><td>回憶 Ask、Acquire</td><td>口頭提問，不展開完整複習</td></tr><tr><td>5–9 分</td><td>PICO 與 CASP 四部分</td><td>第 1 題，找出 P、I、C、O</td></tr><tr><td>9–25 分</td><td>第 2–6 題</td><td>深入隨機分派、ITT 與盲法</td></tr><tr><td>25–34 分</td><td>第 7–9 題</td><td>只挑一個效果示範，區分 β、SE、CI、p</td></tr><tr><td>34–40 分</td><td>第 10–11 題</td><td>以具體照護情境討論適用性與資源</td></tr><tr><td>40–45 分</td><td>總結與紙本任務</td><td>示範「判斷＋依據＋理由」</td></tr></tbody></table><h3>同一題的兩種教學節奏</h3><p><strong>引導觀察：</strong>隱藏標示與解析，先問學生證據在哪裡。<br><strong>示範解析：</strong>顯示證據及核心理由，依需要展開「深入說明」與「評讀表怎麼寫」。</p><p class="source-note">完整細節為教師備課保留；45 分鐘內不需逐段念完所有深入說明。</p>`);
- }
  function showSources() {
-  showInfo('教材來源 · 版本說明',`<h2>原題有依據，解說有區分。</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文為教學翻譯，參照你提供的 <a href="assets/casp-rct-2020-zh.pdf" target="_blank" rel="noopener">2020 中文譯本</a>（翻譯：黃廷宇 MD；編輯：韓彥辰 MD）。非 CASP 官方中文版。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；框選與閱讀線索為教學新增標示，未修改原文。</p><h3>判讀說明</h3><p>「是／否／無法判斷」需連同理由閱讀。「部分符合」「依情境而定」是教師摘要標籤，並非 CASP 新增選項。紙本單選時，請依整體考量並註明各子項限制；不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
+  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文為教學翻譯，參照 <a href="assets/casp-rct-2020-zh.pdf" target="_blank" rel="noopener">2020 中文譯本</a>（翻譯：黃廷宇 MD；編輯：韓彥辰 MD）。非 CASP 官方中文版。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；框選與證據摘要為教學新增標示，未修改原文。</p><h3>判讀說明</h3><p>「是／否／無法判斷」需連同理由閱讀。「部分符合」「依情境而定」是教師摘要標籤，並非 CASP 新增選項。紙本單選時，請依整體考量並註明各子項限制；不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
   const answerTable = `<h3>11 題參考判讀結果</h3><table><thead><tr><th>題目</th><th>結果</th><th>主要理由</th></tr></thead><tbody>${questions.map((item,i)=>`<tr><td>第 ${item.id} 題：${escape(item.short)}</td><td>${escape(window.CASP_ANSWERS[i].answer)}</td><td>${escape(window.CASP_ANSWERS[i].reason)}</td></tr>`).join('')}</tbody></table><p class="source-note">以上為教師依全文提出的參考判讀；第 4 題仍需分別記錄各角色結果。不將各題結果加總計分。</p>`;
-  showInfo('評讀總結 · 第二節紙本實作',`<h2>從「我覺得」，走到「我的依據是」。</h2><table><thead><tr><th>優點</th><th>疑慮</th><th>未知／待釐清</th></tr></thead><tbody><tr><td>PICO 可辨識<br>電腦亂數產生組別<br>有樣本數規劃<br>多個時間點追蹤</td><td>依執行率排除分析<br>介入與資料收集者相同<br>表一部分數字不一致<br>未直接報告 CI</td><td>分派隱蔽操作細節<br>部分角色的盲法<br>完整安全與成本資料<br>長期與在地成效</td></tr></tbody></table><div class="info-note"><strong>教學結論</strong><br>本研究提供部分疼痛與伸膝角度改善的訊號，但仍須考慮分析排除、盲法及報告限制；不能僅憑顯著 p 值直接全面推廣。</div>${answerTable}<h3>第二節：四組、四篇不同文獻</h3><p>各組閱讀自己分配到的文章，使用紙本 CASP 表。每組約 18–20 人，可再以 4–5 人為小隊找證據，再回大組核對。</p><ol><li>每人先讀、圈畫證據，再參與討論。</li><li>每題記錄：<strong>判斷＋頁碼／段落／表圖＋理由</strong>。</li><li>沒有交代時，指出缺少的資訊；不用猜測補齊。</li><li>每人以自己的文字手寫，並保留文獻圈畫；不以 AI 代作評讀。</li></ol><h3>書寫格式</h3><p>我的判斷：是／否／無法判斷。<br>我的依據：第＿＿頁，＿＿段／表＿＿／圖＿＿。<br>我的理由：原文顯示＿＿；仍缺少＿＿，因此＿＿。</p><p class="source-note">不同文章的報告完整程度不同。評量以證據定位與理由是否成立為主，不以「是」的數量比較組別。</p>`);
+  showInfo('評讀總結',`<h2>研究品質與臨床應用評估</h2><table><thead><tr><th>優點</th><th>疑慮</th><th>未知／待釐清</th></tr></thead><tbody><tr><td>PICO 可辨識<br>電腦亂數產生組別<br>有樣本數規劃<br>多個時間點追蹤</td><td>依執行率排除分析<br>介入與資料收集者相同<br>表一部分數字不一致<br>未直接報告 CI</td><td>分派隱蔽操作細節<br>部分角色的盲法<br>完整安全與成本資料<br>長期與在地成效</td></tr></tbody></table><div class="info-note"><strong>評讀結論</strong><br>本研究提供部分疼痛與伸膝角度改善的訊號，但仍須考慮分析排除、盲法及報告限制；不能僅憑顯著 p 值直接全面推廣。</div>${answerTable}<h3>書寫格式</h3><p>我的判斷：是／否／無法判斷。<br>我的依據：第＿＿頁，＿＿段／表＿＿／圖＿＿。<br>我的理由：原文顯示＿＿；仍缺少＿＿，因此＿＿。</p><p class="source-note">各題判讀應依文獻證據說明，不以「是」的數量評定研究品質。</p>`);
  }
  $('questionNav').addEventListener('click',e=>{const b=e.target.closest('[data-question]');if(b)selectQuestion(b.dataset.question);});
  $('evidenceTabs').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b){evidenceIndex=Number(b.dataset.evidence);renderEvidence();}});
@@ -112,7 +109,7 @@
  $('zoomIn').onclick=()=>{zoom=Math.min(250,zoom+25);renderEvidence();};$('zoomOut').onclick=()=>{zoom=Math.max(100,zoom-25);renderEvidence();};
  $('previousButton').onclick=()=>selectQuestion(q().id-1);$('nextButton').onclick=()=>current===questions.length-1?showSummary():selectQuestion(q().id+1);
  $('originalButton').onclick=()=>window.open(`assets/study.pdf#page=${ev().page}`,'_blank','noopener');
- $('courseButton').onclick=showCourse;$('sourcesButton').onclick=showSources;$('summaryButton').onclick=showSummary;
+ $('sourcesButton').onclick=showSources;$('summaryButton').onclick=showSummary;
  $('closeDialog').onclick=()=>$('infoDialog').close();$('closeFocus').onclick=()=>$('focusDialog').close();
  $('projectButton').onclick=()=>{const active=document.documentElement.classList.toggle('projector');$('projectButton').setAttribute('aria-pressed',String(active));$('projectButton').textContent=active?'標準字級':'投影字級';};
  $('focusButton').onclick=()=>{
