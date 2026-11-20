@@ -40,6 +40,7 @@
   $('coreContent').innerHTML = `<ul>${question.core.map(s=>`<li>${escape(s)}</li>`).join('')}</ul>`;
   $('deepContent').innerHTML = question.deep.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4><p>${escape(item[1])}</p></div>`).join('');
   $('writingContent').textContent = question.writing;
+  $('sourceAppraisal').innerHTML=(question.sourceSections||[]).map(item=>`<section><h4>${escape(item.id)}. ${escape(item.title)}</h4><p><strong>判定：${escape(item.answer)}</strong></p><ul>${item.reasons.map(reason=>`<li>${escape(reason)}</li>`).join('')}</ul><p class="source-location"><strong>文獻對應位置：</strong>${escape(item.location)}</p></section>`).join('');
   $('transferContent').textContent = question.transfer;
   document.querySelectorAll('.teaching-pane details').forEach(d=>d.open=false);
   $('previousButton').disabled = current===0;
@@ -106,7 +107,7 @@
  }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
  function showSources() {
-  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文為教學翻譯，參照 <a href="assets/casp-rct-2020-zh.pdf" target="_blank" rel="noopener">2020 中文譯本</a>（翻譯：黃廷宇 MD；編輯：韓彥辰 MD）。非 CASP 官方中文版。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；框選與證據摘要為教學新增標示，未修改原文。</p><h3>判讀說明</h3><p>本次判讀依 2026 年 11 月 19 日中文版評讀文件更新；第 4 題依 4(a)、4(b)、4(c) 分項記錄。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
+  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目、考量點與評讀依《CASP 隨機對照試驗檢核表 2024 年版（中文版）評讀結果》編製，評讀日期為 2026 年 11 月 19 日；非 CASP 官方中文譯本。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；框選與證據摘要為教學新增標示，未修改原文。</p><h3>判讀說明</h3><p>本次判讀依 2026 年 11 月 19 日中文版 Markdown 評讀文件更新；第 4 題依 4(a)、4(b)、4(c) 分項記錄。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
   const source=window.CASP_APPRAISAL_SUMMARY;
@@ -115,7 +116,7 @@
    return item.id===4?answer.parts.map(part=>`<tr><td>${escape(part[0])}</td><td>${escape(part[1])}</td><td>${escape(answer.reason)}</td></tr>`):[`<tr><td>第 ${item.id} 題：${escape(item.short)}</td><td>${escape(answer.answer)}</td><td>${escape(answer.reason)}</td></tr>`];
   }).join('');
   const qualityRows=Array.from({length:Math.max(source.positive.length,source.negative.length,source.unknown.length)},(_,i)=>`<tr><td>${escape(source.positive[i]||'')}</td><td>${escape(source.negative[i]||'')}</td><td>${escape(source.unknown[i]||'')}</td></tr>`).join('');
-  showInfo('評讀總結',`<h2>研究品質與臨床應用評估</h2><p class="source-note">${escape(source.source)}</p><table><thead><tr><th>正向／方法學健全</th><th>負向／方法學限制</th><th>未知</th></tr></thead><tbody>${qualityRows}</tbody></table><div class="info-note"><strong>評讀結論</strong><p>${escape(source.conclusion)}</p></div><h3>各題參考判讀結果</h3><table class="appraisal-results"><thead><tr><th>題目</th><th>結果</th><th>主要理由</th></tr></thead><tbody>${rows}</tbody></table><p class="source-note">第 4 題依 4(a)、4(b)、4(c) 分列。不將各題結果加總計分；應連同理由與原文閱讀。</p>`);
+  showInfo('評讀總結',`<h2>研究品質與臨床應用評估</h2><p class="source-note">${escape(source.source)}</p><h3>整體判斷</h3><p>${escape(source.overallJudgment||'')}</p><table><thead><tr><th>正向／方法學健全</th><th>負向／方法學限制</th><th>未知</th></tr></thead><tbody>${qualityRows}</tbody></table><div class="info-note"><strong>評讀結論</strong><p>${escape(source.conclusion)}</p></div><h3>各題參考判讀結果</h3><table class="appraisal-results"><thead><tr><th>題目</th><th>結果</th><th>主要理由</th></tr></thead><tbody>${rows}</tbody></table><p class="source-note">第 4 題依 4(a)、4(b)、4(c) 分列。不將各題結果加總計分；應連同理由與原文閱讀。</p>`);
  }
  $('questionNav').addEventListener('click',e=>{const b=e.target.closest('[data-question]');if(b)selectQuestion(b.dataset.question);});
  $('evidenceTabs').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b){evidenceIndex=Number(b.dataset.evidence);renderEvidence();}});

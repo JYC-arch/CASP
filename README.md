@@ -18,7 +18,7 @@
 
 ## 評讀結果版本
 
-判讀結果、理由及文獻位置依 2026 年 11 月 19 日「CASP RCT 2024 中文版評讀：混合式衛教 TKR」更新。第 4 題分為 4(a)、4(b)、4(c)，其餘保留 1–11 題導覽。判讀總結共列 13 個項目，不加總為研究品質分數。
+中文題目、考量點、判讀結果、理由及文獻位置依「CASP_RCT_2024_中文版評讀_混合式衛教TKR.md」更新（評讀日期：2026 年 11 月 19 日）。每題「評讀理由原文」保留該文件的完整內容。第 4 題分為 4(a)、4(b)、4(c)，其餘保留 1–11 題導覽。判讀總結共列 13 個項目，不加總為研究品質分數。
 
 ## 使用方式
 
@@ -30,9 +30,9 @@
 
 英文原題：Critical Appraisal Skills Programme（2024）。CASP RCT Checklist。https://casp-uk.net/casp-checklists/CASP-checklist-randomised-controlled-trials-RCT-2024.pdf
 
-中文參考：2020 年版中文譯本；翻譯：黃廷宇 MD，編輯：韓彥辰 MD。https://ebmrocket.com/casp-rct-checklist/
+中文及評讀來源：CASP RCT 2024 中文版 Markdown 評讀文件（混合式衛教 TKR），評讀日期 2026 年 11 月 19 日。
 
-中文為教學翻譯，非 CASP 官方中文版。判讀結果為依文獻提出的參考解析，應連同理由及全文閱讀，不將各題結果加總計分。
+本中文版評讀文件非 CASP 官方中文譯本。判讀結果為依文獻提出的參考解析，應連同理由及全文閱讀，不將各題結果加總計分。
 
 CASP 原工具及本教材改編的翻譯／解析文字採 CC BY-NC-SA 4.0：https://creativecommons.org/licenses/by-nc-sa/4.0/
 

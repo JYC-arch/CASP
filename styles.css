@@ -17,6 +17,7 @@
  .reading-pane .evidence-caption{flex-shrink:0;max-height:28dvh;overflow-y:auto}
 }
 .mobile-reference{display:none}
+.source-appraisal{border-top:1px solid #c5d4d2;margin-top:15px}.source-appraisal>div{padding:8px 0}.source-appraisal section+section{border-top:1px solid #c5d4d2;margin-top:18px;padding-top:10px}.source-appraisal h4{font-size:1rem;line-height:1.8;margin:10px 0}.source-location{font-size:.9rem!important;color:var(--muted)}
 .answer-options[hidden]{display:none}
 @media(max-width:850px){
  .reading-pane{position:static;height:auto;max-height:none}
