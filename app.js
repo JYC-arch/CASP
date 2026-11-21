@@ -26,11 +26,9 @@
   $('topicLabel').textContent = question.topic;
   $('questionTitle').textContent = question.title;
   $('questionEnglish').textContent = question.english;
-  $('considerLabel').textContent=question.id===4?'CASP 分項原題':'CASP 考量點';
-  const sourcePages=question.considerPages.join('–');
-  $('considerContent').innerHTML = question.consider.map((item,i)=>`<div class="consider-item"><h4>${question.id===4?'分項':'考量點'} ${i+1}</h4><p>${escape(item[0])}</p><p class="en" lang="en">${escape(item[1])}</p></div>`).join('')+`<p class="consider-source"><a href="assets/casp-rct-2024.pdf#page=${question.considerPages[0]}" target="_blank" rel="noopener">CASP 2024 英文原表，第 ${sourcePages} 頁</a></p>`;
   const answer = window.CASP_ANSWERS[question.id-1];
   $('resultQuestion').textContent = `第 ${question.id} 題｜${question.title}`;
+  $('overallLink').textContent = question.overallLink;
   $('verdict').textContent = question.id===4?`整體判讀：${answer.answer}`:answer.answer;
   $('verdict').className = 'verdict ' + (answer.answer==='是'?'yes':answer.answer==='否'?'no':'uncertain');
   $('answerOptions').hidden = question.id===4;
@@ -41,7 +39,6 @@
   const comparison=question.glossaryComparison;
   const comparisonTable=comparison?`<div class="term-comparison"><h4>${escape(comparison.title)}</h4><table><thead><tr>${comparison.columns.map(label=>`<th scope="col">${escape(label)}</th>`).join('')}</tr></thead><tbody>${comparison.rows.map(row=>`<tr>${row.map((value,i)=>i===0?`<th scope="row">${escape(value)}</th>`:`<td>${escape(value)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
   $('deepContent').innerHTML = terms+comparisonTable+(question.glossarySources?`<p class="glossary-source">${escape(question.glossarySources)}</p>`:'');
-  $('sourceAppraisal').innerHTML=question.sourceSections.map(item=>`<section>${question.id===4?`<h4>${escape(item.id)}｜${escape(item.title)}</h4>`:''}${item.responses.map(response=>`<div class="consider-response" data-consider-index="${response.considerIndex}">${question.id===4?'':`<div class="response-heading"><span>考量點 ${response.considerIndex+1}</span><h4>${escape(question.consider[response.considerIndex][0])}</h4></div>`}<ul class="appraisal-list">${response.points.map(point=>`<li><p class="appraisal-reason">${escape(point.text)}</p><div class="reason-links" aria-label="本點文獻位置">${point.refs.map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}${point.kind==='check'?'（查核範圍）':''}</button>`;}).join('')}</div></li>`).join('')}</ul></div>`).join('')}</section>`).join('');
   document.querySelectorAll('.teaching-pane details').forEach(d=>d.open=false);
   $('previousButton').disabled = false;
   $('previousButton').textContent = current===0?'評讀方式':'上一題';
@@ -56,11 +53,22 @@
   $('guideMode').setAttribute('aria-pressed',String(!isAnalysis));
   $('analysisMode').setAttribute('aria-pressed',String(isAnalysis));
   $('guideCard').hidden = isAnalysis;
-  $('analysisContent').hidden = !isAnalysis;
+  $('analysisContent').hidden = false;
+  renderAppraisal();
   renderResult();
  }
+ function renderAppraisal() {
+  const question=q(),isAnalysis=mode==='analysis';
+  $('preliminaryLegend').hidden=!isAnalysis;
+  $('sourceAppraisal').innerHTML=question.sourceSections.map(item=>`<section>${item.responses.map(response=>{
+   const consider=question.consider[response.considerIndex],symbol={'是':'✓','無法判斷':'?','否':'✕'}[response.initialResult];
+   const label=question.id===4?`分項 ${item.id}`:`考量點 ${response.considerIndex+1}`;
+   return `<div class="consider-response" data-consider-index="${response.considerIndex}"><div class="response-heading"><span>${escape(label)}</span><div class="bilingual-consider"><h4 class="consider-zh" lang="zh-Hant">${escape(consider[0])}</h4><p class="consider-en" lang="en">${escape(consider[1])}</p></div></div><div class="response-body"${isAnalysis?'':' hidden'}><ul class="appraisal-list">${response.points.map(point=>`<li><p class="appraisal-reason">${escape(point.text)}</p><div class="reason-links" aria-label="本點文獻位置">${point.refs.map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}${point.kind==='check'?'（查核範圍）':''}</button>`;}).join('')}</div></li>`).join('')}</ul><div class="preliminary-result" role="note" title="${escape(response.initialNote)}" aria-label="初步判讀：${escape(response.initialResult)}。${escape(response.initialNote)}"><span>初步判讀</span><strong><span aria-hidden="true">${symbol}</span> ${escape(response.initialResult)}</strong>${response.initialContext?`<small>${escape(response.initialContext)}</small>`:''}</div></div></div>`;
+  }).join('')}</section>`).join('')+`<p class="consider-source"><a href="assets/casp-rct-2024.pdf#page=${question.considerPages[0]}" target="_blank" rel="noopener">CASP 2024 英文原表，第 ${question.considerPages.join('–')} 頁</a></p>`;
+ }
  function renderResult() {
-  $('resultPanel').hidden = !answerShown;
+  $('resultPanel').hidden = !answerShown||mode!=='analysis';
+  $('showResultButton').hidden=mode!=='analysis';
   $('showResultButton').setAttribute('aria-expanded',String(answerShown));
   $('showResultButton').textContent=answerShown?'隱藏判讀結果':'顯示判讀結果';
  }
@@ -118,7 +126,7 @@
  }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
  function showSources() {
-  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀理由以《CASP RCT 2024 中文版評讀・混合式衛教 TKR》（Markdown，評讀日期 2026 年 11 月 19 日）為主，依教師確認的刪除原則與第 1 題精簡 PICO 調整；非 CASP 官方中文譯本。考量點依 CASP 2024 英文原表逐項呈現，中文為教學翻譯；第 4 題呈現原始三個分項題目。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。</p><h3>文獻定位</h3><p>查找位置參照課堂資料《casp-華蘋》的「去原文哪裡找」欄，依本研究實際章節及頁碼標註；題目仍採 CASP 2024 架構。</p><h3>證據等級</h3><p>採用使用者提供的 Oxford CEBM 2011 中文版（台灣護理學會卓越中心知識轉譯組譯）。本次教學評讀的品質降級為評讀者判斷，並非依 CASP 題數換算。</p><h3>判讀說明</h3><p>各題結果依中文版評讀 Markdown；第 4 題整體判讀為「否」，並保留 4(a)、4(b)、4(c) 分項結果。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
+  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀理由以《CASP RCT 2024 中文版評讀・混合式衛教 TKR》（Markdown，評讀日期 2026 年 11 月 19 日）為主，依教師確認的刪除原則與第 1 題精簡 PICO 調整；非 CASP 官方中文譯本。考量點依 CASP 2024 英文原表逐項呈現，中文為教學翻譯；第 4 題呈現原始三個分項題目。各點符號為本教材的初步判讀，依考量點原問句作答，再綜合形成總評。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。</p><h3>文獻定位</h3><p>查找位置參照課堂資料《casp-華蘋》的「去原文哪裡找」欄，依本研究實際章節及頁碼標註；題目仍採 CASP 2024 架構。</p><h3>證據等級</h3><p>採用使用者提供的 Oxford CEBM 2011 中文版（台灣護理學會卓越中心知識轉譯組譯）。本次教學評讀的品質降級為評讀者判斷，並非依 CASP 題數換算。</p><h3>判讀說明</h3><p>各題結果依中文版評讀 Markdown；第 4 題整體判讀為「否」，並保留 4(a)、4(b)、4(c) 分項結果。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
   const rows=questions.map((item,i)=>{
@@ -140,7 +148,7 @@
   $('sourceAppraisal').addEventListener('click',e=>{const b=e.target.closest('[data-evidence-key]');if(!b)return;const index=q().evidence.findIndex(item=>item.key===b.dataset.evidenceKey);if(index<0)return;evidenceIndex=index;highlights=true;renderEvidence();$('announcement').textContent=`已定位：${ev().label}`;if(window.innerWidth<850)$('focusButton').click();});
  $('evidenceTabs').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b){evidenceIndex=Number(b.dataset.evidence);renderEvidence();}});
  $('guideMode').onclick=()=>setMode('guide');$('analysisMode').onclick=()=>setMode('analysis');$('revealButton').onclick=()=>setMode('analysis');
- $('showResultButton').onclick=()=>{answerShown=!answerShown;renderResult();const a=window.CASP_ANSWERS[q().id-1];$('announcement').textContent=answerShown?`第 ${q().id} 題，參考判讀結果：${q().id===4?'整體：'+a.answer+'；'+a.parts.map(p=>p.join('：')).join('；'):a.answer}`:`第 ${q().id} 題，已隱藏判讀結果`;};
+ $('showResultButton').onclick=()=>{if(mode!=='analysis')return;answerShown=!answerShown;renderResult();const a=window.CASP_ANSWERS[q().id-1];$('announcement').textContent=answerShown?`第 ${q().id} 題，參考判讀結果：${q().id===4?'整體：'+a.answer+'；'+a.parts.map(p=>p.join('：')).join('；'):a.answer}`:`第 ${q().id} 題，已隱藏判讀結果`;};
  $('highlightButton').onclick=()=>{highlights=!highlights;renderEvidence();};
  $('zoomIn').onclick=()=>{zoom=Math.min(250,zoom+25);renderEvidence();};$('zoomOut').onclick=()=>{zoom=Math.max(100,zoom-25);renderEvidence();};
  $('previousButton').onclick=()=>current===0?showIntroduction():selectQuestion(q().id-1);$('nextButton').onclick=()=>current===questions.length-1?showSummary():selectQuestion(q().id+1);

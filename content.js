@@ -1,4 +1,4 @@
-/* CASP RCT 2024: complete original considerations with Chinese teaching translations and point-by-point responses. Oxford grading is an explicitly identified teaching appraisal. */
+/* CASP RCT 2024. Bilingual considerations and appraisal reasons are integrated. Preliminary symbols answer the wording of each prompt; they are not quality scores. */
 window.CASP_SECTIONS = [
   {
     "id": "A",
@@ -322,7 +322,10 @@ window.CASP_QUESTIONS = [
                   "q01_introductionAim"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "研究目的對應介入結果。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -359,7 +362,10 @@ window.CASP_QUESTIONS = [
                   "q01_methodsAngle"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "P、I、C、O 均可辨識。",
+            "initialContext": ""
           }
         ]
       }
@@ -389,13 +395,14 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       2
-    ]
+    ],
+    "overallLink": "兩個考量點均有支持研究問題清楚的資訊，連到本題總評「是」。"
   },
   {
     "id": 2,
     "section": "A",
     "short": "隨機分派",
-    "topic": "隨機序列 · 分派隱蔽",
+    "topic": "隨機序列 · 分派隱匿",
     "title": "受試者是否被隨機分派到不同組別？",
     "english": "Was the assignment of participants to interventions randomised?",
     "consider": [
@@ -408,7 +415,7 @@ window.CASP_QUESTIONS = [
         "Was randomisation sufficient to eliminate systematic bias?"
       ],
       [
-        "分派順序是否對研究者及受試者隱藏？",
+        "分派順序是否對研究者及受試者隱匿？",
         "Was the allocation sequence concealed from investigators and participants?"
       ]
     ],
@@ -486,7 +493,10 @@ window.CASP_QUESTIONS = [
                   "q02_flow"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "文中有明確的隨機分派方法。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -499,7 +509,10 @@ window.CASP_QUESTIONS = [
                   "q02_collect"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "隨機程序避免系統性偏差的程度，仍受資訊不足限制。",
+            "initialContext": ""
           },
           {
             "considerIndex": 2,
@@ -512,7 +525,10 @@ window.CASP_QUESTIONS = [
                   "q02_collect"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "密閉信封有記載，分派隱匿細節未充分交代。",
+            "initialContext": ""
           }
         ]
       }
@@ -543,7 +559,7 @@ window.CASP_QUESTIONS = [
           "分派後"
         ],
         [
-          "隱藏的資訊",
+          "隱匿／盲化的資訊",
           "接下來的分派順序",
           "受試者已被分到哪一組"
         ],
@@ -566,7 +582,8 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       2
-    ]
+    ],
+    "overallLink": "總評依文中明載的隨機分派判為「是」；第 2、3 點的分派隱匿資訊不足仍須保留，不能由總評推定已消除所有偏差。"
   },
   {
     "id": 3,
@@ -704,7 +721,10 @@ window.CASP_QUESTIONS = [
                   "q03_attrition"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有交代流失與排除；退出時間仍有前後不一致。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -718,7 +738,10 @@ window.CASP_QUESTIONS = [
                   "q03_attrition"
                 ]
               }
-            ]
+            ],
+            "initialResult": "否",
+            "initialNote": "未將全部隨機分派者納入分析。",
+            "initialContext": ""
           },
           {
             "considerIndex": 2,
@@ -732,7 +755,10 @@ window.CASP_QUESTIONS = [
                   "q03_attrition"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "未提及提早終止，不能推定是否依原計畫完成。",
+            "initialContext": ""
           }
         ]
       }
@@ -757,7 +783,8 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       2
-    ]
+    ],
+    "overallLink": "第 1 點有交代人數，不代表第 2 點已符合；第 2 點為「否」是本題總評的主要依據，第 3 點則資訊不足。"
   },
   {
     "id": 4,
@@ -772,7 +799,7 @@ window.CASP_QUESTIONS = [
         "Were the participants ‘blind’ to intervention they were given?"
       ],
       [
-        "研究者是否對其給予受試者的介入措施盲化？",
+        "研究者（給予介入者）是否對其給予受試者的介入措施盲化？",
         "Were the investigators ‘blind’ to the intervention they were giving to participants?"
       ],
       [
@@ -925,7 +952,10 @@ window.CASP_QUESTIONS = [
                   "q04_design"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "未交代受試者是否盲化。",
+            "initialContext": ""
           }
         ]
       },
@@ -960,7 +990,10 @@ window.CASP_QUESTIONS = [
                   "q04_authors"
                 ]
               }
-            ]
+            ],
+            "initialResult": "否",
+            "initialNote": "介入者知道自己提供的介入。",
+            "initialContext": ""
           }
         ]
       },
@@ -1007,7 +1040,10 @@ window.CASP_QUESTIONS = [
                   "q04_authors"
                 ]
               }
-            ]
+            ],
+            "initialResult": "否",
+            "initialNote": "結果評估者未盲化；分析者是否盲化未交代。",
+            "initialContext": ""
           }
         ]
       }
@@ -1052,7 +1088,8 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       2,
       3
-    ]
+    ],
+    "overallLink": "4(b)、4(c) 為「否」，支持整體判讀「否」；4(a) 資訊不足。"
   },
   {
     "id": 5,
@@ -1160,7 +1197,10 @@ window.CASP_QUESTIONS = [
                   "q05_table1"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "主要基準特性有列出，未列項目仍保留查核。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -1187,7 +1227,10 @@ window.CASP_QUESTIONS = [
                   "q05_table1"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "所列差異及排除後的組成是否影響結果，無法確定。",
+            "initialContext": ""
           }
         ]
       }
@@ -1215,7 +1258,8 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       3
-    ]
+    ],
+    "overallLink": "依文中所列起始特性，總評為「是」；第 2 點的差異是否影響結果仍不確定，需連同保留事項閱讀。"
   },
   {
     "id": 6,
@@ -1344,7 +1388,10 @@ window.CASP_QUESTIONS = [
                   "q06_collect"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "常規衛教內容與完整試驗計畫資訊不足。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -1366,7 +1413,10 @@ window.CASP_QUESTIONS = [
                   "q06_limitations"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "出院後其他照護是否相同未交代。",
+            "initialContext": ""
           },
           {
             "considerIndex": 2,
@@ -1378,7 +1428,10 @@ window.CASP_QUESTIONS = [
                   "q06_collect"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "兩組追蹤時點相同。",
+            "initialContext": ""
           }
         ]
       }
@@ -1399,7 +1452,8 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       3
-    ]
+    ],
+    "overallLink": "第 3 點有交代相同追蹤時點，但第 1、2 點資訊不足，因此總評為「無法判斷」。"
   },
   {
     "id": 7,
@@ -1669,7 +1723,10 @@ window.CASP_QUESTIONS = [
                   "q07_power"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有檢定力與樣本數計算。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -1692,7 +1749,10 @@ window.CASP_QUESTIONS = [
                   "q07_angle48"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "結果指標及測量方式有界定。",
+            "initialContext": ""
           },
           {
             "considerIndex": 2,
@@ -1715,7 +1775,10 @@ window.CASP_QUESTIONS = [
                   "q07_table2"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有交代連續結果的表達方式；二元結果部分不適用。",
+            "initialContext": ""
           },
           {
             "considerIndex": 3,
@@ -1730,7 +1793,10 @@ window.CASP_QUESTIONS = [
                   "q07_table2"
                 ]
               }
-            ]
+            ],
+            "initialResult": "否",
+            "initialNote": "各組各時點的變異量未完整提供。",
+            "initialContext": ""
           },
           {
             "considerIndex": 4,
@@ -1744,7 +1810,10 @@ window.CASP_QUESTIONS = [
                   "q07_analysis"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有未納入的結果資料，處理方式未交代。",
+            "initialContext": "有遺漏／不完整資料"
           },
           {
             "considerIndex": 5,
@@ -1758,7 +1827,10 @@ window.CASP_QUESTIONS = [
                   "q07_analysis"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "兩組未納入分析的人數不同；影響大小未交代。",
+            "initialContext": "有組間退出差異"
           },
           {
             "considerIndex": 6,
@@ -1770,7 +1842,10 @@ window.CASP_QUESTIONS = [
                   "q07_limitations"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "作者有指出可能的偏差來源。",
+            "initialContext": ""
           },
           {
             "considerIndex": 7,
@@ -1782,7 +1857,10 @@ window.CASP_QUESTIONS = [
                   "q07_analysis"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有交代統計檢定方法。",
+            "initialContext": ""
           },
           {
             "considerIndex": 8,
@@ -1797,7 +1875,10 @@ window.CASP_QUESTIONS = [
                   "q07_table2"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有報告 p 值。",
+            "initialContext": ""
           }
         ]
       }
@@ -1855,7 +1936,8 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       3,
       4
-    ]
+    ],
+    "overallLink": "第 4 點顯示結果呈現不完整；第 5、6 點的 ✓ 表示有資料缺漏與退出差異，合併支持本題總評「否」，不以打勾多寡決定總評。"
   },
   {
     "id": 8,
@@ -1933,7 +2015,10 @@ window.CASP_QUESTIONS = [
                   "q08_gee49"
                 ]
               }
-            ]
+            ],
+            "initialResult": "否",
+            "initialNote": "未報告信賴區間。",
+            "initialContext": ""
           }
         ]
       }
@@ -1970,7 +2055,8 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       4
-    ]
+    ],
+    "overallLink": "本題直接詢問是否報告 CI；第 1 點未報告，因此總評為「否」。"
   },
   {
     "id": 9,
@@ -2146,7 +2232,10 @@ window.CASP_QUESTIONS = [
                   "q09_figure3"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有效果大小的數據可查核。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -2160,7 +2249,10 @@ window.CASP_QUESTIONS = [
                   "q09_conclusion"
                 ]
               }
-            ]
+            ],
+            "initialResult": "否",
+            "initialNote": "未完整報告各組傷害資料。",
+            "initialContext": ""
           },
           {
             "considerIndex": 2,
@@ -2173,7 +2265,10 @@ window.CASP_QUESTIONS = [
                   "q09_conclusion"
                 ]
               }
-            ]
+            ],
+            "initialResult": "否",
+            "initialNote": "未報告成本效益分析。",
+            "initialContext": ""
           }
         ]
       }
@@ -2194,7 +2289,8 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       4
-    ]
+    ],
+    "overallLink": "第 1 點有效果數據，但第 2、3 點缺少完整傷害與成本資料，無法完成利弊權衡，因此總評為「無法判斷」。"
   },
   {
     "id": 10,
@@ -2378,7 +2474,10 @@ window.CASP_QUESTIONS = [
                   "q10_baseline48"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "以相近的老年單側 TKR 族群為應用範圍。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -2390,7 +2489,10 @@ window.CASP_QUESTIONS = [
                   "q10_sample"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "不同族群的效果未直接比較。",
+            "initialContext": ""
           },
           {
             "considerIndex": 2,
@@ -2402,7 +2504,10 @@ window.CASP_QUESTIONS = [
                   "q10_frontOutcomes"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "結果是術後復原的重要指標。",
+            "initialContext": ""
           },
           {
             "considerIndex": 3,
@@ -2417,7 +2522,10 @@ window.CASP_QUESTIONS = [
                   "q10_limitations"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "有想知道但未被研究或報告的結果。",
+            "initialContext": "有未報告的結果"
           },
           {
             "considerIndex": 4,
@@ -2429,7 +2537,10 @@ window.CASP_QUESTIONS = [
                   "q10_limitations"
                 ]
               }
-            ]
+            ],
+            "initialResult": "是",
+            "initialNote": "存在會限制應用判斷的研究限制。",
+            "initialContext": "有研究限制"
           }
         ]
       }
@@ -2450,7 +2561,8 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       4,
       5
-    ]
+    ],
+    "overallLink": "本題的「是」以相近族群為應用範圍，仍須連同第 2 點的不確定性及第 4、5 點的缺項與限制閱讀。"
   },
   {
     "id": 11,
@@ -2596,7 +2708,10 @@ window.CASP_QUESTIONS = [
                   "q11_application"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "部分資源可辨識，費用及訓練成本未交代。",
+            "initialContext": ""
           },
           {
             "considerIndex": 1,
@@ -2609,7 +2724,10 @@ window.CASP_QUESTIONS = [
                   "q11_application"
                 ]
               }
-            ]
+            ],
+            "initialResult": "無法判斷",
+            "initialNote": "未提供現有資源轉移的可行性資料。",
+            "initialContext": ""
           }
         ]
       }
@@ -2629,7 +2747,8 @@ window.CASP_QUESTIONS = [
     ],
     "considerPages": [
       5
-    ]
+    ],
+    "overallLink": "第 1 點尚缺費用及訓練成本，第 2 點未交代資源轉移可行性，因此總評為「無法判斷」。"
   }
 ];
 window.CASP_EVIDENCE_LEVEL = {
