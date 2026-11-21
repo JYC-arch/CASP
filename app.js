@@ -35,7 +35,10 @@
   $('answerOptions').innerHTML = ['是','否','無法判斷'].map(option=>`<span class="answer-option ${option===answer.answer?'selected':''}"${option===answer.answer?' aria-current="true"':''}>${option===answer.answer?'☑':'☐'} ${option}</span>`).join('');
   $('subAnswers').innerHTML = answer.parts?`<p class="sub-answer-title">分項判讀</p>${question.sourceSections.map(item=>`<div><span>${escape(item.id)}｜${escape(item.title)}</span><strong>${escape(item.answer)}</strong></div>`).join('')}`:'';
   $('glossaryBlock').hidden = !question.glossary.length;
-  $('deepContent').innerHTML = question.glossary.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4><p>${escape(item[1])}</p></div>`).join('');
+  const terms=question.glossary.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4>${item[1].split('\n\n').map(paragraph=>`<p>${escape(paragraph)}</p>`).join('')}</div>`).join('');
+  const comparison=question.glossaryComparison;
+  const comparisonTable=comparison?`<div class="term-comparison"><h4>${escape(comparison.title)}</h4><table><thead><tr>${comparison.columns.map(label=>`<th scope="col">${escape(label)}</th>`).join('')}</tr></thead><tbody>${comparison.rows.map(row=>`<tr>${row.map((value,i)=>i===0?`<th scope="row">${escape(value)}</th>`:`<td>${escape(value)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
+  $('deepContent').innerHTML = terms+comparisonTable+(question.glossarySources?`<p class="glossary-source">${escape(question.glossarySources)}</p>`:'');
   $('sourceAppraisal').innerHTML=question.sourceSections.map(item=>`<section>${question.id===4?`<h4>${escape(item.id)}｜${escape(item.title)}</h4>`:''}${item.reasons.map(reason=>`<p class="appraisal-reason">${escape(reason)}</p>`).join('')}</section>`).join('');
   $('appraisalReferences').innerHTML=question.evidence.map(evidence=>`<button class="evidence-link" data-evidence-key="${escape(evidence.key)}">${escape(evidence.label)}</button>`).join('');
   document.querySelectorAll('.teaching-pane details').forEach(d=>d.open=false);

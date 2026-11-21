@@ -45,4 +45,12 @@ summary #writingTitle{font-size:inherit;color:inherit;font-weight:inherit;displa
 .appraisal-reason{line-height:1.9;white-space:pre-wrap}
 .summary-subquestion{padding-left:26px}
 #resultQuestion{overflow-wrap:anywhere}
+.deep-item p+p{margin-top:10px}
+.term-comparison{padding-top:14px}
+.term-comparison h4{font-size:1rem;margin:0 0 10px}
+.term-comparison table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:.85rem;line-height:1.7}
+.term-comparison th,.term-comparison td{border:1px solid var(--line);padding:9px 8px;vertical-align:top;text-align:left;overflow-wrap:anywhere}
+.term-comparison th{background:var(--question-soft);font-weight:600}
+.term-comparison th:first-child{width:22%}
+.glossary-source{font-size:.76rem;color:var(--muted);line-height:1.7;margin:15px 0 0}
 .source-appraisal section+section{border-top:1px solid #d4dedb;margin-top:18px;padding-top:8px}

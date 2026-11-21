@@ -1,4 +1,4 @@
-/* CASP RCT 2024. Teaching adaptation of the supplied Word V1, revised with the instructor on 2026-11-21. */
+/* CASP RCT 2024. Teaching adaptation of Word V1; allocation concealment and blinding definitions adapted from the instructor’s RCT lesson, PDF pp.11,14–15. */
 window.CASP_SECTIONS = [
   {
     "id": "A",
@@ -327,10 +327,40 @@ window.CASP_QUESTIONS = [
     "annotatedPdf": "assets/study-q02-annotated.pdf",
     "glossary": [
       [
-        "隨機分派",
-        "以隨機方式決定受試者接受哪一組介入。"
+        "隨機分派（Randomization）",
+        "決定受試者分到哪一組的方法。依事先設定的隨機程序產生分組順序，例如課堂資料所示的電腦產生隨機序列，再將受試者分到實驗組或控制組。"
+      ],
+      [
+        "分派隱匿（Allocation Concealment）",
+        "在受試者被分派之前，不向受試者及負責招募、收案的人員透露接下來的分派順序，使他們不能預先知道下一位會分到哪一組。\n\n目的：避免預先知道組別而影響收案或分派。課堂資料所列作法包括：由獨立第三方管理分派資訊，以及使用密封且不透明的信封存放組別。"
       ]
-    ]
+    ],
+    "glossarySources": "課堂資料：《RCT說明》，PDF 第 11、14–15 頁。",
+    "glossaryComparison": {
+      "title": "分派隱匿與盲法",
+      "columns": [
+        "比較項目",
+        "分派隱匿",
+        "盲法"
+      ],
+      "rows": [
+        [
+          "時間",
+          "分派前",
+          "分派後"
+        ],
+        [
+          "隱藏的資訊",
+          "接下來的分派順序",
+          "受試者已被分到哪一組"
+        ],
+        [
+          "涉及的人員",
+          "受試者與招募、收案人員",
+          "受試者、介入者、結果評估者或資料分析者"
+        ]
+      ]
+    }
   },
   {
     "id": 3,
@@ -582,10 +612,27 @@ window.CASP_QUESTIONS = [
     "annotatedPdf": "assets/study-q04-annotated.pdf",
     "glossary": [
       [
-        "盲法／盲化",
-        "使受試者或執行、評估、分析研究的人員不知道受試者的分組。"
+        "盲法／盲化（Blinding）",
+        "受試者分組後，讓特定人員不知道受試者所屬的組別。盲化的對象可以是受試者、給予介入者、結果評估者或資料分析者。\n\n目的：減少知道組別對研究過程及結果評估的影響。"
+      ],
+      [
+        "受試者盲化｜對應 4(a)",
+        "參與研究的病人不知道自己被分到實驗組或控制組，也不知道自己接受的是哪一組處置。"
+      ],
+      [
+        "給予介入者盲化｜對應 4(b)",
+        "負責提供處置或照護的人員，不知道受試者接受的是實驗組或控制組的處置。"
+      ],
+      [
+        "結果評估者與資料分析者盲化｜對應 4(c)",
+        "結果評估者負責收集、測量或判讀結果；資料分析者負責統計分析。兩者的工作不同，須分別確認是否知道受試者的分組，或資料代表哪一組。"
+      ],
+      [
+        "單盲、雙盲、三盲（Single／Double／Triple Blind）",
+        "課堂圖示以三種情形說明：單盲為受試者不知道分組；雙盲為受試者及提供處置者不知道分組；三盲再加上資料分析者不知道分組。\n\n這些名稱須搭配文章實際交代的角色閱讀；只寫「單盲」而未交代對象，仍不足以確認誰受到盲化。"
       ]
-    ]
+    ],
+    "glossarySources": "課堂資料：《RCT說明》，PDF 第 15 頁；盲化角色對照 CASP 2024 第 4(a)–4(c) 題。"
   },
   {
     "id": 5,
