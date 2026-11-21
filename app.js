@@ -12,6 +12,9 @@
  function nav() {
   $('questionNav').innerHTML = window.CASP_SECTIONS.map(section => `<div class="nav-group"><div class="nav-label">${section.id} · ${section.title}</div>${questions.filter(x=>x.section===section.id).map(x=>`<button class="nav-item" data-question="${x.id}" style="--item-color:${palette(x.id).color}" aria-current="${x.id===q().id?'step':'false'}" title="第 ${x.id} 題：${escape(x.short)}"><span class="num">${String(x.id).padStart(2,'0')}</span><span>${escape(x.short)}</span></button>`).join('')}</div>`).join('');
  }
+ function deferVerdict(reason) {
+  return escape(reason).replace(/(故(?:本題)?判定為「(?:是|否|無法判斷)」)/g, '<span class="deferred-verdict" hidden>$1</span><span class="verdict-placeholder">〔結論於顯示判讀結果後呈現〕</span>');
+ }
  function renderQuestion() {
   answerShown = false;
   const question = q();
@@ -36,11 +39,9 @@
   $('answerOptions').innerHTML = ['是','否','無法判斷'].map(option=>`<span class="answer-option ${option===answer.answer?'selected':''}"${option===answer.answer?' aria-current="true"':''}>${option===answer.answer?'☑':'☐'} ${option}</span>`).join('');
   $('answerReason').textContent = answer.reason;
   $('subAnswers').innerHTML = answer.parts?`<p class="sub-answer-title">分項判讀</p>${answer.parts.map(item=>`<div><span>${escape(item[0])}</span><strong>${escape(item[1])}</strong></div>`).join('')}`:'';
-  $('coreTitle').textContent = question.coreTitle;
-  $('coreContent').innerHTML = `<ul>${question.core.map(s=>`<li>${escape(s)}</li>`).join('')}</ul>`;
   $('deepContent').innerHTML = question.deep.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4><p>${escape(item[1])}</p></div>`).join('');
   $('writingContent').textContent = question.writing;
-  $('sourceAppraisal').innerHTML=(question.sourceSections||[]).map(item=>`<section><h4>${escape(item.id)}. ${escape(item.title)}</h4><p><strong>判定：${escape(item.answer)}</strong></p><ul>${item.reasons.map(reason=>`<li>${escape(reason)}</li>`).join('')}</ul><p class="source-location"><strong>文獻對應位置：</strong>${escape(item.location)}</p></section>`).join('');
+  $('sourceAppraisal').innerHTML=(question.sourceSections||[]).map(item=>`<section><h4>${escape(item.id)}. ${escape(item.title)}</h4>${item.reasons.map((reason,i)=>`<div class="appraisal-paragraph"><p class="original-reason">${deferVerdict(reason)}</p><div class="reason-links" aria-label="本段文獻位置">${(item.reasonEvidence[i]||[]).map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}</button>`;}).join('')}</div></div>`).join('')}<p class="reference-note">${escape(item.referenceNote)}</p><p class="source-location"><strong>文獻對應位置：</strong>${escape(item.location)}</p></section>`).join('');
   $('transferContent').textContent = question.transfer;
   document.querySelectorAll('.teaching-pane details').forEach(d=>d.open=false);
   $('previousButton').disabled = current===0;
@@ -59,6 +60,8 @@
   renderResult();
  }
  function renderResult() {
+  document.querySelectorAll('.deferred-verdict').forEach(el=>el.hidden=!answerShown);
+  document.querySelectorAll('.verdict-placeholder').forEach(el=>el.hidden=answerShown);
   $('resultPanel').hidden = !answerShown;
   $('writingPanel').hidden = !answerShown;
   if(!answerShown)$('writingPanel').open=false;
@@ -107,7 +110,7 @@
  }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
  function showSources() {
-  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀依《CASP RCT 2024 中文版評讀・混合式衛教 TKR・評析表格式 V1》編製，評讀日期為 2026 年 11 月 20 日；非 CASP 官方中文譯本。考量點保留 CASP 2024 中英對照。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；框選與證據摘要為教學新增標示，未修改原文。</p><h3>判讀說明</h3><p>本次判讀依 2026 年 11 月 20 日中文版 Word 評析表 V1 更新；第 4 題依 4(a)、4(b)、4(c) 分項記錄。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
+  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀依《CASP RCT 2024 中文版評讀・混合式衛教 TKR・評析表格式 V1》編製，評讀日期為 2026 年 11 月 20 日；非 CASP 官方中文譯本。考量點保留 CASP 2024 中英對照。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。評讀推論、文獻未交代的事項及評讀者推算值另作說明，未增寫為文獻原文。</p><h3>判讀說明</h3><p>本次判讀依 2026 年 11 月 20 日中文版 Word 評析表 V1 更新；第 4 題依 4(a)、4(b)、4(c) 分項記錄。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
   const source=window.CASP_APPRAISAL_SUMMARY;
@@ -119,13 +122,14 @@
   showInfo('評讀總結',`<h2>研究品質與臨床應用評估</h2><p class="source-note">${escape(source.source)}</p><h3>整體判斷</h3><p>${escape(source.overallJudgment||'')}</p><table><thead><tr><th>正向／方法學健全</th><th>負向／方法學限制</th><th>未知</th></tr></thead><tbody>${qualityRows}</tbody></table><div class="info-note"><strong>評讀結論</strong>${source.conclusion.split(/\n\n/).map(paragraph=>`<p>${escape(paragraph)}</p>`).join('')}</div><h3>各題參考判讀結果</h3><table class="appraisal-results"><thead><tr><th>題目</th><th>結果</th><th>主要理由</th></tr></thead><tbody>${rows}</tbody></table><p class="source-note">第 4 題依 4(a)、4(b)、4(c) 分列。不將各題結果加總計分；應連同理由與原文閱讀。</p>`);
  }
  $('questionNav').addEventListener('click',e=>{const b=e.target.closest('[data-question]');if(b)selectQuestion(b.dataset.question);});
+ $('sourceAppraisal').addEventListener('click',e=>{const b=e.target.closest('[data-evidence-key]');if(!b)return;const index=q().evidence.findIndex(item=>item.key===b.dataset.evidenceKey);if(index<0)return;evidenceIndex=index;highlights=true;renderEvidence();$('announcement').textContent=`已定位：${ev().label}`;if(window.innerWidth<850)$('focusButton').click();});
  $('evidenceTabs').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b){evidenceIndex=Number(b.dataset.evidence);renderEvidence();}});
  $('guideMode').onclick=()=>setMode('guide');$('analysisMode').onclick=()=>setMode('analysis');$('revealButton').onclick=()=>setMode('analysis');
  $('showResultButton').onclick=()=>{answerShown=!answerShown;renderResult();const a=window.CASP_ANSWERS[q().id-1];$('announcement').textContent=answerShown?`第 ${q().id} 題，參考判讀結果：${q().id===4?a.parts.map(p=>p.join('：')).join('；'):a.answer}`:`第 ${q().id} 題，已隱藏判讀結果`;};
  $('highlightButton').onclick=()=>{highlights=!highlights;renderEvidence();};
  $('zoomIn').onclick=()=>{zoom=Math.min(250,zoom+25);renderEvidence();};$('zoomOut').onclick=()=>{zoom=Math.max(100,zoom-25);renderEvidence();};
  $('previousButton').onclick=()=>selectQuestion(q().id-1);$('nextButton').onclick=()=>current===questions.length-1?showSummary():selectQuestion(q().id+1);
- $('originalButton').onclick=()=>window.open(`assets/study.pdf#page=${ev().page}`,'_blank','noopener');
+ $('originalButton').onclick=()=>window.open(`${q().annotatedPdf}#page=${ev().page}`,'_blank','noopener');
  $('sourcesButton').onclick=showSources;$('summaryButton').onclick=showSummary;
  $('closeDialog').onclick=()=>$('infoDialog').close();$('closeFocus').onclick=()=>$('focusDialog').close();
  $('mobileReference').onclick=()=>$('focusButton').click();

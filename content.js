@@ -1,5 +1,5 @@
 /* CASP RCT Checklist (2024), CC BY-NC-SA 4.0.
- * Chinese appraisal imported from the supplied Word assessment table V1. */
+ * Appraisal from Word V1; paragraph-level links distinguish original data from interpretation. */
 window.CASP_SECTIONS = [
   {
     "id": "A",
@@ -185,37 +185,125 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "pico_abstract",
+        "key": "q01_abstract",
         "page": 1,
-        "label": "p.45 摘要",
-        "quote": "摘要交代研究目的、兩組介入、測量指標與追蹤時間。先找四個要素，再到方法確認。",
-        "find": [
-          "目　的",
-          "混合式衛教對全膝關節置換術病人疼痛及膝關節角度之成效探討。",
-          "每組各26人"
+        "label": "p.45 摘要目的與方法",
+        "quote": "完整標示「摘要目的與方法」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          8,
+          9,
+          10
         ]
       },
       {
-        "key": "pico_methods",
+        "key": "q01_purpose",
         "page": 2,
-        "label": "p.46 方法",
-        "quote": "研究對象與納入條件補足 P；研究設計交代 I、C 及介入期間。",
-        "find": [
-          "二、研究對象",
-          "年齡65",
-          "控制組則接受常規出院"
+        "label": "p.46 前言末段",
+        "quote": "完整標示「前言末段」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5
         ]
       },
       {
-        "key": "flow",
+        "key": "q01_design",
+        "page": 2,
+        "label": "p.46 研究設計",
+        "quote": "完整標示「研究設計」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          7,
+          8
+        ]
+      },
+      {
+        "key": "q01_sample",
+        "page": 2,
+        "label": "p.46 納入與排除條件",
+        "quote": "完整標示「納入與排除條件」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "key": "q01_power",
+        "page": 2,
+        "label": "p.46 樣本數計算",
+        "quote": "完整標示「樣本數計算」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          12
+        ]
+      },
+      {
+        "key": "q01_education46",
+        "page": 2,
+        "label": "p.46 混合式衛教方案",
+        "quote": "完整標示「混合式衛教方案」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          13,
+          14,
+          15
+        ]
+      },
+      {
+        "key": "q01_education47",
         "page": 3,
-        "label": "p.47 收案流程",
-        "quote": "圖一補充收案及隨機分派的人數與測量時點。",
-        "region": [
-          0.08,
-          0.108,
-          0.94,
-          0.54
+        "label": "p.47 電話、紀錄與執行率",
+        "quote": "完整標示「電話、紀錄與執行率」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
+        ]
+      },
+      {
+        "key": "q01_flow",
+        "page": 3,
+        "label": "p.47 圖一收案流程",
+        "quote": "完整標示「圖一收案流程」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          427
+        ]
+      },
+      {
+        "key": "q01_vas",
+        "page": 3,
+        "label": "p.47 VAS 疼痛量表",
+        "quote": "完整標示「VAS 疼痛量表」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          6,
+          7
+        ]
+      },
+      {
+        "key": "q01_angle47",
+        "page": 3,
+        "label": "p.47 電子量角器",
+        "quote": "完整標示「電子量角器」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          8,
+          9
+        ]
+      },
+      {
+        "key": "q01_angle48",
+        "page": 4,
+        "label": "p.48 量角器測量程序",
+        "quote": "完整標示「量角器測量程序」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
+        ]
+      },
+      {
+        "key": "q01_collect",
+        "page": 4,
+        "label": "p.48 資料收集過程",
+        "quote": "完整標示「資料收集過程」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6,
+          7
         ]
       }
     ],
@@ -256,10 +344,30 @@ window.CASP_QUESTIONS = [
         "considers": [
           "此研究是否設計來評估一種介入的結果？",
           "研究問題是否依下列要素「建構」：研究族群、介入措施、對照組的選擇、結果測量？"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q01_abstract",
+            "q01_purpose",
+            "q01_design",
+            "q01_sample",
+            "q01_education46",
+            "q01_education47",
+            "q01_vas",
+            "q01_angle47",
+            "q01_angle48",
+            "q01_collect"
+          ],
+          [
+            "q01_design",
+            "q01_power"
+          ]
+        ],
+        "referenceNote": "常規衛教未描述、未指定單一主要成果等屬報告不足；標示的是核對範圍，不會補寫不存在的原文。"
       }
     ],
-    "sourceLocation": "1：p.46；p.46–47。"
+    "sourceLocation": "1：p.46；p.46–47。",
+    "annotatedPdf": "assets/study-q01-annotated.pdf"
   },
   {
     "id": 2,
@@ -286,26 +394,36 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "random",
+        "key": "q02_design",
         "page": 2,
         "label": "p.46 研究設計",
-        "quote": "原文記載先以電腦亂數表產生序號組別、放入密閉信封，再依入院順序分派。",
-        "find": [
-          "先以電腦亂數表產生序號組別",
-          "控制組，放入密閉信封",
-          "再依入院順序"
+        "quote": "完整標示「研究設計」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          7,
+          8
         ]
       },
       {
-        "key": "flow",
+        "key": "q02_flow",
         "page": 3,
-        "label": "p.47 隨機流程",
-        "quote": "圖一呈現隨機分派後兩組的研究流程。",
-        "region": [
-          0.08,
-          0.108,
-          0.94,
-          0.54
+        "label": "p.47 圖一收案流程",
+        "quote": "完整標示「圖一收案流程」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          427
+        ]
+      },
+      {
+        "key": "q02_collect",
+        "page": 4,
+        "label": "p.48 資料收集過程",
+        "quote": "完整標示「資料收集過程」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6,
+          7
         ]
       }
     ],
@@ -347,10 +465,22 @@ window.CASP_QUESTIONS = [
           "隨機分配方式為何？該方法是否合適？",
           "隨機分配方式是否足以消除系統性偏差？",
           "分配序號是否對研究者與受試者隱藏？"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q02_design",
+            "q02_flow"
+          ],
+          [
+            "q02_design",
+            "q02_collect"
+          ]
+        ],
+        "referenceNote": "信封不透光、編號及操作人員等細節未報告，無對應原句可標註。"
       }
     ],
-    "sourceLocation": "2：p.47；p.48；p.46。"
+    "sourceLocation": "2：p.47；p.48；p.46。",
+    "annotatedPdf": "assets/study-q02-annotated.pdf"
   },
   {
     "id": 3,
@@ -377,47 +507,47 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "flow",
+        "key": "q03_flow",
         "page": 3,
-        "label": "p.47 流程圖",
-        "quote": "兩組各 26 人；實驗組因住院與執行率不足，最後為 22 人。對照組維持 26 人。",
-        "region": [
-          0.08,
-          0.108,
-          0.94,
-          0.54
+        "label": "p.47 圖一收案流程",
+        "quote": "完整標示「圖一收案流程」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          427
         ]
       },
       {
-        "key": "adherence",
+        "key": "q03_education47",
         "page": 3,
-        "label": "p.47 分析門檻",
-        "quote": "原文規定個人執行率達 72% 才列入統計分析。這是辨識分派後排除的關鍵。",
-        "find": [
-          "訂定個人執行率達72%才列入統計分析"
+        "label": "p.47 電話、紀錄與執行率",
+        "quote": "完整標示「電話、紀錄與執行率」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
         ]
       },
       {
-        "key": "sample_analysis",
+        "key": "q03_attrition",
         "page": 4,
-        "label": "p.48 分析人數",
-        "quote": "結果段明列最後 48 人納入統計分析：實驗組 22 人、控制組 26 人，總流失率 7.7%。",
-        "find": [
-          "最後完成本研究共48人",
-          "實驗組22人及控制組26人",
-          "流失率為7.7%"
+        "label": "p.48 流失與分析人數",
+        "quote": "完整標示「流失與分析人數」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          10,
+          11,
+          12
         ]
       },
       {
-        "key": "results_table",
+        "key": "q03_table2",
         "page": 7,
-        "label": "p.51 分析樣本",
-        "quote": "表二以 N = 48 呈現分析結果，須與原分派 52 人相互核對。",
-        "region": [
-          0.07,
-          0.635,
-          0.95,
-          0.89
+        "label": "p.51 表二 GEE 分析",
+        "quote": "完整標示「表二 GEE 分析」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          505,
+          545,
+          710
         ]
       }
     ],
@@ -459,10 +589,24 @@ window.CASP_QUESTIONS = [
           "隨機分配後失去追蹤與被排除的受試者是否都有交代？",
           "受試者是否按照他們被隨機分配的組別進行分析（治療意向分析法）？",
           "試驗是否提早終止？若有，原因為何？"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q03_flow",
+            "q03_attrition"
+          ],
+          [
+            "q03_education47",
+            "q03_flow",
+            "q03_attrition",
+            "q03_table2"
+          ]
+        ],
+        "referenceNote": "15.4% 為依原文人數另行計算；符合計畫分析及偏差方向為評讀判斷。"
       }
     ],
-    "sourceLocation": "3：p.47；p.48。"
+    "sourceLocation": "3：p.47；p.48。",
+    "annotatedPdf": "assets/study-q03-annotated.pdf"
   },
   {
     "id": 4,
@@ -489,33 +633,104 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "blind_label",
+        "key": "q04_design",
         "page": 2,
-        "label": "p.46 設計與衛教",
-        "quote": "研究自稱單盲；實驗組由研究者提供手冊、影片操作與運動回覆示教。",
-        "find": [
-          "本研究為單盲隨機控制組試驗",
-          "實驗組由研究者在術後第3天一對一方式提供"
+        "label": "p.46 研究設計",
+        "quote": "完整標示「研究設計」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          7,
+          8
         ]
       },
       {
-        "key": "blind_limit",
-        "page": 8,
-        "label": "p.52 研究限制",
-        "quote": "作者明述介入措施及資料收集者為同一研究者，並承認可能有研究者主觀偏倚。",
-        "find": [
-          "介入措施及資料收集者為同一研究者",
-          "研究者主觀偏倚"
+        "key": "q04_education46",
+        "page": 2,
+        "label": "p.46 混合式衛教方案",
+        "quote": "完整標示「混合式衛教方案」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          13,
+          14,
+          15
         ]
       },
       {
-        "key": "blind_collect",
+        "key": "q04_education47",
+        "page": 3,
+        "label": "p.47 電話、紀錄與執行率",
+        "quote": "完整標示「電話、紀錄與執行率」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
+        ]
+      },
+      {
+        "key": "q04_ethics",
         "page": 4,
-        "label": "p.48 資料收集",
-        "quote": "資料收集過程可用來核對研究者的介入及測量角色。",
-        "find": [
-          "六、資料收集過程",
-          "於單獨診療間進行資料收集及測量"
+        "label": "p.48 倫理考量",
+        "quote": "完整標示「倫理考量」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          3,
+          4
+        ]
+      },
+      {
+        "key": "q04_collect",
+        "page": 4,
+        "label": "p.48 資料收集過程",
+        "quote": "完整標示「資料收集過程」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "key": "q04_angle48",
+        "page": 4,
+        "label": "p.48 量角器測量程序",
+        "quote": "完整標示「量角器測量程序」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
+        ]
+      },
+      {
+        "key": "q04_limitations",
+        "page": 8,
+        "label": "p.52 研究限制與建議",
+        "quote": "完整標示「研究限制與建議」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6
+        ]
+      },
+      {
+        "key": "q04_authors",
+        "page": 8,
+        "label": "p.52 作者貢獻度",
+        "quote": "完整標示「作者貢獻度」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          12,
+          13
+        ]
+      },
+      {
+        "key": "q04_abstract",
+        "page": 1,
+        "label": "p.45 摘要目的與方法",
+        "quote": "完整標示「摘要目的與方法」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "key": "q04_vas",
+        "page": 3,
+        "label": "p.47 VAS 疼痛量表",
+        "quote": "完整標示「VAS 疼痛量表」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          6,
+          7
         ]
       }
     ],
@@ -556,7 +771,21 @@ window.CASP_QUESTIONS = [
           "依 2024 年版「不對研究者做了什麼自行假設」之原則，文中未明確寫出受試者是否盲化，故判定為「無法判斷」。疼痛為受試者自評指標，若受試者未盲化，容易受期待效應影響。"
         ],
         "location": "p.46；p.48。",
-        "considers": []
+        "considers": [],
+        "reasonEvidence": [
+          [
+            "q04_abstract",
+            "q04_design",
+            "q04_education46",
+            "q04_education47",
+            "q04_ethics"
+          ],
+          [
+            "q04_design",
+            "q04_vas"
+          ]
+        ],
+        "referenceNote": "原文未明確說明單盲對象；不能將評讀者的推論標成作者已報告的盲法。"
       },
       {
         "id": "4(b)",
@@ -567,7 +796,15 @@ window.CASP_QUESTIONS = [
           "研究方法「三、混合式衛教方案說明」（p.46–47）指出，實驗組由研究者（經受訓合格、具 22 年骨科專科護理經歷之骨科專科護理師）於術後第 3 天以一對一方式提供衛教、教導視頻操作及回覆示教，並於病人返家後執行 4 次電話諮詢；作者貢獻度亦顯示第一作者負責介入與資料收集（p.52）。給予介入者必然知道受試者的組別，衛教類介入本質上也無法對給予者盲化，故判定為「否」。"
         ],
         "location": "p.46–47；p.52。",
-        "considers": []
+        "considers": [],
+        "reasonEvidence": [
+          [
+            "q04_education46",
+            "q04_education47",
+            "q04_authors"
+          ]
+        ],
+        "referenceNote": "盲法判讀依介入執行程序形成，並非原文另有「未盲化」的宣告。"
       },
       {
         "id": "4(c)",
@@ -579,10 +816,23 @@ window.CASP_QUESTIONS = [
           "資料分析由第二作者黃曉令負責（作者貢獻度），是否知道組別未說明，此部分無法判斷；但結果評估者確定未盲化，故本題判定為「否」。"
         ],
         "location": "p.48；p.52。",
-        "considers": []
+        "considers": [],
+        "reasonEvidence": [
+          [
+            "q04_collect",
+            "q04_angle48",
+            "q04_limitations"
+          ],
+          [
+            "q04_authors",
+            "q04_limitations"
+          ]
+        ],
+        "referenceNote": "資料分析者是否盲化未交代；作者貢獻度只提供分析者身分。"
       }
     ],
-    "sourceLocation": "4(a)：p.46；p.48。；4(b)：p.46–47；p.52。；4(c)：p.48；p.52。"
+    "sourceLocation": "4(a)：p.46；p.48。；4(b)：p.46–47；p.52。；4(c)：p.48；p.52。",
+    "annotatedPdf": "assets/study-q04-annotated.pdf"
   },
   {
     "id": 5,
@@ -605,24 +855,47 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "baseline",
+        "key": "q05_table1",
         "page": 5,
-        "label": "p.49 表一",
-        "quote": "先比較年齡、性別、疾病與術前疼痛／角度，再看數字是否一致。表一的 TKR 經驗列也值得核對。",
-        "region": [
-          0.07,
-          0.09,
-          0.94,
-          0.75
+        "label": "p.49 表一基準特性",
+        "quote": "完整標示「表一基準特性」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          500
         ]
       },
       {
-        "key": "baseline_text",
+        "key": "q05_baseline48",
         "page": 4,
-        "label": "p.48 結果敘述",
-        "quote": "作者敘述二組人口及疾病特質無統計顯著差異；這是統計結果，仍需與表格數值交叉檢查。",
-        "find": [
-          "比較二組人口特質及疾病特質無統計顯著差異"
+        "label": "p.48 基準特性敘述",
+        "quote": "完整標示「基準特性敘述」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          13
+        ]
+      },
+      {
+        "key": "q05_attrition",
+        "page": 4,
+        "label": "p.48 流失與分析人數",
+        "quote": "完整標示「流失與分析人數」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "key": "q05_flow",
+        "page": 3,
+        "label": "p.47 圖一收案流程",
+        "quote": "完整標示「圖一收案流程」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          427
         ]
       }
     ],
@@ -659,10 +932,23 @@ window.CASP_QUESTIONS = [
         "considers": [
           "文章中是否清楚呈現各組的基本特徵（如：年齡、性別、社經地位）？",
           "組間是否存在可能影響結果的差別？"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q05_baseline48",
+            "q05_table1"
+          ],
+          [
+            "q05_table1",
+            "q05_attrition",
+            "q05_flow"
+          ]
+        ],
+        "referenceNote": "未列出的教育、社經或排除後基準等資訊，無原句可標註；表格疑點保留原數字。"
       }
     ],
-    "sourceLocation": "5：p.49。"
+    "sourceLocation": "5：p.49。",
+    "annotatedPdf": "assets/study-q05-annotated.pdf"
   },
   {
     "id": 6,
@@ -689,26 +975,54 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "care",
+        "key": "q06_design",
         "page": 2,
-        "label": "p.46 共同照護",
-        "quote": "方法交代兩組於術前及住院期間皆接受常規治療及護理；出院衛教是預定比較的差異。",
-        "find": [
-          "二組病人於手術前及住院期間皆接受常規治療",
-          "及護理"
+        "label": "p.46 研究設計",
+        "quote": "完整標示「研究設計」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          7,
+          8
         ]
       },
       {
-        "key": "followup",
+        "key": "q06_collect",
         "page": 4,
-        "label": "p.48 追蹤與用藥",
-        "quote": "兩組在相同術後時間點追蹤；結果另報告止痛藥使用天數不同，需連同照護程序與分析一起理解。",
-        "find": [
-          "分別為術後第1週",
-          "術後第6週",
-          "術後第12週",
-          "術後第16週",
-          "常規醫囑止痛藥為"
+        "label": "p.48 資料收集過程",
+        "quote": "完整標示「資料收集過程」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "key": "q06_medication",
+        "page": 4,
+        "label": "p.48 止痛藥與疼痛結果",
+        "quote": "完整標示「止痛藥與疼痛結果」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          14,
+          15
+        ]
+      },
+      {
+        "key": "q06_education46",
+        "page": 2,
+        "label": "p.46 混合式衛教方案",
+        "quote": "完整標示「混合式衛教方案」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          13,
+          14,
+          15
+        ]
+      },
+      {
+        "key": "q06_education47",
+        "page": 3,
+        "label": "p.47 電話、紀錄與執行率",
+        "quote": "完整標示「電話、紀錄與執行率」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
         ]
       }
     ],
@@ -746,10 +1060,25 @@ window.CASP_QUESTIONS = [
           "試驗計畫是否清楚定義？",
           "若有給予額外介入（如：檢查或治療），各組給予的介入是否相似？",
           "各組的追蹤間隔是否相同？"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q06_design",
+            "q06_medication",
+            "q06_collect"
+          ],
+          [
+            "q06_design",
+            "q06_education46",
+            "q06_education47",
+            "q06_medication"
+          ]
+        ],
+        "referenceNote": "研究計畫書、常規衛教細節與共同介入未報告，標示方法及用藥段供核對。"
       }
     ],
-    "sourceLocation": "6：p.46；p.48。"
+    "sourceLocation": "6：p.46；p.48。",
+    "annotatedPdf": "assets/study-q06-annotated.pdf"
   },
   {
     "id": 7,
@@ -768,70 +1097,137 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "power",
+        "key": "q07_power",
         "page": 2,
-        "label": "p.46 樣本數",
-        "quote": "G*Power 規劃 effect size .33、α .05、power .80、兩組五次測量，考量流失後收案 52 人。",
-        "find": [
-          "樣本數計算方面",
-          "設定effect size .33",
-          "估算樣本數共46人"
+        "label": "p.46 樣本數計算",
+        "quote": "完整標示「樣本數計算」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          12
         ]
       },
       {
-        "key": "results_table",
-        "page": 7,
-        "label": "p.51 表二",
-        "quote": "表二列 β、SE 與 p 值。第 16 週現在疼痛交互作用 β = −1.52；屈膝角度交互作用未達 .05。",
-        "region": [
-          0.07,
-          0.635,
-          0.95,
-          0.89
-        ]
-      },
-      {
-        "key": "results_graph",
-        "page": 6,
-        "label": "p.50 圖二",
-        "quote": "圖二呈現各時間點各組的疼痛值；圖上的兩組比較與表二的組別×時間交互作用不是同一個比較。",
-        "region": [
-          0.07,
-          0.09,
-          0.95,
-          0.7
-        ]
-      },
-      {
-        "key": "study_tools",
+        "key": "q07_vas",
         "page": 3,
-        "label": "p.47 研究工具",
-        "quote": "研究工具段落交代 VAS 量尺、再測信度及電子量角器資訊。",
-        "find": [
-          "四、研究工具",
-          "視覺類比量表",
-          "膝關節角度"
+        "label": "p.47 VAS 疼痛量表",
+        "quote": "完整標示「VAS 疼痛量表」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          6,
+          7
         ]
       },
       {
-        "key": "analysis_methods",
+        "key": "q07_angle47",
+        "page": 3,
+        "label": "p.47 電子量角器",
+        "quote": "完整標示「電子量角器」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          8,
+          9
+        ]
+      },
+      {
+        "key": "q07_angle48",
         "page": 4,
-        "label": "p.48 統計方法",
-        "quote": "核對常態性、組間比較與 GEE 分析方式，以及遺漏資料處理的交代程度。",
-        "find": [
-          "七、資料處理與分析",
-          "重複測",
-          "廣義估計方程式"
+        "label": "p.48 量角器測量程序",
+        "quote": "完整標示「量角器測量程序」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
         ]
       },
       {
-        "key": "blind_limit",
+        "key": "q07_analysis",
+        "page": 4,
+        "label": "p.48 資料處理與分析",
+        "quote": "完整標示「資料處理與分析」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          8,
+          9
+        ]
+      },
+      {
+        "key": "q07_attrition",
+        "page": 4,
+        "label": "p.48 流失與分析人數",
+        "quote": "完整標示「流失與分析人數」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "key": "q07_figure2",
+        "page": 6,
+        "label": "p.50 圖二疼痛結果",
+        "quote": "完整標示「圖二疼痛結果」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          583
+        ]
+      },
+      {
+        "key": "q07_figure3",
+        "page": 7,
+        "label": "p.51 圖三關節角度",
+        "quote": "完整標示「圖三關節角度」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          483
+        ]
+      },
+      {
+        "key": "q07_table2",
+        "page": 7,
+        "label": "p.51 表二 GEE 分析",
+        "quote": "完整標示「表二 GEE 分析」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          505,
+          545,
+          710
+        ]
+      },
+      {
+        "key": "q07_gee48",
+        "page": 4,
+        "label": "p.48 GEE 與控制變項",
+        "quote": "完整標示「GEE 與控制變項」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          17,
+          18,
+          19
+        ]
+      },
+      {
+        "key": "q07_gee49",
+        "page": 5,
+        "label": "p.49 GEE 結果續段",
+        "quote": "完整標示「GEE 結果續段」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          43
+        ]
+      },
+      {
+        "key": "q07_limitations",
         "page": 8,
-        "label": "p.52 研究限制",
-        "quote": "限制段落呈現作者已討論的偏差來源，另與評讀文件指出的限制相互核對。",
-        "find": [
-          "介入措施及資料收集者為同一研究者",
-          "研究者主觀偏倚"
+        "label": "p.52 研究限制與建議",
+        "quote": "完整標示「研究限制與建議」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6
+        ]
+      },
+      {
+        "key": "q07_education47",
+        "page": 3,
+        "label": "p.47 電話、紀錄與執行率",
+        "quote": "完整標示「電話、紀錄與執行率」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
         ]
       }
     ],
@@ -871,10 +1267,35 @@ window.CASP_QUESTIONS = [
         "location": "p.46；p.47–48；p.48；p.50；p.51；p.52。",
         "considers": [
           "檢定力計算、結果定義、結果表達方式、各組各次追蹤各項結果、遺漏資料、組間退出率差異、偏差來源、統計方法、p 值。"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q07_power",
+            "q07_vas",
+            "q07_angle47",
+            "q07_angle48",
+            "q07_analysis",
+            "q07_figure2",
+            "q07_figure3",
+            "q07_table2"
+          ],
+          [
+            "q07_figure2",
+            "q07_figure3",
+            "q07_table2",
+            "q07_analysis",
+            "q07_gee48",
+            "q07_gee49",
+            "q07_attrition",
+            "q07_education47",
+            "q07_limitations"
+          ]
+        ],
+        "referenceNote": "未報告的變異量、遺漏資料處理及多重比較等，標示圖表與分析段供檢查；表格一致性為評讀結果。"
       }
     ],
-    "sourceLocation": "7：p.46；p.47–48；p.48；p.50；p.51；p.52。"
+    "sourceLocation": "7：p.46；p.47–48；p.48；p.50；p.51；p.52。",
+    "annotatedPdf": "assets/study-q07-annotated.pdf"
   },
   {
     "id": 8,
@@ -893,15 +1314,15 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "precision_table",
+        "key": "q08_table2",
         "page": 7,
-        "label": "p.51 表二",
-        "quote": "表二欄位為 β、SE、p 值，未直接列出 95% CI。檢查表頭與全文，不把 SE 或 p 值當成 CI。",
-        "region": [
-          0.07,
-          0.635,
-          0.95,
-          0.89
+        "label": "p.51 表二 GEE 分析",
+        "quote": "完整標示「表二 GEE 分析」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          505,
+          545,
+          710
         ]
       }
     ],
@@ -939,10 +1360,17 @@ window.CASP_QUESTIONS = [
         "location": "p.51。",
         "considers": [
           "是否列出信賴區間（CIs）？"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q08_table2"
+          ]
+        ],
+        "referenceNote": "95% CI 是評讀者依 β 與 SE 推算，非文獻已報告；PDF 只標註原始表二資料。"
       }
     ],
-    "sourceLocation": "8：p.51。"
+    "sourceLocation": "8：p.51。",
+    "annotatedPdf": "assets/study-q08-annotated.pdf"
   },
   {
     "id": 9,
@@ -961,47 +1389,108 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "benefit",
-        "page": 7,
-        "label": "p.51 效果表",
-        "quote": "可找出疼痛及伸膝角度的效果估計，但臨床重要程度仍須進一步評估。",
-        "region": [
-          0.07,
-          0.635,
-          0.95,
-          0.89
+        "key": "q09_medication",
+        "page": 4,
+        "label": "p.48 止痛藥與疼痛結果",
+        "quote": "完整標示「止痛藥與疼痛結果」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          14,
+          15
         ]
       },
       {
-        "key": "cost",
-        "page": 3,
-        "label": "p.47 電話與運動",
-        "quote": "電話諮詢共 4 次，每次約 5–10 分鐘；居家運動另外需要病人投入時間。這是資源線索，不是成本效果分析。",
-        "find": [
-          "電話諮詢，共4次",
-          "每次約5–10分鐘"
+        "key": "q09_angleResults",
+        "page": 4,
+        "label": "p.48 關節角度結果",
+        "quote": "完整標示「關節角度結果」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          16
         ]
       },
       {
-        "key": "safety",
-        "page": 8,
-        "label": "p.52 結論",
-        "quote": "作者稱介入安全且易於實施，但全文未見兩組系統性不良事件彙整或正式成本效果分析。",
-        "find": [
-          "安全且易於實",
-          "施的護理措施"
-        ]
-      },
-      {
-        "key": "results_graph",
+        "key": "q09_figure2",
         "page": 6,
-        "label": "p.50 疼痛結果",
-        "quote": "圖二提供第 16 週兩組疼痛平均值；不要與模型交互作用係數混為一談。",
-        "region": [
-          0.07,
-          0.09,
-          0.95,
-          0.7
+        "label": "p.50 圖二疼痛結果",
+        "quote": "完整標示「圖二疼痛結果」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          583
+        ]
+      },
+      {
+        "key": "q09_figure3",
+        "page": 7,
+        "label": "p.51 圖三關節角度",
+        "quote": "完整標示「圖三關節角度」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          483
+        ]
+      },
+      {
+        "key": "q09_table2",
+        "page": 7,
+        "label": "p.51 表二 GEE 分析",
+        "quote": "完整標示「表二 GEE 分析」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          505,
+          545,
+          710
+        ]
+      },
+      {
+        "key": "q09_discussion49",
+        "page": 5,
+        "label": "p.49 疼痛結果討論",
+        "quote": "完整標示「疼痛結果討論」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          48
+        ]
+      },
+      {
+        "key": "q09_discussion50",
+        "page": 6,
+        "label": "p.50 疼痛與止痛藥討論",
+        "quote": "完整標示「疼痛與止痛藥討論」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          46
+        ]
+      },
+      {
+        "key": "q09_discussion52",
+        "page": 8,
+        "label": "p.52 角度與活動討論",
+        "quote": "完整標示「角度與活動討論」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          3,
+          4
+        ]
+      },
+      {
+        "key": "q09_conclusion",
+        "page": 8,
+        "label": "p.52 研究結論",
+        "quote": "完整標示「研究結論」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "key": "q09_attrition",
+        "page": 4,
+        "label": "p.48 流失與分析人數",
+        "quote": "完整標示「流失與分析人數」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          10,
+          11,
+          12
         ]
       }
     ],
@@ -1037,10 +1526,27 @@ window.CASP_QUESTIONS = [
         "location": "p.50–51；p.52。",
         "considers": [
           "效果大小、各組傷害或非預期效應、成本效益分析。"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q09_medication",
+            "q09_angleResults",
+            "q09_figure2",
+            "q09_figure3"
+          ],
+          [
+            "q09_attrition",
+            "q09_medication",
+            "q09_conclusion",
+            "q09_discussion52",
+            "q09_table2"
+          ]
+        ],
+        "referenceNote": "未報告的傷害與成本沒有可標註原句；胃穿孔與用藥的因果關係也未被本研究確立。"
       }
     ],
-    "sourceLocation": "9：p.50–51；p.52。"
+    "sourceLocation": "9：p.50–51；p.52。",
+    "annotatedPdf": "assets/study-q09-annotated.pdf"
   },
   {
     "id": 10,
@@ -1059,24 +1565,88 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "population",
+        "key": "q10_sample",
         "page": 2,
-        "label": "p.46 納入／排除",
-        "quote": "納入 65 歲以上單側 TKR 病人；排除無法運動及家中無觀看 YouTube 設施者。",
-        "find": [
-          "年齡65",
-          "家中無觀看YouTube衛教影片之設施"
+        "label": "p.46 納入與排除條件",
+        "quote": "完整標示「納入與排除條件」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          9,
+          10,
+          11
         ]
       },
       {
-        "key": "limits",
+        "key": "q10_baseline48",
+        "page": 4,
+        "label": "p.48 基準特性敘述",
+        "quote": "完整標示「基準特性敘述」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          13
+        ]
+      },
+      {
+        "key": "q10_table1",
+        "page": 5,
+        "label": "p.49 表一基準特性",
+        "quote": "完整標示「表一基準特性」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          500
+        ]
+      },
+      {
+        "key": "q10_flow",
+        "page": 3,
+        "label": "p.47 圖一收案流程",
+        "quote": "完整標示「圖一收案流程」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          427
+        ]
+      },
+      {
+        "key": "q10_vas",
+        "page": 3,
+        "label": "p.47 VAS 疼痛量表",
+        "quote": "完整標示「VAS 疼痛量表」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          6,
+          7
+        ]
+      },
+      {
+        "key": "q10_angle47",
+        "page": 3,
+        "label": "p.47 電子量角器",
+        "quote": "完整標示「電子量角器」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          8,
+          9
+        ]
+      },
+      {
+        "key": "q10_limitations",
         "page": 8,
-        "label": "p.52 研究限制",
-        "quote": "單一機構、僅追蹤術後 16 週，作者指出推論及長期效益的限制。",
-        "find": [
-          "收案地點僅單一",
-          "研究追蹤術後16週",
-          "長期效益未知"
+        "label": "p.52 研究限制與建議",
+        "quote": "完整標示「研究限制與建議」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6
+        ]
+      },
+      {
+        "key": "q10_collect",
+        "page": 4,
+        "label": "p.48 資料收集過程",
+        "quote": "完整標示「資料收集過程」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6,
+          7
         ]
       }
     ],
@@ -1112,10 +1682,26 @@ window.CASP_QUESTIONS = [
         "location": "p.48；p.46；p.52。",
         "considers": [
           "受試者是否相似？差異是否改變結果？結果是否重要？是否缺少想要的結果？研究限制是否影響決策？"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q10_baseline48",
+            "q10_table1",
+            "q10_collect"
+          ],
+          [
+            "q10_sample",
+            "q10_flow",
+            "q10_limitations",
+            "q10_vas",
+            "q10_angle47"
+          ]
+        ],
+        "referenceNote": "未測量的功能、生活品質與長期結果無原句可標註；適用性為依研究條件提出的判讀。"
       }
     ],
-    "sourceLocation": "10：p.48；p.46；p.52。"
+    "sourceLocation": "10：p.48；p.46；p.52。",
+    "annotatedPdf": "assets/study-q10-annotated.pdf"
   },
   {
     "id": 11,
@@ -1134,36 +1720,75 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "resources",
+        "key": "q11_education46",
         "page": 2,
-        "label": "p.46 衛教方案",
-        "quote": "包括教材製作、影片操作、一對一衛教與回覆示教；執行者具長期骨科專科護理經驗。",
-        "find": [
-          "研究者是經過受訓合格之骨科專科護理",
-          "22年骨科專科護理經歷",
-          "回覆示教"
+        "label": "p.46 混合式衛教方案",
+        "quote": "完整標示「混合式衛教方案」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          13,
+          14,
+          15
         ]
       },
       {
-        "key": "phone",
+        "key": "q11_education47",
         "page": 3,
-        "label": "p.47 追蹤安排",
-        "quote": "病人每日紀錄運動、返診帶回檢核表；返家後共有 4 次電話諮詢，每次約 5–10 分鐘。",
-        "find": [
-          "自我運動執行檢核表",
-          "電話諮詢，共4次",
-          "每次約5–10分鐘"
+        "label": "p.47 電話、紀錄與執行率",
+        "quote": "完整標示「電話、紀錄與執行率」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          2
         ]
       },
       {
-        "key": "clinical_application",
+        "key": "q11_design",
+        "page": 2,
+        "label": "p.46 研究設計",
+        "quote": "完整標示「研究設計」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          7,
+          8
+        ]
+      },
+      {
+        "key": "q11_application",
         "page": 8,
         "label": "p.52 臨床應用",
-        "quote": "臨床應用段落提出將復健衛教納入出院計畫的建議；仍須另評估資源與其他方案。",
-        "find": [
-          "臨床應用",
-          "應納入出院護",
-          "理計畫"
+        "quote": "完整標示「臨床應用」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          10,
+          11
+        ]
+      },
+      {
+        "key": "q11_limitations",
+        "page": 8,
+        "label": "p.52 研究限制與建議",
+        "quote": "完整標示「研究限制與建議」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          5,
+          6
+        ]
+      },
+      {
+        "key": "q11_authors",
+        "page": 8,
+        "label": "p.52 作者貢獻度",
+        "quote": "完整標示「作者貢獻度」的相關原文，請連同上下文核對。",
+        "blockIds": [
+          12,
+          13
+        ]
+      },
+      {
+        "key": "q11_table2",
+        "page": 7,
+        "label": "p.51 表二 GEE 分析",
+        "quote": "完整標示「表二 GEE 分析」的相關原文，請連同上下文核對。",
+        "boxPoints": [
+          50,
+          505,
+          545,
+          710
         ]
       }
     ],
@@ -1199,10 +1824,25 @@ window.CASP_QUESTIONS = [
         "location": "p.46–47；p.52。",
         "considers": [
           "所需資源（時間、費用、技能與訓練）；能否從現有介入移出資源重新投入。"
-        ]
+        ],
+        "reasonEvidence": [
+          [
+            "q11_education46",
+            "q11_education47",
+            "q11_application"
+          ],
+          [
+            "q11_design",
+            "q11_limitations",
+            "q11_table2",
+            "q11_application"
+          ]
+        ],
+        "referenceNote": "資源整合、培訓及價值判斷含評讀者建議；PDF 標示實際介入與臨床應用段落。"
       }
     ],
-    "sourceLocation": "11：p.46–47；p.52。"
+    "sourceLocation": "11：p.46–47；p.52。",
+    "annotatedPdf": "assets/study-q11-annotated.pdf"
   }
 ];
 window.CASP_APPRAISAL_SUMMARY = {
