@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CASP 2024 中英對照 RCT 評讀教學，以中文護理研究示範尋找證據、判斷與書寫理由。">
   <title>RCT 文獻評讀｜CASP 2024</title>
-  <link rel="stylesheet" href="styles.css?v=20261121-integrated-symbols">
-  <script defer src="assets/evidence.js?v=20261121-integrated-symbols"></script>
-  <script defer src="content.js?v=20261121-integrated-symbols"></script>
-  <script defer src="app.js?v=20261121-integrated-symbols"></script>
+  <link rel="stylesheet" href="styles.css?v=20261121-reading-prompts">
+  <script defer src="assets/evidence.js?v=20261121-reading-prompts"></script>
+  <script defer src="content.js?v=20261121-reading-prompts"></script>
+  <script defer src="app.js?v=20261121-reading-prompts"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">跳到本題內容</a>
@@ -28,7 +28,7 @@
       <section id="introPage" class="intro-page" aria-labelledby="introTitle">
         <span class="eyebrow">CASP · RCT · 2024</span>
         <h2 id="introTitle">評讀方式</h2>
-        <p class="intro-lead">CASP 隨機對照試驗檢核表用於逐項檢視研究設計、結果報告與應用性。每題先閱讀考量點，再依文中提供的資訊作答，並記錄頁碼與理由。</p>
+        <p class="intro-lead">CASP 隨機對照試驗檢核表用於逐項檢視研究設計、結果報告與應用性。每題先閱讀評讀提示，再依文中提供的資訊作答，並記錄頁碼與理由。</p>
         <h3>三項答案的意義</h3>
         <div class="intro-table-wrap"><table class="intro-answers"><thead><tr><th scope="col">答案</th><th scope="col">判讀依據</th></tr></thead><tbody>
           <tr><th scope="row"><span class="intro-answer yes">是 <small lang="en">Yes</small></span></th><td>文中有足夠且明確的資訊，支持該題要求。</td></tr>
@@ -38,7 +38,7 @@
         <div class="intro-principles"><h3>評讀原則</h3><ul>
           <li>依研究實際報告的內容評讀，不自行假設研究者做了什麼。</li>
           <li>若多題為「無法判斷」，應考慮研究報告是否充分，審慎解讀結果。</li>
-          <li>本教材在各考量點以 ✓ 是、? 無法判斷、✕ 否呈現初步判讀，再綜合形成本題總評。</li><li>符號依原問句解讀。例如「是否有遺漏資料？」的 ✓ 表示有遺漏資料。本教材不加總符號或題數作為研究品質分數。</li>
+          <li>本教材在各評讀提示以 ✓ 是、? 無法判斷、✕ 否呈現初步判讀，再綜合形成本題總評。</li><li>符號依原問句解讀。例如「是否有遺漏資料？」的 ✓ 表示有遺漏資料。本教材不加總符號或題數作為研究品質分數。</li>
         </ul></div>
         <p class="intro-source">依 CASP RCT Checklist（2024）第 1 頁使用說明整理；答案定義為中文教學說明，非官方中文譯文。</p>
         <div class="intro-actions"><button id="startAppraisal" class="primary">開始第 1 題</button><a href="assets/casp-rct-2024.pdf#page=1" target="_blank" rel="noopener">CASP 2024 英文原表</a></div>
@@ -60,11 +60,11 @@
           <div id="pageViewport" class="page-viewport"><div id="paper" class="paper"><img id="pageImage" alt=""><div id="highlightLayer" class="highlight-layer" aria-hidden="true"></div></div></div>
           <div class="evidence-caption"><span class="eyebrow">文獻位置</span><p id="evidenceCaption"></p><button id="highlightButton" class="secondary" aria-pressed="false">顯示原文標示</button></div>
         </section>
-        <section class="teaching-pane" aria-label="考量點與評讀理由">
+        <section class="teaching-pane" aria-label="評讀提示與評讀理由">
           <details id="glossaryBlock" class="deep-block"><summary>名詞解釋</summary><div id="deepContent"></div></details>
           <div id="guideCard" class="guide-card"><button id="revealButton" class="primary">顯示評讀理由</button></div>
           <div id="analysisContent">
-            <div class="judgment-block source-appraisal"><span class="eyebrow">CASP 考量點＋評讀理由</span><div id="preliminaryLegend" class="preliminary-legend" hidden><span>✓ 是</span><span>? 無法判斷</span><span>✕ 否</span><p>依各考量點原問句判讀，總評綜合其意義，不加總符號。</p></div><div id="sourceAppraisal"></div></div>
+            <div class="judgment-block source-appraisal"><span class="eyebrow">CASP 評讀提示＋評讀理由</span><div id="preliminaryLegend" class="preliminary-legend" hidden><span>✓ 是</span><span>? 無法判斷</span><span>✕ 否</span><p>依各評讀提示原問句判讀，總評綜合其意義，不加總符號。</p></div><div id="sourceAppraisal"></div></div>
 
 
             <button id="showResultButton" class="primary result-toggle" aria-expanded="false" aria-controls="resultPanel">顯示判讀結果</button>

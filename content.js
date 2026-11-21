@@ -396,7 +396,7 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       2
     ],
-    "overallLink": "兩個考量點均有支持研究問題清楚的資訊，連到本題總評「是」。"
+    "overallLink": "兩個評讀提示均有支持研究問題清楚的資訊，連到本題總評「是」。"
   },
   {
     "id": 2,
