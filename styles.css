@@ -84,3 +84,26 @@ summary #writingTitle{font-size:inherit;color:inherit;font-weight:inherit;displa
 .intro-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:22px}.intro-actions a{font-size:.88rem}
 .location-note{font-size:.75rem;line-height:1.7;margin:0;padding:0 16px 10px;color:var(--muted);flex-shrink:0}
 @media(max-width:600px){.intro-page{padding-top:4px}.intro-page h2{font-size:1.65rem}.intro-answers th,.intro-answers td{padding:12px 10px;font-size:.9rem}.intro-answers tbody th{width:100px}.intro-nav{margin:0 0 12px}}
+
+.consider-item h4{font-size:.78rem;color:var(--muted);margin:12px 0 3px}
+.consider-item .en{white-space:pre-line}
+.consider-source{font-size:.78rem;padding-top:10px;border-top:1px solid var(--line)}
+.consider-response+.consider-response{border-top:1px solid #cbdad5;margin-top:22px;padding-top:17px}
+.response-heading>span{font-size:.75rem;color:var(--question-accent);font-weight:700}
+.response-heading h4{font-size:.98rem;line-height:1.75;margin:4px 0 10px}
+.summary-button[aria-current=page]{background:var(--teal);color:white}
+.summary-page{max-width:1000px;margin:0 auto;padding:12px 0 32px}
+.summary-page h2{font-size:1.9rem;line-height:1.5;margin:12px 0 24px}
+.summary-page h3{font-size:1.2rem;margin:24px 0 14px}
+.summary-page .appraisal-results{width:100%;border-collapse:collapse;background:white;font-size:.95rem;line-height:1.8}
+.summary-page th,.summary-page td{border-bottom:1px solid var(--line);padding:12px 15px;text-align:left;vertical-align:top}
+.summary-page th{background:var(--soft)}
+.evidence-grade{background:white;border:1px solid var(--line);border-radius:14px;padding:4px 24px 18px}
+.evidence-grade p,.evidence-grade li{font-size:.95rem;line-height:1.9}
+.evidence-grade li+li{margin-top:9px}.evidence-grade ul{padding-left:22px}
+.grade-facts{margin:0}.grade-facts>div{display:grid;grid-template-columns:165px 1fr;gap:15px;padding:13px 0;border-bottom:1px solid var(--line)}
+.grade-facts dt{font-size:.9rem;color:var(--muted)}.grade-facts dd{margin:0;font-weight:600}
+.grade-facts .final-grade dd{font-size:1.3rem;color:var(--teal)}.grade-facts small{display:block;font-size:.8rem;font-weight:400;color:var(--muted)}
+.grade-note{border-left:3px solid var(--teal);padding-left:12px;color:var(--muted)}
+.summary-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+@media(max-width:600px){.summary-page h2{font-size:1.55rem}.evidence-grade{padding:3px 16px 14px}.grade-facts>div{grid-template-columns:1fr;gap:5px}.summary-page th,.summary-page td{padding:10px}}

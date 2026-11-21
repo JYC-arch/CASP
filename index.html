@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CASP 2024 中英對照 RCT 評讀教學，以中文護理研究示範尋找證據、判斷與書寫理由。">
   <title>RCT 文獻評讀｜CASP 2024</title>
-  <link rel="stylesheet" href="styles.css?v=20261121-lookup-intro">
-  <script defer src="assets/evidence.js?v=20261121-lookup-intro"></script>
-  <script defer src="content.js?v=20261121-lookup-intro"></script>
-  <script defer src="app.js?v=20261121-lookup-intro"></script>
+  <link rel="stylesheet" href="styles.css?v=20261121-consider-oxford">
+  <script defer src="assets/evidence.js?v=20261121-consider-oxford"></script>
+  <script defer src="content.js?v=20261121-consider-oxford"></script>
+  <script defer src="app.js?v=20261121-consider-oxford"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">跳到本題內容</a>
@@ -21,7 +21,7 @@
       <div class="side-heading"><span class="eyebrow">CASP · 2024</span><h1>RCT<br>文獻評讀</h1><p>CASP 隨機對照試驗檢核表</p></div>
       <button id="introButton" class="nav-item intro-nav" aria-current="page"><span class="num">閱</span><span>評讀方式</span></button>
       <nav id="questionNav"></nav>
-      <button id="summaryButton" class="summary-button">評讀總結</button>
+      <button id="summaryButton" class="summary-button" aria-current="false">評讀總結與證據等級</button>
       <div class="side-footer">中文 RCT 文獻<br>CASP 2024 中英對照</div>
     </aside>
     <main id="lesson" tabindex="-1">
@@ -62,7 +62,7 @@
         </section>
         <section class="teaching-pane" aria-label="考量點與評讀理由">
 
-          <details class="consider-block"><summary>CASP 考量點 <span>中英對照</span></summary><div id="considerContent"></div></details>
+          <details class="consider-block"><summary><strong id="considerLabel">CASP 考量點</strong> <span>中英對照</span></summary><div id="considerContent"></div></details>
           <details id="glossaryBlock" class="deep-block"><summary>名詞解釋</summary><div id="deepContent"></div></details>
           <div id="guideCard" class="guide-card"><button id="revealButton" class="primary">顯示評讀理由</button></div>
           <div id="analysisContent" hidden>
@@ -78,6 +78,10 @@
       <footer class="lesson-footer"><button id="previousButton" class="secondary">上一題</button><span id="lessonProgress"></span><button id="nextButton" class="primary">下一題</button></footer>
       <p class="version-note">英文原題依 CASP RCT Checklist（2024）；中文題目與評讀理由以中文版評讀 Markdown 為主，依教學討論精簡；非 CASP 官方中文譯本。</p>
       </div>
+      <section id="summaryPage" class="summary-page" aria-label="評讀總結與證據等級" hidden>
+        <div id="summaryContent"></div>
+        <div class="summary-actions"><button id="summaryBack" class="secondary">返回第 11 題</button><button id="summaryHome" class="secondary">回到評讀方式</button></div>
+      </section>
     </main>
   </div>
   <button id="mobileReference" class="primary mobile-reference">對照文獻</button>
