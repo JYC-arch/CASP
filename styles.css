@@ -38,3 +38,4 @@
 .evidence-link:hover,.evidence-link:focus-visible{outline:2px solid var(--question-accent);outline-offset:2px}
 .reference-note{font-size:.85rem;line-height:1.7;padding:.8rem;border-left:3px solid var(--question-accent);background:var(--question-soft)}
 .verdict-placeholder{font-size:.85em;color:#66716d}
+summary #writingTitle{font-size:inherit;color:inherit;font-weight:inherit;display:inline}

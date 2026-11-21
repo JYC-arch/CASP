@@ -33,12 +33,14 @@
   $('plain').textContent = question.plain;
   $('considerContent').innerHTML = question.consider.map(item=>`<div class="consider-item"><p>${escape(item[0])}</p><p class="en" lang="en">${escape(item[1])}</p></div>`).join('');
   const answer = window.CASP_ANSWERS[question.id-1];
+  $('resultQuestion').textContent = `第 ${question.id} 題｜${question.title}`;
+  $('writingTitle').textContent = `第 ${question.id} 題評讀紀錄範例`;
   $('verdict').textContent = question.id===4?'分項判讀':answer.answer;
   $('verdict').className = 'verdict ' + (question.id===4?'uncertain':answer.answer==='是'?'yes':answer.answer==='否'?'no':'uncertain');
   $('answerOptions').hidden = question.id===4;
   $('answerOptions').innerHTML = ['是','否','無法判斷'].map(option=>`<span class="answer-option ${option===answer.answer?'selected':''}"${option===answer.answer?' aria-current="true"':''}>${option===answer.answer?'☑':'☐'} ${option}</span>`).join('');
   $('answerReason').textContent = answer.reason;
-  $('subAnswers').innerHTML = answer.parts?`<p class="sub-answer-title">分項判讀</p>${answer.parts.map(item=>`<div><span>${escape(item[0])}</span><strong>${escape(item[1])}</strong></div>`).join('')}`:'';
+  $('subAnswers').innerHTML = answer.parts?`<p class="sub-answer-title">分項判讀</p>${question.sourceSections.map(item=>`<div><span>${escape(item.id)}｜${escape(item.title)}</span><strong>${escape(item.answer)}</strong></div>`).join('')}`:'';
   $('deepContent').innerHTML = question.deep.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4><p>${escape(item[1])}</p></div>`).join('');
   $('writingContent').textContent = question.writing;
   $('sourceAppraisal').innerHTML=(question.sourceSections||[]).map(item=>`<section><h4>${escape(item.id)}. ${escape(item.title)}</h4>${item.reasons.map((reason,i)=>`<div class="appraisal-paragraph"><p class="original-reason">${deferVerdict(reason)}</p><div class="reason-links" aria-label="本段文獻位置">${(item.reasonEvidence[i]||[]).map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}</button>`;}).join('')}</div></div>`).join('')}<p class="reference-note">${escape(item.referenceNote)}</p><p class="source-location"><strong>文獻對應位置：</strong>${escape(item.location)}</p></section>`).join('');
