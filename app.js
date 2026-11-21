@@ -12,9 +12,6 @@
  function nav() {
   $('questionNav').innerHTML = window.CASP_SECTIONS.map(section => `<div class="nav-group"><div class="nav-label">${section.id} · ${section.title}</div>${questions.filter(x=>x.section===section.id).map(x=>`<button class="nav-item" data-question="${x.id}" style="--item-color:${palette(x.id).color}" aria-current="${x.id===q().id?'step':'false'}" title="第 ${x.id} 題：${escape(x.short)}"><span class="num">${String(x.id).padStart(2,'0')}</span><span>${escape(x.short)}</span></button>`).join('')}</div>`).join('');
  }
- function deferVerdict(reason) {
-  return escape(reason).replace(/(故(?:本題)?判定為「(?:是|否|無法判斷)」)/g, '<span class="deferred-verdict" hidden>$1</span><span class="verdict-placeholder">〔結論於顯示判讀結果後呈現〕</span>');
- }
  function renderQuestion() {
   answerShown = false;
   const question = q();
@@ -29,22 +26,18 @@
   $('topicLabel').textContent = question.topic;
   $('questionTitle').textContent = question.title;
   $('questionEnglish').textContent = question.english;
-  $('prompt').textContent = question.prompt;
-  $('plain').textContent = question.plain;
   $('considerContent').innerHTML = question.consider.map(item=>`<div class="consider-item"><p>${escape(item[0])}</p><p class="en" lang="en">${escape(item[1])}</p></div>`).join('');
   const answer = window.CASP_ANSWERS[question.id-1];
   $('resultQuestion').textContent = `第 ${question.id} 題｜${question.title}`;
-  $('writingTitle').textContent = `第 ${question.id} 題評讀紀錄範例`;
-  $('verdict').textContent = question.id===4?'分項判讀':answer.answer;
-  $('verdict').className = 'verdict ' + (question.id===4?'uncertain':answer.answer==='是'?'yes':answer.answer==='否'?'no':'uncertain');
+  $('verdict').textContent = question.id===4?`整體判讀：${answer.answer}`:answer.answer;
+  $('verdict').className = 'verdict ' + (answer.answer==='是'?'yes':answer.answer==='否'?'no':'uncertain');
   $('answerOptions').hidden = question.id===4;
   $('answerOptions').innerHTML = ['是','否','無法判斷'].map(option=>`<span class="answer-option ${option===answer.answer?'selected':''}"${option===answer.answer?' aria-current="true"':''}>${option===answer.answer?'☑':'☐'} ${option}</span>`).join('');
-  $('answerReason').textContent = answer.reason;
   $('subAnswers').innerHTML = answer.parts?`<p class="sub-answer-title">分項判讀</p>${question.sourceSections.map(item=>`<div><span>${escape(item.id)}｜${escape(item.title)}</span><strong>${escape(item.answer)}</strong></div>`).join('')}`:'';
-  $('deepContent').innerHTML = question.deep.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4><p>${escape(item[1])}</p></div>`).join('');
-  $('writingContent').textContent = question.writing;
-  $('sourceAppraisal').innerHTML=(question.sourceSections||[]).map(item=>`<section><h4>${escape(item.id)}. ${escape(item.title)}</h4>${item.reasons.map((reason,i)=>`<div class="appraisal-paragraph"><p class="original-reason">${deferVerdict(reason)}</p><div class="reason-links" aria-label="本段文獻位置">${(item.reasonEvidence[i]||[]).map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}</button>`;}).join('')}</div></div>`).join('')}<p class="reference-note">${escape(item.referenceNote)}</p><p class="source-location"><strong>文獻對應位置：</strong>${escape(item.location)}</p></section>`).join('');
-  $('transferContent').textContent = question.transfer;
+  $('glossaryBlock').hidden = !question.glossary.length;
+  $('deepContent').innerHTML = question.glossary.map(item=>`<div class="deep-item"><h4>${escape(item[0])}</h4><p>${escape(item[1])}</p></div>`).join('');
+  $('sourceAppraisal').innerHTML=question.sourceSections.map(item=>`<section>${question.id===4?`<h4>${escape(item.id)}｜${escape(item.title)}</h4>`:''}${item.reasons.map(reason=>`<p class="appraisal-reason">${escape(reason)}</p>`).join('')}</section>`).join('');
+  $('appraisalReferences').innerHTML=question.evidence.map(evidence=>`<button class="evidence-link" data-evidence-key="${escape(evidence.key)}">${escape(evidence.label)}</button>`).join('');
   document.querySelectorAll('.teaching-pane details').forEach(d=>d.open=false);
   $('previousButton').disabled = current===0;
   $('nextButton').textContent = current===questions.length-1?'查看評讀總結':'下一題';
@@ -62,11 +55,7 @@
   renderResult();
  }
  function renderResult() {
-  document.querySelectorAll('.deferred-verdict').forEach(el=>el.hidden=!answerShown);
-  document.querySelectorAll('.verdict-placeholder').forEach(el=>el.hidden=answerShown);
   $('resultPanel').hidden = !answerShown;
-  $('writingPanel').hidden = !answerShown;
-  if(!answerShown)$('writingPanel').open=false;
   $('showResultButton').setAttribute('aria-expanded',String(answerShown));
   $('showResultButton').textContent=answerShown?'隱藏判讀結果':'顯示判讀結果';
  }
@@ -90,8 +79,8 @@
   $('evidenceTabs').innerHTML = q().evidence.map((item,i)=>`<button data-evidence="${i}" aria-pressed="${i===evidenceIndex}">${escape(item.label)}</button>`).join('');
   $('readingLocation').textContent = '張雪玲等（2023）· 護理雜誌';
   $('pageLabel').textContent = `期刊 p.${evidence.page+44} ／ PDF 第 ${evidence.page} 頁`;
-  $('evidenceCaption').textContent = highlights?evidence.quote:'檢視原文相關段落、表格或流程圖，確認支持判讀的資料。可顯示標示或切換其他證據位置。';
-  $('pageImage').alt = `示範文獻原頁：期刊第 ${evidence.page+44} 頁。${highlights?evidence.quote:'請觀察與本題相關的段落或表圖。'}`;
+  $('evidenceCaption').textContent = evidence.label;
+  $('pageImage').alt = `示範文獻原頁：${evidence.label}`;
   $('pageImage').onload = focusViewport;
   $('pageImage').src = window.CASP_PAGES[evidence.page].src;
   $('paper').style.width=zoom+'%';
@@ -112,22 +101,21 @@
  }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
  function showSources() {
-  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀依《CASP RCT 2024 中文版評讀・混合式衛教 TKR・評析表格式 V1》編製，評讀日期為 2026 年 11 月 20 日；非 CASP 官方中文譯本。考量點保留 CASP 2024 中英對照。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。評讀推論、文獻未交代的事項及評讀者推算值另作說明，未增寫為文獻原文。</p><h3>判讀說明</h3><p>本次判讀依 2026 年 11 月 20 日中文版 Word 評析表 V1 更新；第 4 題依 4(a)、4(b)、4(c) 分項記錄。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
+  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目依《CASP RCT 2024 中文版評讀・混合式衛教 TKR・評析表格式 V1》，評讀理由依 2026 年 11 月 21 日教學討論精簡；非 CASP 官方中文譯本。考量點保留 CASP 2024 中英對照。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。</p><h3>判讀說明</h3><p>各題結果依中文版 Word 評析表 V1；第 4 題整體判讀為「否」，並保留 4(a)、4(b)、4(c) 分項結果。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
-  const source=window.CASP_APPRAISAL_SUMMARY;
-  const rows=questions.flatMap((item,i)=>{
+  const rows=questions.map((item,i)=>{
    const answer=window.CASP_ANSWERS[i];
-   return item.id===4?answer.parts.map(part=>`<tr><td>${escape(part[0])}</td><td>${escape(part[1])}</td><td>${escape(answer.reason)}</td></tr>`):[`<tr><td>第 ${item.id} 題：${escape(item.short)}</td><td>${escape(answer.answer)}</td><td>${escape(answer.reason)}</td></tr>`];
+   const overall=`<tr><td>第 ${item.id} 題｜${escape(item.title)}</td><td>${item.id===4?'整體：':''}${escape(answer.answer)}</td></tr>`;
+   return overall+(item.id===4?item.sourceSections.map(part=>`<tr><td class="summary-subquestion">${escape(part.id)}｜${escape(part.title)}</td><td>${escape(part.answer)}</td></tr>`).join(''):'');
   }).join('');
-  const qualityRows=Array.from({length:Math.max(source.positive.length,source.negative.length,source.unknown.length)},(_,i)=>`<tr><td>${escape(source.positive[i]||'')}</td><td>${escape(source.negative[i]||'')}</td><td>${escape(source.unknown[i]||'')}</td></tr>`).join('');
-  showInfo('評讀總結',`<h2>研究品質與臨床應用評估</h2><p class="source-note">${escape(source.source)}</p><h3>整體判斷</h3><p>${escape(source.overallJudgment||'')}</p><table><thead><tr><th>正向／方法學健全</th><th>負向／方法學限制</th><th>未知</th></tr></thead><tbody>${qualityRows}</tbody></table><div class="info-note"><strong>評讀結論</strong>${source.conclusion.split(/\n\n/).map(paragraph=>`<p>${escape(paragraph)}</p>`).join('')}</div><h3>各題參考判讀結果</h3><table class="appraisal-results"><thead><tr><th>題目</th><th>結果</th><th>主要理由</th></tr></thead><tbody>${rows}</tbody></table><p class="source-note">第 4 題依 4(a)、4(b)、4(c) 分列。不將各題結果加總計分；應連同理由與原文閱讀。</p>`);
+  showInfo('評讀總結',`<h2>各題參考判讀結果</h2><table class="appraisal-results"><thead><tr><th>評讀題目</th><th>判讀結果</th></tr></thead><tbody>${rows}</tbody></table>`);
  }
  $('questionNav').addEventListener('click',e=>{const b=e.target.closest('[data-question]');if(b)selectQuestion(b.dataset.question);});
- $('sourceAppraisal').addEventListener('click',e=>{const b=e.target.closest('[data-evidence-key]');if(!b)return;const index=q().evidence.findIndex(item=>item.key===b.dataset.evidenceKey);if(index<0)return;evidenceIndex=index;highlights=true;renderEvidence();$('announcement').textContent=`已定位：${ev().label}`;if(window.innerWidth<850)$('focusButton').click();});
+  $('appraisalReferences').addEventListener('click',e=>{const b=e.target.closest('[data-evidence-key]');if(!b)return;const index=q().evidence.findIndex(item=>item.key===b.dataset.evidenceKey);if(index<0)return;evidenceIndex=index;highlights=true;renderEvidence();$('announcement').textContent=`已定位：${ev().label}`;if(window.innerWidth<850)$('focusButton').click();});
  $('evidenceTabs').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b){evidenceIndex=Number(b.dataset.evidence);renderEvidence();}});
  $('guideMode').onclick=()=>setMode('guide');$('analysisMode').onclick=()=>setMode('analysis');$('revealButton').onclick=()=>setMode('analysis');
- $('showResultButton').onclick=()=>{answerShown=!answerShown;renderResult();const a=window.CASP_ANSWERS[q().id-1];$('announcement').textContent=answerShown?`第 ${q().id} 題，參考判讀結果：${q().id===4?a.parts.map(p=>p.join('：')).join('；'):a.answer}`:`第 ${q().id} 題，已隱藏判讀結果`;};
+ $('showResultButton').onclick=()=>{answerShown=!answerShown;renderResult();const a=window.CASP_ANSWERS[q().id-1];$('announcement').textContent=answerShown?`第 ${q().id} 題，參考判讀結果：${q().id===4?'整體：'+a.answer+'；'+a.parts.map(p=>p.join('：')).join('；'):a.answer}`:`第 ${q().id} 題，已隱藏判讀結果`;};
  $('highlightButton').onclick=()=>{highlights=!highlights;renderEvidence();};
  $('zoomIn').onclick=()=>{zoom=Math.min(250,zoom+25);renderEvidence();};$('zoomOut').onclick=()=>{zoom=Math.max(100,zoom-25);renderEvidence();};
  $('previousButton').onclick=()=>selectQuestion(q().id-1);$('nextButton').onclick=()=>current===questions.length-1?showSummary():selectQuestion(q().id+1);
@@ -145,7 +133,7 @@
   // Use a fixed-aspect crop of the same original page; no PDF text is recreated.
   const ratio=(height*page.height)/(width*page.width);
   const adjusted=rects.map(r=>[(r[0]-box[0])/width*100,(r[1]-box[1])/height*100,r[2]/width*100,r[3]/height*100]);
-  $('focusContent').innerHTML=`<div class="focus-image-wrap" style="overflow:hidden;aspect-ratio:${1/ratio}"><img alt="${escape(ev().label)} 原文局部放大" src="${page.src}" style="position:absolute;width:${10000/width}%;max-width:none;left:${-box[0]/width*100}%;top:${-box[1]/height*100}%"><div class="highlight-layer">${highlights?highlightMarkup(adjusted):''}</div></div><p class="source-note">局部放大原始頁面；可回閱讀區查看上下文。</p>`;
+  $('focusContent').innerHTML=`<div class="focus-image-wrap" style="overflow:hidden;aspect-ratio:${1/ratio}"><img alt="${escape(ev().label)} 原文局部放大" src="${page.src}" style="position:absolute;width:${10000/width}%;max-width:none;left:${-box[0]/width*100}%;top:${-box[1]/height*100}%"><div class="highlight-layer">${highlights?highlightMarkup(adjusted):''}</div></div>`;
   $('focusDialog').showModal();$('focusDialog').scrollTop=0;
  };
  for(const id of ['infoDialog','focusDialog'])$(id).addEventListener('click',e=>{if(e.target===$(id)){const r=$(id).getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$(id).close();}});

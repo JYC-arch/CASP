@@ -39,3 +39,10 @@
 .reference-note{font-size:.85rem;line-height:1.7;padding:.8rem;border-left:3px solid var(--question-accent);background:var(--question-soft)}
 .verdict-placeholder{font-size:.85em;color:#66716d}
 summary #writingTitle{font-size:inherit;color:inherit;font-weight:inherit;display:inline}
+
+.source-positions{border-top:1px solid #d4dedb;margin-top:18px;padding-top:8px}
+.source-positions h4{font-size:.85rem;margin:6px 0 10px;color:var(--muted)}
+.appraisal-reason{line-height:1.9;white-space:pre-wrap}
+.summary-subquestion{padding-left:26px}
+#resultQuestion{overflow-wrap:anywhere}
+.source-appraisal section+section{border-top:1px solid #d4dedb;margin-top:18px;padding-top:8px}

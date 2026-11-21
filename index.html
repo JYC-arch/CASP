@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CASP 2024 中英對照 RCT 評讀教學，以中文護理研究示範尋找證據、判斷與書寫理由。">
   <title>RCT 文獻評讀｜CASP 2024</title>
-  <link rel="stylesheet" href="styles.css?v=20261121-question">
-  <script defer src="assets/evidence.js?v=20261121-question"></script>
-  <script defer src="content.js?v=20261121-question"></script>
-  <script defer src="app.js?v=20261121-question"></script>
+  <link rel="stylesheet" href="styles.css?v=20261121-classroom">
+  <script defer src="assets/evidence.js?v=20261121-classroom"></script>
+  <script defer src="content.js?v=20261121-classroom"></script>
+  <script defer src="app.js?v=20261121-classroom"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">跳到本題內容</a>
@@ -37,24 +37,24 @@
           <div id="evidenceTabs" class="evidence-tabs" role="group" aria-label="切換證據位置"></div>
           <div class="reader-tools"><span id="pageLabel"></span><div><button id="zoomOut" aria-label="縮小文獻">−</button><span id="zoomLabel">100%</span><button id="zoomIn" aria-label="放大文獻">＋</button><button id="focusButton">放大證據</button></div></div>
           <div id="pageViewport" class="page-viewport"><div id="paper" class="paper"><img id="pageImage" alt=""><div id="highlightLayer" class="highlight-layer" aria-hidden="true"></div></div></div>
-          <div class="evidence-caption"><span class="eyebrow">證據摘要</span><p id="evidenceCaption"></p><button id="highlightButton" class="secondary" aria-pressed="false">顯示原文標示</button></div>
+          <div class="evidence-caption"><span class="eyebrow">文獻位置</span><p id="evidenceCaption"></p><button id="highlightButton" class="secondary" aria-pressed="false">顯示原文標示</button></div>
         </section>
-        <section class="teaching-pane" aria-label="提問與教師解析">
-          <div class="prompt-block"><span class="eyebrow">評讀問題</span><h3 id="prompt"></h3><p id="plain"></p></div>
+        <section class="teaching-pane" aria-label="考量點與評讀理由">
+
           <details class="consider-block"><summary>CASP 考量點 <span>中英對照</span></summary><div id="considerContent"></div></details>
-          <div id="guideCard" class="guide-card"><span class="guide-symbol">？</span><h3>文獻查證</h3><p>請指出頁碼、段落或表圖，並說明哪些資訊足夠、哪些仍不清楚。完成文獻查證後，可展開教師解析。</p><button id="revealButton" class="primary">顯示教師解析</button></div>
+          <div id="guideCard" class="guide-card"><button id="revealButton" class="primary">顯示評讀理由</button></div>
           <div id="analysisContent" hidden>
-            <div class="judgment-block source-appraisal"><span class="eyebrow">評讀理由原文</span><p class="source-note">依中文版評析表 V1。點選各段下方的位置，可同步查看文獻標示；原文中的結論用語於顯示判讀結果後呈現。</p><div id="sourceAppraisal"></div></div>
-            <details class="deep-block"><summary>深入說明 <span>概念 · 細節 · 常見誤解</span></summary><div id="deepContent"></div></details>
-            <div class="transfer-block"><span class="eyebrow">評讀要點</span><p id="transferContent"></p></div>
+            <div class="judgment-block source-appraisal"><span class="eyebrow">評讀理由</span><div id="sourceAppraisal"></div><div class="source-positions"><h4>文獻位置</h4><div id="appraisalReferences" class="reason-links"></div></div></div>
+            <details id="glossaryBlock" class="deep-block"><summary>名詞解釋</summary><div id="deepContent"></div></details>
+
             <button id="showResultButton" class="primary result-toggle" aria-expanded="false" aria-controls="resultPanel">顯示判讀結果</button>
-            <section id="resultPanel" class="judgment-block" aria-label="本題參考判讀結果" hidden><div class="block-heading"><span class="eyebrow">本題參考判讀結果</span><span id="verdict" class="verdict"></span></div><h3 id="resultQuestion"></h3><div id="answerOptions" class="answer-options" aria-label="本題三選一判讀結果"></div><p id="answerReason" class="answer-reason"></p><div id="subAnswers" class="sub-answers"></div></section>
-            <details id="writingPanel" class="writing-block" hidden><summary><span id="writingTitle">評讀紀錄範例</span> <span>判斷＋依據＋理由</span></summary><blockquote id="writingContent"></blockquote></details>
+            <section id="resultPanel" class="judgment-block" aria-label="本題參考判讀結果" hidden><div class="block-heading"><span class="eyebrow">本題參考判讀結果</span><span id="verdict" class="verdict"></span></div><h3 id="resultQuestion"></h3><div id="answerOptions" class="answer-options" aria-label="本題三選一判讀結果"></div><div id="subAnswers" class="sub-answers"></div></section>
+
           </div>
         </section>
       </div>
       <footer class="lesson-footer"><button id="previousButton" class="secondary">上一題</button><span id="lessonProgress"></span><button id="nextButton" class="primary">下一題</button></footer>
-      <p class="version-note">英文原題依 CASP RCT Checklist（2024）；中文題目及評讀依 2024 中文版評析表 V1，非 CASP 官方中文譯本。評讀日期：2026 年 11 月 20 日。</p>
+      <p class="version-note">英文原題依 CASP RCT Checklist（2024）；中文題目依中文版評析表 V1，評讀理由依教學討論精簡；非 CASP 官方中文譯本。</p>
     </main>
   </div>
   <button id="mobileReference" class="primary mobile-reference">對照文獻</button>
