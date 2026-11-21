@@ -5,25 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CASP 2024 中英對照 RCT 評讀教學，以中文護理研究示範尋找證據、判斷與書寫理由。">
   <title>RCT 文獻評讀｜CASP 2024</title>
-  <link rel="stylesheet" href="styles.css?v=20261121-md-bullets">
-  <script defer src="assets/evidence.js?v=20261121-md-bullets"></script>
-  <script defer src="content.js?v=20261121-md-bullets"></script>
-  <script defer src="app.js?v=20261121-md-bullets"></script>
+  <link rel="stylesheet" href="styles.css?v=20261121-lookup-intro">
+  <script defer src="assets/evidence.js?v=20261121-lookup-intro"></script>
+  <script defer src="content.js?v=20261121-lookup-intro"></script>
+  <script defer src="app.js?v=20261121-lookup-intro"></script>
 </head>
 <body>
   <a class="skip" href="#lesson">跳到本題內容</a>
   <header class="topbar">
-    <a class="brand" href="#q1" aria-label="回到第一題"><span class="brand-mark">研</span><span>護理研究概論<small>RCT CRITICAL APPRAISAL</small></span></a>
+    <a class="brand" href="#intro" aria-label="回到評讀方式"><span class="brand-mark">研</span><span>護理研究概論<small>RCT CRITICAL APPRAISAL</small></span></a>
     <div class="top-tools"><button id="projectButton" class="quiet" aria-pressed="false">投影字級</button><button id="sourcesButton" class="quiet">教材來源</button></div>
   </header>
   <div class="app-shell">
     <aside class="sidebar" aria-label="CASP 題目導覽">
       <div class="side-heading"><span class="eyebrow">CASP · 2024</span><h1>RCT<br>文獻評讀</h1><p>CASP 隨機對照試驗檢核表</p></div>
+      <button id="introButton" class="nav-item intro-nav" aria-current="page"><span class="num">閱</span><span>評讀方式</span></button>
       <nav id="questionNav"></nav>
       <button id="summaryButton" class="summary-button">評讀總結</button>
       <div class="side-footer">中文 RCT 文獻<br>CASP 2024 中英對照</div>
     </aside>
     <main id="lesson" tabindex="-1">
+      <section id="introPage" class="intro-page" aria-labelledby="introTitle">
+        <span class="eyebrow">CASP · RCT · 2024</span>
+        <h2 id="introTitle">評讀方式</h2>
+        <p class="intro-lead">CASP 隨機對照試驗檢核表用於逐項檢視研究設計、結果報告與應用性。每題先閱讀考量點，再依文中提供的資訊作答，並記錄頁碼與理由。</p>
+        <h3>三項答案的意義</h3>
+        <div class="intro-table-wrap"><table class="intro-answers"><thead><tr><th scope="col">答案</th><th scope="col">判讀依據</th></tr></thead><tbody>
+          <tr><th scope="row"><span class="intro-answer yes">是 <small lang="en">Yes</small></span></th><td>文中有足夠且明確的資訊，支持該題要求。</td></tr>
+          <tr><th scope="row"><span class="intro-answer no">否 <small lang="en">No</small></span></th><td>文中有明確資訊顯示不符合該題要求。若題目直接詢問「是否報告某項資訊」，查核後確定未報告，也可選「否」。</td></tr>
+          <tr><th scope="row"><span class="intro-answer uncertain">無法判斷 <small lang="en">Can’t tell</small></span></th><td>文中資訊不足或交代不清，無法確認是否符合該題要求。不能自行假設研究者做過或沒有做過。</td></tr>
+        </tbody></table></div>
+        <div class="intro-principles"><h3>評讀原則</h3><ul>
+          <li>依研究實際報告的內容評讀，不自行假設研究者做了什麼。</li>
+          <li>若多題為「無法判斷」，應考慮研究報告是否充分，審慎解讀結果。</li>
+          <li>本教材不將各題答案加總成研究品質分數。</li>
+        </ul></div>
+        <p class="intro-source">依 CASP RCT Checklist（2024）第 1 頁使用說明整理；答案定義為中文教學說明，非官方中文譯文。</p>
+        <div class="intro-actions"><button id="startAppraisal" class="primary">開始第 1 題</button><a href="assets/casp-rct-2024.pdf#page=1" target="_blank" rel="noopener">CASP 2024 英文原表</a></div>
+      </section>
+      <div id="appraisalPage" hidden>
       <section class="study-heading" aria-label="示範文獻">
         <span class="eyebrow">示範文獻</span>
         <h2>混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效</h2>
@@ -34,6 +54,7 @@
       <div class="lesson-grid">
         <section class="reading-pane" aria-label="文獻證據閱讀區">
           <div class="pane-title"><span class="label-icon">文</span><div><h3>文獻定位</h3><p id="readingLocation"></p></div><button id="originalButton" class="text-button">本題標註 PDF</button></div>
+          <p id="locationNote" class="location-note" hidden></p>
           <div id="evidenceTabs" class="evidence-tabs" role="group" aria-label="切換證據位置"></div>
           <div class="reader-tools"><span id="pageLabel"></span><div><button id="zoomOut" aria-label="縮小文獻">−</button><span id="zoomLabel">100%</span><button id="zoomIn" aria-label="放大文獻">＋</button><button id="focusButton">放大證據</button></div></div>
           <div id="pageViewport" class="page-viewport"><div id="paper" class="paper"><img id="pageImage" alt=""><div id="highlightLayer" class="highlight-layer" aria-hidden="true"></div></div></div>
@@ -56,6 +77,7 @@
       </div>
       <footer class="lesson-footer"><button id="previousButton" class="secondary">上一題</button><span id="lessonProgress"></span><button id="nextButton" class="primary">下一題</button></footer>
       <p class="version-note">英文原題依 CASP RCT Checklist（2024）；中文題目與評讀理由以中文版評讀 Markdown 為主，依教學討論精簡；非 CASP 官方中文譯本。</p>
+      </div>
     </main>
   </div>
   <button id="mobileReference" class="primary mobile-reference">對照文獻</button>

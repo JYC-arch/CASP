@@ -1,4 +1,4 @@
-/* CASP RCT 2024. Reasons adapted from the supplied Markdown dated 2026-11-19, retaining the instructor’s exclusions; each bullet links to study evidence. */
+/* CASP RCT 2024. Reasons follow the instructor-approved Markdown adaptation; source locations follow the supplied lesson’s lookup column and the actual study headings. */
 window.CASP_SECTIONS = [
   {
     "id": "A",
@@ -147,18 +147,71 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "q01_abstract",
         "page": 1,
-        "label": "p.45 摘要目的與方法",
+        "label": "摘要｜目的 Objective／Aim（p.45）",
         "blockIds": [
-          8,
-          9,
-          10
-        ]
+          8
+        ],
+        "key": "q01_abstractAim"
       },
       {
         "page": 2,
-        "label": "p.46 P：研究對象",
+        "label": "前言｜末段研究目的（p.46）",
+        "lineSlices": [
+          [
+            5,
+            10,
+            12
+          ]
+        ],
+        "key": "q01_introductionAim"
+      },
+      {
+        "page": 3,
+        "label": "方法｜結果測量：疼痛（p.47）",
+        "lineSlices": [
+          [
+            6,
+            0,
+            1
+          ],
+          [
+            7,
+            0,
+            4
+          ]
+        ],
+        "key": "q01_methodsPain"
+      },
+      {
+        "page": 3,
+        "label": "方法｜結果測量：膝關節角度（p.47）",
+        "lineSlices": [
+          [
+            8,
+            0,
+            1
+          ],
+          [
+            9,
+            0,
+            4
+          ]
+        ],
+        "key": "q01_methodsAngle"
+      },
+      {
+        "page": 1,
+        "label": "摘要｜方法與 PICO（p.45）",
+        "blockIds": [
+          9,
+          10
+        ],
+        "key": "q01_abstractMethods"
+      },
+      {
+        "page": 2,
+        "label": "方法｜P：研究對象（p.46）",
         "lineSlices": [
           [
             10,
@@ -170,7 +223,7 @@ window.CASP_QUESTIONS = [
       },
       {
         "page": 2,
-        "label": "p.46 I：混合式衛教",
+        "label": "方法｜I：混合式衛教（p.46）",
         "lineSlices": [
           [
             14,
@@ -192,7 +245,7 @@ window.CASP_QUESTIONS = [
       },
       {
         "page": 3,
-        "label": "p.47 I：電話諮詢",
+        "label": "方法｜I：電話諮詢（p.47）",
         "lineSlices": [
           [
             2,
@@ -201,6 +254,23 @@ window.CASP_QUESTIONS = [
           ]
         ],
         "key": "q01_picoPhone"
+      },
+      {
+        "page": 2,
+        "label": "方法｜研究設計與對照措施（p.46）",
+        "lineSlices": [
+          [
+            8,
+            0,
+            1
+          ],
+          [
+            8,
+            4,
+            8
+          ]
+        ],
+        "key": "q01_picoDesign"
       }
     ],
     "sourceSections": [
@@ -222,7 +292,7 @@ window.CASP_QUESTIONS = [
         ],
         "reasonEvidence": [
           [
-            "q01_abstract",
+            "q01_abstractMethods",
             "q01_picoSample"
           ],
           [
@@ -230,13 +300,16 @@ window.CASP_QUESTIONS = [
             "q01_picoPhone"
           ],
           [
-            "q01_abstract"
+            "q01_picoDesign",
+            "q01_abstractMethods"
           ],
           [
-            "q01_abstract"
+            "q01_methodsPain",
+            "q01_methodsAngle"
           ],
           [
-            "q01_abstract"
+            "q01_picoDesign",
+            "q01_abstractMethods"
           ]
         ],
         "reasonKinds": [
@@ -280,6 +353,18 @@ window.CASP_QUESTIONS = [
         "TKR｜全膝關節置換術",
         "以人工關節置換膝關節的手術。"
       ]
+    ],
+    "lookupPath": "摘要目的 → 前言末段 → 方法：結果測量",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 1
+    },
+    "lookupEvidence": [
+      "q01_abstractAim",
+      "q01_introductionAim",
+      "q01_methodsPain",
+      "q01_methodsAngle"
     ]
   },
   {
@@ -307,7 +392,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q02_design",
         "page": 2,
-        "label": "p.46 研究設計",
+        "label": "方法｜研究設計與隨機分派（p.46）",
         "blockIds": [
           7,
           8
@@ -316,7 +401,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q02_flow",
         "page": 3,
-        "label": "p.47 圖一收案流程",
+        "label": "流程圖｜圖一收案、分派與追蹤（p.47）",
         "boxPoints": [
           50,
           86,
@@ -327,7 +412,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q02_collect",
         "page": 4,
-        "label": "p.48 資料收集過程",
+        "label": "方法｜資料收集過程（p.48）",
         "blockIds": [
           5,
           6,
@@ -412,7 +497,17 @@ window.CASP_QUESTIONS = [
           "受試者、介入者、結果評估者或資料分析者"
         ]
       ]
-    }
+    },
+    "lookupPath": "方法：研究設計／分派 → CONSORT 流程圖",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 1
+    },
+    "lookupEvidence": [
+      "q02_design",
+      "q02_flow"
+    ]
   },
   {
     "id": 3,
@@ -439,7 +534,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q03_flow",
         "page": 3,
-        "label": "p.47 圖一收案流程",
+        "label": "流程圖｜圖一收案、分派與追蹤（p.47）",
         "boxPoints": [
           50,
           86,
@@ -450,7 +545,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q03_attrition",
         "page": 4,
-        "label": "p.48 流失與分析人數",
+        "label": "結果｜流失與分析人數（p.48）",
         "blockIds": [
           10,
           11,
@@ -458,9 +553,18 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
+        "key": "q03_analysis",
+        "page": 4,
+        "label": "方法｜資料處理與分析（p.48）",
+        "blockIds": [
+          8,
+          9
+        ]
+      },
+      {
         "key": "q03_education47",
         "page": 3,
-        "label": "p.47 電話、紀錄與執行率",
+        "label": "方法｜電話追蹤與執行紀錄（p.47）",
         "blockIds": [
           2
         ],
@@ -540,6 +644,17 @@ window.CASP_QUESTIONS = [
         "治療意向分析（ITT）",
         "依受試者最初被隨機分派的組別進行分析。"
       ]
+    ],
+    "lookupPath": "流程圖 → 結果：收案與分析 → 方法：統計分析",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 2
+    },
+    "lookupEvidence": [
+      "q03_flow",
+      "q03_attrition",
+      "q03_analysis"
     ]
   },
   {
@@ -565,26 +680,9 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "q04_abstract",
-        "page": 1,
-        "label": "p.45 摘要目的與方法",
-        "blockIds": [
-          8,
-          9,
-          10
-        ],
-        "lineSlices": [
-          [
-            9,
-            0,
-            1
-          ]
-        ]
-      },
-      {
         "key": "q04_design",
         "page": 2,
-        "label": "p.46 研究設計",
+        "label": "方法｜研究設計與隨機分派（p.46）",
         "blockIds": [
           7,
           8
@@ -600,7 +698,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q04_education46",
         "page": 2,
-        "label": "p.46 混合式衛教方案",
+        "label": "方法｜混合式衛教方案（p.46）",
         "blockIds": [
           13,
           14,
@@ -620,26 +718,35 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
-        "key": "q04_education47",
-        "page": 3,
-        "label": "p.47 電話、紀錄與執行率",
+        "key": "q04_collect",
+        "page": 4,
+        "label": "方法｜資料收集過程（p.48）",
         "blockIds": [
-          2
-        ]
-      },
-      {
-        "key": "q04_vas",
-        "page": 3,
-        "label": "p.47 VAS 疼痛量表",
-        "blockIds": [
+          5,
           6,
           7
         ]
       },
       {
+        "key": "q04_limitations",
+        "page": 8,
+        "label": "討論後｜研究限制與建議（p.52）",
+        "blockIds": [
+          5,
+          6
+        ],
+        "lineSlices": [
+          [
+            6,
+            4,
+            8
+          ]
+        ]
+      },
+      {
         "key": "q04_authors",
         "page": 8,
-        "label": "p.52 作者貢獻度",
+        "label": "作者貢獻度｜資料收集與分析（p.52）",
         "blockIds": [
           12,
           13
@@ -653,11 +760,35 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
-        "key": "q04_collect",
-        "page": 4,
-        "label": "p.48 資料收集過程",
+        "key": "q04_abstract",
+        "page": 1,
+        "label": "摘要｜方法：單盲與分組（p.45）",
         "blockIds": [
-          5,
+          8,
+          9,
+          10
+        ],
+        "lineSlices": [
+          [
+            9,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "key": "q04_education47",
+        "page": 3,
+        "label": "方法｜電話追蹤與執行紀錄（p.47）",
+        "blockIds": [
+          2
+        ]
+      },
+      {
+        "key": "q04_vas",
+        "page": 3,
+        "label": "方法｜研究工具：疼痛量表（p.47）",
+        "blockIds": [
           6,
           7
         ]
@@ -665,25 +796,9 @@ window.CASP_QUESTIONS = [
       {
         "key": "q04_angle48",
         "page": 4,
-        "label": "p.48 量角器測量程序",
+        "label": "方法｜量角器測量程序（p.48）",
         "blockIds": [
           2
-        ]
-      },
-      {
-        "key": "q04_limitations",
-        "page": 8,
-        "label": "p.52 研究限制與建議",
-        "blockIds": [
-          5,
-          6
-        ],
-        "lineSlices": [
-          [
-            6,
-            4,
-            8
-          ]
         ]
       }
     ],
@@ -817,7 +932,20 @@ window.CASP_QUESTIONS = [
         "課堂圖示以三種情形說明：單盲為受試者不知道分組；雙盲為受試者及提供處置者不知道分組；三盲再加上資料分析者不知道分組。\n\n這些名稱須搭配文章實際交代的角色閱讀；只寫「單盲」而未交代對象，仍不足以確認誰受到盲化。"
       ]
     ],
-    "glossarySources": "課堂資料：《RCT說明》，PDF 第 15 頁；盲化角色對照 CASP 2024 第 4(a)–4(c) 題。"
+    "glossarySources": "課堂資料：《RCT說明》，PDF 第 15 頁；盲化角色對照 CASP 2024 第 4(a)–4(c) 題。",
+    "lookupPath": "方法：盲法資訊 → 測量程序 → 研究限制",
+    "lookupNote": "本文未設獨立的 Blinding／Masking 小節。",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 2
+    },
+    "lookupEvidence": [
+      "q04_design",
+      "q04_education46",
+      "q04_collect",
+      "q04_limitations",
+      "q04_authors"
+    ]
   },
   {
     "id": 5,
@@ -840,7 +968,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q05_table1",
         "page": 5,
-        "label": "p.49 表一基準特性",
+        "label": "結果｜表一基準特性（p.49）",
         "boxPoints": [
           50,
           86,
@@ -851,7 +979,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q05_baseline48",
         "page": 4,
-        "label": "p.48 基準特性敘述",
+        "label": "結果｜基準特性敘述（p.48）",
         "blockIds": [
           13
         ]
@@ -859,7 +987,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q05_attrition",
         "page": 4,
-        "label": "p.48 流失與分析人數",
+        "label": "結果｜流失與分析人數（p.48）",
         "blockIds": [
           10,
           11,
@@ -944,6 +1072,16 @@ window.CASP_QUESTIONS = [
         "p 值",
         "在假設兩組沒有差異等條件下，出現目前或更極端資料的機率。"
       ]
+    ],
+    "lookupPath": "結果：表一基準特性與 p 值",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 3
+    },
+    "lookupEvidence": [
+      "q05_table1",
+      "q05_baseline48"
     ]
   },
   {
@@ -971,16 +1109,45 @@ window.CASP_QUESTIONS = [
       {
         "key": "q06_design",
         "page": 2,
-        "label": "p.46 研究設計",
+        "label": "方法｜研究設計與隨機分派（p.46）",
         "blockIds": [
           7,
           8
         ]
       },
       {
+        "key": "q06_education46",
+        "page": 2,
+        "label": "方法｜混合式衛教方案（p.46）",
+        "blockIds": [
+          13,
+          14,
+          15
+        ]
+      },
+      {
+        "key": "q06_collect",
+        "page": 4,
+        "label": "方法｜資料收集過程（p.48）",
+        "blockIds": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "key": "q06_limitations",
+        "page": 8,
+        "label": "討論後｜研究限制與建議（p.52）",
+        "blockIds": [
+          5,
+          6
+        ]
+      },
+      {
         "key": "q06_medication",
         "page": 4,
-        "label": "p.48 止痛藥與疼痛結果",
+        "label": "結果｜止痛藥與疼痛（p.48）",
         "blockIds": [
           14,
           15
@@ -991,26 +1158,6 @@ window.CASP_QUESTIONS = [
             0,
             2
           ]
-        ]
-      },
-      {
-        "key": "q06_collect",
-        "page": 4,
-        "label": "p.48 資料收集過程",
-        "blockIds": [
-          5,
-          6,
-          7
-        ]
-      },
-      {
-        "key": "q06_education46",
-        "page": 2,
-        "label": "p.46 混合式衛教方案",
-        "blockIds": [
-          13,
-          14,
-          15
         ]
       }
     ],
@@ -1074,7 +1221,19 @@ window.CASP_QUESTIONS = [
       }
     ],
     "annotatedPdf": "assets/study-q06-annotated.pdf",
-    "glossary": []
+    "glossary": [],
+    "lookupPath": "方法：介入／對照與追蹤 → 討論：研究限制",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 3
+    },
+    "lookupEvidence": [
+      "q06_design",
+      "q06_education46",
+      "q06_collect",
+      "q06_limitations"
+    ]
   },
   {
     "id": 7,
@@ -1091,43 +1250,9 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
-        "key": "q07_power",
-        "page": 2,
-        "label": "p.46 樣本數計算",
-        "blockIds": [
-          12
-        ]
-      },
-      {
-        "key": "q07_vas",
-        "page": 3,
-        "label": "p.47 VAS 疼痛量表",
-        "blockIds": [
-          6,
-          7
-        ]
-      },
-      {
-        "key": "q07_angle47",
-        "page": 3,
-        "label": "p.47 電子量角器",
-        "blockIds": [
-          8,
-          9
-        ]
-      },
-      {
-        "key": "q07_angle48",
-        "page": 4,
-        "label": "p.48 量角器測量程序",
-        "blockIds": [
-          2
-        ]
-      },
-      {
         "key": "q07_figure2",
         "page": 6,
-        "label": "p.50 圖二疼痛結果",
+        "label": "結果｜圖二疼痛指標（p.50）",
         "boxPoints": [
           50,
           86,
@@ -1138,7 +1263,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q07_figure3",
         "page": 7,
-        "label": "p.51 圖三關節角度",
+        "label": "結果｜圖三關節角度（p.51）",
         "boxPoints": [
           50,
           86,
@@ -1147,20 +1272,9 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
-        "key": "q07_table1",
-        "page": 5,
-        "label": "p.49 表一基準特性",
-        "boxPoints": [
-          50,
-          86,
-          545,
-          500
-        ]
-      },
-      {
         "key": "q07_table2",
         "page": 7,
-        "label": "p.51 表二 GEE 分析",
+        "label": "結果｜表二 GEE 分析（p.51）",
         "boxPoints": [
           50,
           505,
@@ -1169,9 +1283,62 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
+        "page": 1,
+        "label": "摘要｜結果（p.45）",
+        "blockIds": [
+          11
+        ],
+        "key": "q07_abstractResults"
+      },
+      {
+        "key": "q07_vas",
+        "page": 3,
+        "label": "方法｜研究工具：疼痛量表（p.47）",
+        "blockIds": [
+          6,
+          7
+        ]
+      },
+      {
+        "key": "q07_angle47",
+        "page": 3,
+        "label": "方法｜研究工具：電子量角器（p.47）",
+        "blockIds": [
+          8,
+          9
+        ]
+      },
+      {
+        "key": "q07_angle48",
+        "page": 4,
+        "label": "方法｜量角器測量程序（p.48）",
+        "blockIds": [
+          2
+        ]
+      },
+      {
+        "key": "q07_power",
+        "page": 2,
+        "label": "方法｜樣本數計算（p.46）",
+        "blockIds": [
+          12
+        ]
+      },
+      {
+        "key": "q07_table1",
+        "page": 5,
+        "label": "結果｜表一基準特性（p.49）",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          500
+        ]
+      },
+      {
         "key": "q07_analysis",
         "page": 4,
-        "label": "p.48 資料處理與分析",
+        "label": "方法｜資料處理與分析（p.48）",
         "blockIds": [
           8,
           9
@@ -1180,7 +1347,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q07_attrition",
         "page": 4,
-        "label": "p.48 流失與分析人數",
+        "label": "結果｜流失與分析人數（p.48）",
         "blockIds": [
           10,
           11,
@@ -1190,7 +1357,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q07_limitations",
         "page": 8,
-        "label": "p.52 研究限制與建議",
+        "label": "討論後｜研究限制與建議（p.52）",
         "blockIds": [
           5,
           6
@@ -1199,7 +1366,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q07_education47",
         "page": 3,
-        "label": "p.47 電話、紀錄與執行率",
+        "label": "方法｜電話追蹤與執行紀錄（p.47）",
         "blockIds": [
           2
         ]
@@ -1328,6 +1495,21 @@ window.CASP_QUESTIONS = [
         "信度與 ICC｜組內相關係數",
         "信度描述測量結果的一致性與穩定性。ICC 是用於描述重複測量一致程度的指標之一。"
       ]
+    ],
+    "lookupPath": "結果圖表 → 摘要結果 → 方法：結果測量",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 4
+    },
+    "lookupEvidence": [
+      "q07_figure2",
+      "q07_figure3",
+      "q07_table2",
+      "q07_abstractResults",
+      "q07_vas",
+      "q07_angle47",
+      "q07_angle48"
     ]
   },
   {
@@ -1347,13 +1529,31 @@ window.CASP_QUESTIONS = [
       {
         "key": "q08_table2",
         "page": 7,
-        "label": "p.51 表二 GEE 分析",
+        "label": "結果｜表二 GEE 分析（p.51）",
         "boxPoints": [
           50,
           505,
           545,
           710
         ]
+      },
+      {
+        "page": 4,
+        "label": "結果｜GEE 敘述：CI 查核（p.48）",
+        "blockIds": [
+          17,
+          18,
+          19
+        ],
+        "key": "q08_gee48"
+      },
+      {
+        "page": 5,
+        "label": "結果｜GEE 續段：CI 查核（p.49）",
+        "blockIds": [
+          43
+        ],
+        "key": "q08_gee49"
       }
     ],
     "sourceSections": [
@@ -1402,6 +1602,17 @@ window.CASP_QUESTIONS = [
         "SD｜標準差",
         "描述個別資料值的分散程度。"
       ]
+    ],
+    "lookupPath": "結果表格 → 結果敘述：CI 查核",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 4
+    },
+    "lookupEvidence": [
+      "q08_table2",
+      "q08_gee48",
+      "q08_gee49"
     ]
   },
   {
@@ -1419,9 +1630,48 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
+        "key": "q09_attrition",
+        "page": 4,
+        "label": "結果｜流失與分析人數（p.48）",
+        "blockIds": [
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "key": "q09_flow",
+        "page": 3,
+        "label": "流程圖｜圖一收案、分派與追蹤（p.47）",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          427
+        ]
+      },
+      {
+        "page": 8,
+        "label": "討論｜關節角度與活動（p.52）",
+        "blockIds": [
+          3,
+          4
+        ],
+        "key": "q09_discussion52"
+      },
+      {
+        "page": 8,
+        "label": "臨床應用（p.52）",
+        "blockIds": [
+          10,
+          11
+        ],
+        "key": "q09_application"
+      },
+      {
         "key": "q09_medication",
         "page": 4,
-        "label": "p.48 止痛藥與疼痛結果",
+        "label": "結果｜止痛藥與疼痛（p.48）",
         "blockIds": [
           14,
           15
@@ -1430,7 +1680,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q09_angleResults",
         "page": 4,
-        "label": "p.48 關節角度結果",
+        "label": "結果｜關節角度敘述（p.48）",
         "blockIds": [
           16
         ]
@@ -1438,7 +1688,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q09_figure2",
         "page": 6,
-        "label": "p.50 圖二疼痛結果",
+        "label": "結果｜圖二疼痛指標（p.50）",
         "boxPoints": [
           50,
           86,
@@ -1449,7 +1699,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q09_figure3",
         "page": 7,
-        "label": "p.51 圖三關節角度",
+        "label": "結果｜圖三關節角度（p.51）",
         "boxPoints": [
           50,
           86,
@@ -1458,30 +1708,9 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
-        "key": "q09_flow",
-        "page": 3,
-        "label": "p.47 圖一收案流程",
-        "boxPoints": [
-          50,
-          86,
-          545,
-          427
-        ]
-      },
-      {
-        "key": "q09_attrition",
-        "page": 4,
-        "label": "p.48 流失與分析人數",
-        "blockIds": [
-          10,
-          11,
-          12
-        ]
-      },
-      {
         "key": "q09_conclusion",
         "page": 8,
-        "label": "p.52 研究結論",
+        "label": "結論｜介入成效與安全敘述（p.52）",
         "blockIds": [
           7,
           8,
@@ -1541,7 +1770,19 @@ window.CASP_QUESTIONS = [
       }
     ],
     "annotatedPdf": "assets/study-q09-annotated.pdf",
-    "glossary": []
+    "glossary": [],
+    "lookupPath": "結果：流失事件 → 討論 → 臨床應用",
+    "lookupNote": "胃穿孔記於流失說明，未另設不良事件小節。",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 5
+    },
+    "lookupEvidence": [
+      "q09_attrition",
+      "q09_flow",
+      "q09_discussion52",
+      "q09_application"
+    ]
   },
   {
     "id": 10,
@@ -1560,7 +1801,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q10_sample",
         "page": 2,
-        "label": "p.46 納入與排除條件",
+        "label": "方法｜研究對象與納排條件（p.46）",
         "blockIds": [
           9,
           10,
@@ -1568,24 +1809,20 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
-        "key": "q10_baseline48",
-        "page": 4,
-        "label": "p.48 基準特性敘述",
-        "blockIds": [
-          13
-        ],
-        "lineSlices": [
-          [
-            13,
-            0,
-            2
-          ]
+        "key": "q10_table1",
+        "page": 5,
+        "label": "結果｜表一基準特性（p.49）",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          500
         ]
       },
       {
         "key": "q10_limitations",
         "page": 8,
-        "label": "p.52 研究限制與建議",
+        "label": "討論後｜研究限制與建議（p.52）",
         "blockIds": [
           5,
           6
@@ -1599,8 +1836,23 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
+        "key": "q10_baseline48",
+        "page": 4,
+        "label": "結果｜基準特性敘述（p.48）",
+        "blockIds": [
+          13
+        ],
+        "lineSlices": [
+          [
+            13,
+            0,
+            2
+          ]
+        ]
+      },
+      {
         "page": 1,
-        "label": "p.45 結果指標背景",
+        "label": "前言｜結果指標背景（p.45）",
         "blockIds": [
           5
         ],
@@ -1608,7 +1860,7 @@ window.CASP_QUESTIONS = [
       },
       {
         "page": 3,
-        "label": "p.47 研究工具",
+        "label": "方法｜研究工具與結果指標（p.47）",
         "blockIds": [
           3,
           4,
@@ -1623,7 +1875,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q10_figure2",
         "page": 6,
-        "label": "p.50 圖二疼痛結果",
+        "label": "結果｜圖二疼痛指標（p.50）",
         "boxPoints": [
           50,
           86,
@@ -1634,7 +1886,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q10_figure3",
         "page": 7,
-        "label": "p.51 圖三關節角度",
+        "label": "結果｜圖三關節角度（p.51）",
         "boxPoints": [
           50,
           86,
@@ -1704,7 +1956,18 @@ window.CASP_QUESTIONS = [
       }
     ],
     "annotatedPdf": "assets/study-q10-annotated.pdf",
-    "glossary": []
+    "glossary": [],
+    "lookupPath": "方法：納排條件 → 表一 → 討論：適用性",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 5
+    },
+    "lookupEvidence": [
+      "q10_sample",
+      "q10_table1",
+      "q10_limitations"
+    ]
   },
   {
     "id": 11,
@@ -1721,9 +1984,35 @@ window.CASP_QUESTIONS = [
     ],
     "evidence": [
       {
+        "page": 6,
+        "label": "討論｜衛教成效與用藥（p.50）",
+        "blockIds": [
+          46
+        ],
+        "key": "q11_discussion50"
+      },
+      {
+        "key": "q11_limitations",
+        "page": 8,
+        "label": "討論後｜研究限制與建議（p.52）",
+        "blockIds": [
+          5,
+          6
+        ]
+      },
+      {
+        "page": 8,
+        "label": "臨床應用（p.52）",
+        "blockIds": [
+          10,
+          11
+        ],
+        "key": "q11_application"
+      },
+      {
         "key": "q11_education46",
         "page": 2,
-        "label": "p.46 混合式衛教方案",
+        "label": "方法｜混合式衛教方案（p.46）",
         "blockIds": [
           13,
           14,
@@ -1745,7 +2034,7 @@ window.CASP_QUESTIONS = [
       {
         "key": "q11_education47",
         "page": 3,
-        "label": "p.47 電話、紀錄與執行率",
+        "label": "方法｜電話追蹤與執行紀錄（p.47）",
         "blockIds": [
           2
         ],
@@ -1763,20 +2052,11 @@ window.CASP_QUESTIONS = [
       {
         "key": "q11_design",
         "page": 2,
-        "label": "p.46 研究設計",
+        "label": "方法｜研究設計與隨機分派（p.46）",
         "blockIds": [
           7,
           8
         ]
-      },
-      {
-        "page": 8,
-        "label": "p.52 臨床應用",
-        "blockIds": [
-          10,
-          11
-        ],
-        "key": "q11_application"
       }
     ],
     "sourceSections": [
@@ -1837,6 +2117,17 @@ window.CASP_QUESTIONS = [
       }
     ],
     "annotatedPdf": "assets/study-q11-annotated.pdf",
-    "glossary": []
+    "glossary": [],
+    "lookupPath": "討論 → 研究限制 → 臨床應用",
+    "lookupNote": "",
+    "lookupSource": {
+      "title": "casp-華蘋｜去原文哪裡找",
+      "page": 5
+    },
+    "lookupEvidence": [
+      "q11_discussion50",
+      "q11_limitations",
+      "q11_application"
+    ]
   }
 ];

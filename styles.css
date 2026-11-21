@@ -61,3 +61,26 @@ summary #writingTitle{font-size:inherit;color:inherit;font-weight:inherit;displa
 .appraisal-list .appraisal-reason{margin:0 0 9px;line-height:1.85}
 .appraisal-list>li::marker{color:var(--question-accent)}
 .appraisal-list .evidence-link{font-size:.78rem}
+
+/* Appraisal introduction and article lookup paths. */
+[hidden]{display:none!important}
+.intro-nav{margin-bottom:14px;border:1px solid var(--line);background:white}
+.intro-nav[aria-current=page]{background:var(--teal);color:white;border-color:var(--teal)}
+.intro-nav[aria-current=page] .num{color:#cfe7e0}
+.intro-page{max-width:940px;margin:0 auto;padding:18px 0 34px}
+.intro-page h2{font-size:2rem;line-height:1.4;margin:12px 0 16px}
+.intro-lead{font-size:1.05rem;line-height:1.9;max-width:800px}
+.intro-page h3{font-size:1.1rem;margin:28px 0 12px}
+.intro-answers{border-collapse:collapse;width:100%;background:white;line-height:1.9}
+.intro-answers th,.intro-answers td{padding:17px 20px;text-align:left;border:1px solid var(--line);vertical-align:top}
+.intro-answers thead th{background:var(--soft);font-size:.9rem}
+.intro-answers tbody th{width:170px;font-weight:600}
+.intro-answer{display:block;line-height:1.6}
+.intro-answer small{display:block;font-weight:400;font-size:.8rem}
+.intro-answer.yes{color:#23756c}.intro-answer.no{color:#994b3b}.intro-answer.uncertain{color:#805c22}
+.intro-principles{background:var(--soft);padding:1px 22px 14px;border-radius:12px;margin-top:24px}
+.intro-principles h3{margin-top:18px}.intro-principles ul{padding-left:22px}.intro-principles li{margin:9px 0;line-height:1.8}
+.intro-source{font-size:.8rem;color:var(--muted);line-height:1.8;margin-top:21px}
+.intro-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:22px}.intro-actions a{font-size:.88rem}
+.location-note{font-size:.75rem;line-height:1.7;margin:0;padding:0 16px 10px;color:var(--muted);flex-shrink:0}
+@media(max-width:600px){.intro-page{padding-top:4px}.intro-page h2{font-size:1.65rem}.intro-answers th,.intro-answers td{padding:12px 10px;font-size:.9rem}.intro-answers tbody th{width:100px}.intro-nav{margin:0 0 12px}}

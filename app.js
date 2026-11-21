@@ -4,13 +4,13 @@
  const $ = id => document.getElementById(id);
  const questions = window.CASP_QUESTIONS;
  const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let current = 0, evidenceIndex = 0, mode = 'guide', highlights = false, zoom = 100, answerShown = false;
+ let current = 0, evidenceIndex = 0, mode = 'guide', highlights = false, zoom = 100, answerShown = false, introActive = false;
  const q = () => questions[current];
  const palette = id => window.CASP_PALETTE[id-1];
  const ev = () => q().evidence[evidenceIndex];
  const asset = () => window.CASP_EVIDENCE[ev().key];
  function nav() {
-  $('questionNav').innerHTML = window.CASP_SECTIONS.map(section => `<div class="nav-group"><div class="nav-label">${section.id} · ${section.title}</div>${questions.filter(x=>x.section===section.id).map(x=>`<button class="nav-item" data-question="${x.id}" style="--item-color:${palette(x.id).color}" aria-current="${x.id===q().id?'step':'false'}" title="第 ${x.id} 題：${escape(x.short)}"><span class="num">${String(x.id).padStart(2,'0')}</span><span>${escape(x.short)}</span></button>`).join('')}</div>`).join('');
+  $('questionNav').innerHTML = window.CASP_SECTIONS.map(section => `<div class="nav-group"><div class="nav-label">${section.id} · ${section.title}</div>${questions.filter(x=>x.section===section.id).map(x=>`<button class="nav-item" data-question="${x.id}" style="--item-color:${palette(x.id).color}" aria-current="${!introActive&&x.id===q().id?'step':'false'}" title="第 ${x.id} 題：${escape(x.short)}"><span class="num">${String(x.id).padStart(2,'0')}</span><span>${escape(x.short)}</span></button>`).join('')}</div>`).join('');
  }
  function renderQuestion() {
   answerShown = false;
@@ -41,7 +41,8 @@
   $('deepContent').innerHTML = terms+comparisonTable+(question.glossarySources?`<p class="glossary-source">${escape(question.glossarySources)}</p>`:'');
   $('sourceAppraisal').innerHTML=question.sourceSections.map(item=>`<section>${question.id===4?`<h4>${escape(item.id)}｜${escape(item.title)}</h4>`:''}<ul class="appraisal-list">${item.reasons.map((reason,i)=>`<li><p class="appraisal-reason">${escape(reason)}</p><div class="reason-links" aria-label="本點文獻位置">${item.reasonEvidence[i].map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}${item.reasonKinds[i]==='check'?'（查核範圍）':''}</button>`;}).join('')}</div></li>`).join('')}</ul></section>`).join('');
   document.querySelectorAll('.teaching-pane details').forEach(d=>d.open=false);
-  $('previousButton').disabled = current===0;
+  $('previousButton').disabled = false;
+  $('previousButton').textContent = current===0?'評讀方式':'上一題';
   $('nextButton').textContent = current===questions.length-1?'查看評讀總結':'下一題';
   $('lessonProgress').textContent = `第 ${question.id} 題，共 11 題`;
   document.title = `第 ${question.id} 題 · ${question.short}｜CASP 教學示範`;
@@ -79,7 +80,9 @@
  function renderEvidence() {
   const evidence = ev();
   $('evidenceTabs').innerHTML = q().evidence.map((item,i)=>`<button data-evidence="${i}" aria-pressed="${i===evidenceIndex}">${escape(item.label)}</button>`).join('');
-  $('readingLocation').textContent = '張雪玲等（2023）· 護理雜誌';
+  $('readingLocation').textContent = q().lookupPath;
+  $('locationNote').textContent = q().lookupNote;
+  $('locationNote').hidden = !q().lookupNote;
   $('pageLabel').textContent = `期刊 p.${evidence.page+44} ／ PDF 第 ${evidence.page} 頁`;
   $('evidenceCaption').textContent = evidence.label;
   $('pageImage').alt = `示範文獻原頁：${evidence.label}`;
@@ -96,14 +99,24 @@
  function selectQuestion(id) {
   const index=questions.findIndex(x=>x.id===Number(id));
   if(index<0)return;
+  introActive=false;$('introPage').hidden=true;$('appraisalPage').hidden=false;$('mobileReference').hidden=false;$('introButton').setAttribute('aria-current','false');
   current=index;evidenceIndex=0;zoom=100;highlights=mode==='analysis';renderQuestion();
   if(location.hash!==`#q${q().id}`)history.replaceState(null,'',`#q${q().id}`);
   if(window.innerWidth<850)$('lesson').scrollIntoView({behavior:'smooth'});
   else window.scrollTo({top:0,behavior:'auto'});
  }
+ function showIntroduction() {
+  introActive=true;answerShown=false;mode='guide';highlights=false;renderMode();
+  $('introPage').hidden=false;$('appraisalPage').hidden=true;$('mobileReference').hidden=true;
+  $('introButton').setAttribute('aria-current','page');nav();
+  document.title='CASP 2024｜RCT 評讀方式';
+  if(location.hash!=='#intro')history.replaceState(null,'','#intro');
+  window.scrollTo({top:0,behavior:'auto'});
+  $('announcement').textContent='CASP 2024 評讀方式與三項答案定義';
+ }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
  function showSources() {
-  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀理由以《CASP RCT 2024 中文版評讀・混合式衛教 TKR》（Markdown，評讀日期 2026 年 11 月 19 日）為主，依教師確認的刪除原則與第 1 題精簡 PICO 調整；非 CASP 官方中文譯本。考量點保留 CASP 2024 中英對照。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。</p><h3>判讀說明</h3><p>各題結果依中文版評讀 Markdown；第 4 題整體判讀為「否」，並保留 4(a)、4(b)、4(c) 分項結果。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
+  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀理由以《CASP RCT 2024 中文版評讀・混合式衛教 TKR》（Markdown，評讀日期 2026 年 11 月 19 日）為主，依教師確認的刪除原則與第 1 題精簡 PICO 調整；非 CASP 官方中文譯本。考量點保留 CASP 2024 中英對照。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。</p><h3>文獻定位</h3><p>查找位置參照課堂資料《casp-華蘋》的「去原文哪裡找」欄，依本研究實際章節及頁碼標註；題目仍採 CASP 2024 架構。</p><h3>判讀說明</h3><p>各題結果依中文版評讀 Markdown；第 4 題整體判讀為「否」，並保留 4(a)、4(b)、4(c) 分項結果。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
   const rows=questions.map((item,i)=>{
@@ -120,8 +133,9 @@
  $('showResultButton').onclick=()=>{answerShown=!answerShown;renderResult();const a=window.CASP_ANSWERS[q().id-1];$('announcement').textContent=answerShown?`第 ${q().id} 題，參考判讀結果：${q().id===4?'整體：'+a.answer+'；'+a.parts.map(p=>p.join('：')).join('；'):a.answer}`:`第 ${q().id} 題，已隱藏判讀結果`;};
  $('highlightButton').onclick=()=>{highlights=!highlights;renderEvidence();};
  $('zoomIn').onclick=()=>{zoom=Math.min(250,zoom+25);renderEvidence();};$('zoomOut').onclick=()=>{zoom=Math.max(100,zoom-25);renderEvidence();};
- $('previousButton').onclick=()=>selectQuestion(q().id-1);$('nextButton').onclick=()=>current===questions.length-1?showSummary():selectQuestion(q().id+1);
+ $('previousButton').onclick=()=>current===0?showIntroduction():selectQuestion(q().id-1);$('nextButton').onclick=()=>current===questions.length-1?showSummary():selectQuestion(q().id+1);
  $('originalButton').onclick=()=>window.open(`${q().annotatedPdf}#page=${ev().page}`,'_blank','noopener');
+ $('introButton').onclick=showIntroduction;$('startAppraisal').onclick=()=>selectQuestion(1);
  $('sourcesButton').onclick=showSources;$('summaryButton').onclick=showSummary;
  $('closeDialog').onclick=()=>$('infoDialog').close();$('closeFocus').onclick=()=>$('focusDialog').close();
  $('mobileReference').onclick=()=>$('focusButton').click();
@@ -139,7 +153,7 @@
   $('focusDialog').showModal();$('focusDialog').scrollTop=0;
  };
  for(const id of ['infoDialog','focusDialog'])$(id).addEventListener('click',e=>{if(e.target===$(id)){const r=$(id).getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$(id).close();}});
- document.addEventListener('keydown',e=>{if(e.altKey&&e.key==='ArrowRight'){e.preventDefault();if(current<10)selectQuestion(q().id+1);}if(e.altKey&&e.key==='ArrowLeft'){e.preventDefault();if(current>0)selectQuestion(q().id-1);}});
- window.addEventListener('hashchange',()=>{const match=location.hash.match(/^#q(\d+)$/);if(match)selectQuestion(match[1]);});
- const start=location.hash.match(/^#q(\d+)$/);selectQuestion(start?start[1]:1);
+ document.addEventListener('keydown',e=>{if(e.altKey&&e.key==='ArrowRight'){e.preventDefault();if(introActive)selectQuestion(1);else if(current<10)selectQuestion(q().id+1);}if(e.altKey&&e.key==='ArrowLeft'){e.preventDefault();if(!introActive){if(current>0)selectQuestion(q().id-1);else showIntroduction();}}});
+ window.addEventListener('hashchange',()=>{const match=location.hash.match(/^#q(\d+)$/);if(match)selectQuestion(match[1]);else if(location.hash==='#intro')showIntroduction();});
+ const start=location.hash.match(/^#q(\d+)$/);selectQuestion(start?start[1]:1);if(!start)showIntroduction();
 })();
