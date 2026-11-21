@@ -29,9 +29,9 @@
   const answer = window.CASP_ANSWERS[question.id-1];
   $('resultQuestion').textContent = `第 ${question.id} 題｜${question.title}`;
   $('overallLink').textContent = question.overallLink;
-  $('verdict').textContent = question.id===4?`整體判讀：${answer.answer}`:answer.answer;
+  $('verdict').textContent = answer.answer;
   $('verdict').className = 'verdict ' + (answer.answer==='是'?'yes':answer.answer==='否'?'no':'uncertain');
-  $('answerOptions').hidden = question.id===4;
+  $('answerOptions').hidden = false;
   $('answerOptions').innerHTML = ['是','否','無法判斷'].map(option=>`<span class="answer-option ${option===answer.answer?'selected':''}"${option===answer.answer?' aria-current="true"':''}>${option===answer.answer?'☑':'☐'} ${option}</span>`).join('');
   $('subAnswers').innerHTML = question.id===4?`<p class="sub-answer-title">分項判讀</p>${question.sourceSections.map(item=>`<div><span>${escape(item.id)}｜${escape(item.title)}</span><strong>${escape(item.answer)}</strong></div>`).join('')}`:'';
   $('glossaryBlock').hidden = !question.glossary.length;
