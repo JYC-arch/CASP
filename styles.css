@@ -119,6 +119,24 @@ summary #writingTitle{font-size:inherit;color:inherit;font-weight:inherit;displa
 @media(max-width:1100px){.bilingual-consider{grid-template-columns:1fr;gap:7px}}
 @media(max-width:600px){.summary-page h2{font-size:1.55rem}.evidence-grade{padding:3px 16px 14px}.grade-facts>div{grid-template-columns:1fr;gap:5px}.summary-page th,.summary-page td{padding:10px}}
 
-/* Red bold text identifies wording revised in the 2024 checklist. */
-#questionTitle.version-changed,#questionEnglish.version-changed,.bilingual-consider .version-changed{color:#b3261e;font-weight:700}
 .bilingual-consider .consider-zh{white-space:pre-line}
+
+/* White reading surfaces; consistent colors identify content types. */
+:root{--appraisal-question:#7b2935;--appraisal-prompt:#195c5b;--appraisal-text:#374151;--appraisal-location:#69452f}
+.question-heading,.teaching-pane{background:#fff}
+.judgment-block,.guide-card{background:#fff;border-color:#dce4e5;border-left:3px solid var(--question-accent,var(--teal))}
+#questionTitle,#questionEnglish,#resultQuestion{color:var(--appraisal-question);font-weight:700}
+.source-appraisal>.eyebrow,.response-heading>span,.bilingual-consider .consider-zh,.bilingual-consider .consider-en{color:var(--appraisal-prompt)}
+.appraisal-list .appraisal-reason,.overall-link,.preliminary-result,.preliminary-result>span,.preliminary-result strong,.preliminary-result small,.sub-answers,.sub-answers strong{color:var(--appraisal-text)}
+.source-appraisal .preliminary-legend,.source-appraisal .preliminary-legend p{color:var(--appraisal-text)}
+.source-appraisal .preliminary-legend>span,.preliminary-result strong,.verdict,.answer-option.selected,.sub-answers strong{font-weight:700}
+.evidence-link,.evidence-tabs button,.evidence-tabs button[aria-pressed=true]{background:#fff;color:var(--appraisal-location);border:1px solid #a58b78}
+.evidence-link:hover,.evidence-tabs button:hover,.evidence-tabs button[aria-pressed=true]{background:#f7f3ee;border-color:var(--appraisal-location)}
+.evidence-link:focus-visible{outline-color:var(--appraisal-location)}
+.evidence-caption>.eyebrow{color:var(--appraisal-location)}
+.verdict,.verdict.yes,.verdict.no,.verdict.uncertain{background:#fff;color:var(--appraisal-text)}
+.verdict.yes::before{content:'✓ '}.verdict.no::before{content:'✕ '}.verdict.uncertain::before{content:'? '}
+.answer-option,.answer-option.selected{background:#fff;color:var(--appraisal-text);border-color:#89939e}
+.answer-option.selected{border-width:2px}
+.sub-answers{background:#fff}
+.summary-page .appraisal-results td:last-child{color:var(--appraisal-text);font-weight:700}
