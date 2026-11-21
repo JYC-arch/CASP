@@ -1,4 +1,4 @@
-/* CASP RCT 2024. Teaching adaptation of Word V1; allocation concealment and blinding definitions adapted from the instructor’s RCT lesson, PDF pp.11,14–15. */
+/* CASP RCT 2024. Reasons adapted from the supplied Markdown dated 2026-11-19, retaining the instructor’s exclusions; each bullet links to study evidence. */
 window.CASP_SECTIONS = [
   {
     "id": "A",
@@ -83,34 +83,10 @@ window.CASP_ANSWERS = [
     "answer": "是"
   },
   {
-    "answer": "是",
-    "parts": [
-      [
-        "隨機分派",
-        "是"
-      ],
-      [
-        "分派隱蔽是否充分",
-        "無法判斷"
-      ]
-    ]
+    "answer": "是"
   },
   {
-    "answer": "否",
-    "parts": [
-      [
-        "流失與排除人數有交代",
-        "是"
-      ],
-      [
-        "採治療意向分析（ITT）",
-        "否"
-      ],
-      [
-        "試驗是否提早終止",
-        "否"
-      ]
-    ]
+    "answer": "否"
   },
   {
     "answer": "否",
@@ -234,11 +210,63 @@ window.CASP_QUESTIONS = [
         "english": "Did the study address a clearly formulated research question?",
         "answer": "是",
         "reasons": [
-          "從摘要及研究方法可找到 PICO：P 為 65 歲以上、接受單側全膝關節置換術的病人，共 52 人；I 為混合式衛教，包括衛教手冊、復健運動影片、一對一衛教及電話諮詢；C 為常規出院衛教；O 為疼痛及膝關節角度。研究採單盲隨機控制組試驗。"
+          "P：65 歲以上、接受單側全膝關節置換術的病人，共 52 人。",
+          "I：混合式衛教，包括衛教手冊、復健運動影片、一對一衛教及電話諮詢。",
+          "C：常規出院衛教。",
+          "O：疼痛及膝關節角度。",
+          "研究採單盲隨機控制組試驗。"
         ],
         "considers": [
           "此研究是否設計來評估一種介入的結果？",
           "研究問題是否依下列要素「建構」：研究族群、介入措施、對照組的選擇、結果測量？"
+        ],
+        "reasonEvidence": [
+          [
+            "q01_abstract",
+            "q01_picoSample"
+          ],
+          [
+            "q01_picoEducation",
+            "q01_picoPhone"
+          ],
+          [
+            "q01_abstract"
+          ],
+          [
+            "q01_abstract"
+          ],
+          [
+            "q01_abstract"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "report",
+          "report",
+          "report",
+          "report"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          },
+          {
+            "mdBullet": 4,
+            "edited": true
+          },
+          {
+            "mdBullet": 4,
+            "edited": true
+          },
+          {
+            "mdBullet": 1,
+            "edited": true
+          }
         ]
       }
     ],
@@ -314,13 +342,37 @@ window.CASP_QUESTIONS = [
         "english": "Was the assignment of participants to interventions randomised?",
         "answer": "是",
         "reasons": [
-          "研究設計（p.46）說明，以電腦亂數表產生序號組別，分成實驗組與控制組，放入密閉信封，再依入院順序隨機分派；圖一（p.47）顯示兩組各 26 人。",
-          "文中未說明信封是否不透光、是否連續編號，以及由誰保管及拆封。資料收集過程（p.48）說明，收案、介入與資料收集由同一研究者執行。"
+          "以電腦亂數表產生序號組別，放入密閉信封，再依入院順序分派，方法適當。",
+          "分派隱匿：未說明信封是否不透光、是否連續編號、由誰產生與拆封；且收案、介入、測量皆為同一研究者。"
         ],
         "considers": [
           "隨機分配方式為何？該方法是否合適？",
           "隨機分配方式是否足以消除系統性偏差？",
           "分配序號是否對研究者與受試者隱藏？"
+        ],
+        "reasonEvidence": [
+          [
+            "q02_design",
+            "q02_flow"
+          ],
+          [
+            "q02_design",
+            "q02_collect"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": false
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          }
         ]
       }
     ],
@@ -396,6 +448,16 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
+        "key": "q03_attrition",
+        "page": 4,
+        "label": "p.48 流失與分析人數",
+        "blockIds": [
+          10,
+          11,
+          12
+        ]
+      },
+      {
         "key": "q03_education47",
         "page": 3,
         "label": "p.47 電話、紀錄與執行率",
@@ -409,16 +471,6 @@ window.CASP_QUESTIONS = [
             10
           ]
         ]
-      },
-      {
-        "key": "q03_attrition",
-        "page": 4,
-        "label": "p.48 流失與分析人數",
-        "blockIds": [
-          10,
-          11,
-          12
-        ]
       }
     ],
     "sourceSections": [
@@ -428,13 +480,57 @@ window.CASP_QUESTIONS = [
         "english": "Were all participants who entered the study accounted for at its conclusion?",
         "answer": "否",
         "reasons": [
-          "研究原先分派實驗組與控制組各 26 人。實驗組 1 人因胃穿孔住院流失，3 人因復健執行率低於 72% 被排除；控制組 26 人全數完成。最後分析 48 人：實驗組 22 人、控制組 26 人（圖一，p.47；研究結果，p.48）。",
-          "方法段載明「個人執行率達 72% 才列入統計分析」（p.47），因此原先分派的受試者未全數納入分析。胃穿孔個案的流失時間，結果文字寫術後第 12 週（p.48），圖一則標於術後第 6 週（p.47），兩處不一致。"
+          "隨機 52 人，分析 48 人（22 vs 26）。實驗組 1 人因胃穿孔住院退出、3 人復健執行率 < 72% 被排除；控制組無流失；文中流失率 7.7%。",
+          "研究者預設「個人執行率達 72% 才列入統計分析」，原先分派的受試者未全部納入分析。",
+          "4 人全部來自實驗組（4/26 vs 0/26）。",
+          "退出時間點前後不一：文字為術後第 12 週，圖一標示於 T2（第 6 週）。"
         ],
         "considers": [
           "隨機分配後失去追蹤與被排除的受試者是否都有交代？",
           "受試者是否按照他們被隨機分配的組別進行分析（治療意向分析法）？",
           "試驗是否提早終止？若有，原因為何？"
+        ],
+        "reasonEvidence": [
+          [
+            "q03_flow",
+            "q03_attrition"
+          ],
+          [
+            "q03_education47",
+            "q03_attrition"
+          ],
+          [
+            "q03_flow",
+            "q03_attrition"
+          ],
+          [
+            "q03_flow",
+            "q03_attrition"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "report",
+          "report",
+          "report"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": false
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          },
+          {
+            "mdBullet": 4,
+            "edited": true
+          }
         ]
       }
     ],
@@ -512,6 +608,11 @@ window.CASP_QUESTIONS = [
         ],
         "lineSlices": [
           [
+            14,
+            0,
+            3
+          ],
+          [
             15,
             0,
             7
@@ -524,12 +625,30 @@ window.CASP_QUESTIONS = [
         "label": "p.47 電話、紀錄與執行率",
         "blockIds": [
           2
+        ]
+      },
+      {
+        "key": "q04_vas",
+        "page": 3,
+        "label": "p.47 VAS 疼痛量表",
+        "blockIds": [
+          6,
+          7
+        ]
+      },
+      {
+        "key": "q04_authors",
+        "page": 8,
+        "label": "p.52 作者貢獻度",
+        "blockIds": [
+          12,
+          13
         ],
         "lineSlices": [
           [
-            2,
-            5,
-            7
+            13,
+            1,
+            3
           ]
         ]
       },
@@ -541,6 +660,14 @@ window.CASP_QUESTIONS = [
           5,
           6,
           7
+        ]
+      },
+      {
+        "key": "q04_angle48",
+        "page": 4,
+        "label": "p.48 量角器測量程序",
+        "blockIds": [
+          2
         ]
       },
       {
@@ -558,22 +685,6 @@ window.CASP_QUESTIONS = [
             8
           ]
         ]
-      },
-      {
-        "key": "q04_authors",
-        "page": 8,
-        "label": "p.52 作者貢獻度",
-        "blockIds": [
-          12,
-          13
-        ],
-        "lineSlices": [
-          [
-            13,
-            2,
-            3
-          ]
-        ]
       }
     ],
     "sourceSections": [
@@ -583,9 +694,43 @@ window.CASP_QUESTIONS = [
         "english": "Were the participants ‘blind’ to intervention they were given?",
         "answer": "無法判斷",
         "reasons": [
-          "摘要及研究設計稱本研究為「單盲隨機控制組試驗」（p.45–46），但未說明盲化的對象是否為受試者。"
+          "文中自稱「單盲」，但未說明盲化的對象是誰。",
+          "實驗組另有視頻、手冊、電話與運動檢核表。",
+          "疼痛為自評指標。"
         ],
-        "considers": []
+        "considers": [],
+        "reasonEvidence": [
+          [
+            "q04_abstract",
+            "q04_design"
+          ],
+          [
+            "q04_education46",
+            "q04_education47"
+          ],
+          [
+            "q04_vas"
+          ]
+        ],
+        "reasonKinds": [
+          "check",
+          "report",
+          "report"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": false
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          }
+        ]
       },
       {
         "id": "4(b)",
@@ -593,9 +738,25 @@ window.CASP_QUESTIONS = [
         "english": "Were the investigators ‘blind’ to the intervention they were giving to participants?",
         "answer": "否",
         "reasons": [
-          "實驗組由研究者在術後第 3 天提供一對一衛教、影片操作教導及回覆示教，並於返家後執行電話諮詢（p.46–47）；給予介入者知道自己提供的介入內容。"
+          "第一作者（具 22 年經驗的骨科專科護理師）於術後第 3 天一對一提供衛教，並負責所有電話諮詢。"
         ],
-        "considers": []
+        "considers": [],
+        "reasonEvidence": [
+          [
+            "q04_education46",
+            "q04_education47",
+            "q04_authors"
+          ]
+        ],
+        "reasonKinds": [
+          "report"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": true
+          }
+        ]
       },
       {
         "id": "4(c)",
@@ -603,10 +764,34 @@ window.CASP_QUESTIONS = [
         "english": "Were the people assessing/analysing outcome/s ‘blinded’?",
         "answer": "否",
         "reasons": [
-          "資料收集過程說明，術前及術後的疼痛與膝關節角度由研究者收集及測量（p.48）。研究限制亦寫明「介入措施及資料收集者為同一研究者」（p.52）。",
-          "作者貢獻度列出資料分析由黃曉令負責（p.52），但未說明資料分析者是否知道分組。"
+          "評估者：資料收集與量角器測量皆由同一研究者執行。",
+          "分析者：由黃曉令負責資料分析，是否盲化未說明。"
         ],
-        "considers": []
+        "considers": [],
+        "reasonEvidence": [
+          [
+            "q04_collect",
+            "q04_angle48",
+            "q04_limitations"
+          ],
+          [
+            "q04_authors"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          }
+        ]
       }
     ],
     "annotatedPdf": "assets/study-q04-annotated.pdf",
@@ -689,12 +874,63 @@ window.CASP_QUESTIONS = [
         "english": "Were the study groups similar at the start of the randomised controlled trial?",
         "answer": "是",
         "reasons": [
-          "研究結果（p.48）及表一（p.49）列出年齡、性別、身體質量指數、慢性病、手術經驗、手術部位、術前疼痛及膝關節角度。兩組比較均未達統計顯著差異（p > .05）。",
-          "表一使用兩組各 26 人的資料，最後分析則為實驗組 22 人、控制組 26 人；未另列排除後兩組的基本特性。表一「TKR 手術經驗」中，實驗組列「無 4 人、有 22 人」，與全體「無 41 人、有 11 人」的加總不一致。"
+          "表一比較兩組基準特性（年齡、性別、BMI、慢性病、高血壓、糖尿病、TKR 經驗、手術部位、3 項疼痛、伸膝與屈膝角度），所有 p > .05。",
+          "女性比例 76.9% vs 61.5%（小樣本下未達顯著）。",
+          "未提供社經、教育程度、照顧者或數位能力資料。",
+          "基準以 52 人比較、分析卻為 48 人，排除後兩組是否仍相似未呈現。",
+          "表一「TKR 經驗」實驗組列「無 4、有 22」，與全體總數「無 41、有 11」不符。"
         ],
         "considers": [
           "文章中是否清楚呈現各組的基本特徵（如：年齡、性別、社經地位）？",
           "組間是否存在可能影響結果的差別？"
+        ],
+        "reasonEvidence": [
+          [
+            "q05_table1",
+            "q05_baseline48"
+          ],
+          [
+            "q05_table1"
+          ],
+          [
+            "q05_table1"
+          ],
+          [
+            "q05_table1",
+            "q05_attrition"
+          ],
+          [
+            "q05_table1"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "report",
+          "check",
+          "check",
+          "report"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          }
         ]
       }
     ],
@@ -766,6 +1002,16 @@ window.CASP_QUESTIONS = [
           6,
           7
         ]
+      },
+      {
+        "key": "q06_education46",
+        "page": 2,
+        "label": "p.46 混合式衛教方案",
+        "blockIds": [
+          13,
+          14,
+          15
+        ]
       }
     ],
     "sourceSections": [
@@ -775,13 +1021,55 @@ window.CASP_QUESTIONS = [
         "english": "Apart from the experimental intervention, did each study group receive the same level of care (that is, were they treated equally)?",
         "answer": "無法判斷",
         "reasons": [
-          "研究設計（p.46）說明，兩組在手術前及住院期間皆接受常規治療與護理。研究結果（p.48）列出相同的常規止痛藥醫囑；資料收集過程說明，兩組均於術後第 1、6、12、16 週追蹤測量。",
-          "控制組常規出院衛教的內容，以及出院後是否另接受其他復健治療，文中未交代，因此無法確認出院後兩組其他照護是否相同。"
+          "術前與住院期間皆接受常規治療及護理。",
+          "常規止痛醫囑相同（acemetacin 90 mg bid、celecoxib 200 mg qd）。",
+          "兩組皆於常規回診的第 1、6、12、16 週追蹤。",
+          "未報告者：已註冊或公開的研究計畫書；「常規出院衛教」的內容（是否含復健運動指導）；出院後是否另接受門診物理治療等共同介入。"
         ],
         "considers": [
           "試驗計畫是否清楚定義？",
           "若有給予額外介入（如：檢查或治療），各組給予的介入是否相似？",
           "各組的追蹤間隔是否相同？"
+        ],
+        "reasonEvidence": [
+          [
+            "q06_design"
+          ],
+          [
+            "q06_medication"
+          ],
+          [
+            "q06_collect"
+          ],
+          [
+            "q06_design",
+            "q06_education46",
+            "q06_collect"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "report",
+          "report",
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": false
+          }
         ]
       }
     ],
@@ -837,15 +1125,6 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
-        "key": "q07_analysis",
-        "page": 4,
-        "label": "p.48 資料處理與分析",
-        "blockIds": [
-          8,
-          9
-        ]
-      },
-      {
         "key": "q07_figure2",
         "page": 6,
         "label": "p.50 圖二疼痛結果",
@@ -868,6 +1147,17 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
+        "key": "q07_table1",
+        "page": 5,
+        "label": "p.49 表一基準特性",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          500
+        ]
+      },
+      {
         "key": "q07_table2",
         "page": 7,
         "label": "p.51 表二 GEE 分析",
@@ -879,6 +1169,15 @@ window.CASP_QUESTIONS = [
         ]
       },
       {
+        "key": "q07_analysis",
+        "page": 4,
+        "label": "p.48 資料處理與分析",
+        "blockIds": [
+          8,
+          9
+        ]
+      },
+      {
         "key": "q07_attrition",
         "page": 4,
         "label": "p.48 流失與分析人數",
@@ -886,6 +1185,23 @@ window.CASP_QUESTIONS = [
           10,
           11,
           12
+        ]
+      },
+      {
+        "key": "q07_limitations",
+        "page": 8,
+        "label": "p.52 研究限制與建議",
+        "blockIds": [
+          5,
+          6
+        ]
+      },
+      {
+        "key": "q07_education47",
+        "page": 3,
+        "label": "p.47 電話、紀錄與執行率",
+        "blockIds": [
+          2
         ]
       }
     ],
@@ -896,11 +1212,89 @@ window.CASP_QUESTIONS = [
         "english": "Were the effects of intervention reported comprehensively?",
         "answer": "否",
         "reasons": [
-          "研究對象段以 G*Power 估算需 46 人，考量流失後收案 52 人（p.46）。研究工具段說明疼痛量表與電子量角器（p.47–48）；資料分析段列出卡方檢定、獨立樣本 t 檢定、曼惠特尼 U 檢定及廣義估計方程式（GEE）（p.48）。",
-          "圖二、圖三呈現各時間點的疼痛與膝關節角度結果，但未列出標準差；表二列出 β、SE 及 p 值，未列信賴區間（p.50–51）。最後分析人數少於原先分派人數，文中未交代如何處理被排除者的結果資料。"
+          "有檢定力計算：G*Power 3.1，effect size .33、α .05、power .80、2 組重複測量 5 次，估 46 人，加 10% 流失收 52 人。",
+          "結果指標定義清楚：工具段引用 VAS 的再測信度（ICC .79），並說明電子量角器誤差 < 1° 及測量程序。",
+          "各組各次追蹤各項結果皆有報告（圖二、圖三為各時間點平均值與 Mann-Whitney Z、p；表二為 GEE 的 β、SE、p）。",
+          "統計方法：卡方、t 檢定、Mann-Whitney U、GEE；有列 p 值。",
+          "圖中未列各時間點標準差；文中未交代如何處理未納入分析者的結果資料。",
+          "研究限制提及單一機構，及介入措施與資料收集者為同一研究者。",
+          "實際運動執行率、控制組運動量、量角器在本研究的信度未報告。"
         ],
         "considers": [
           "檢定力計算、結果定義、結果表達方式、各組各次追蹤各項結果、遺漏資料、組間退出率差異、偏差來源、統計方法、p 值。"
+        ],
+        "reasonEvidence": [
+          [
+            "q07_power"
+          ],
+          [
+            "q07_vas",
+            "q07_angle47",
+            "q07_angle48"
+          ],
+          [
+            "q07_figure2",
+            "q07_figure3",
+            "q07_table1",
+            "q07_table2"
+          ],
+          [
+            "q07_analysis"
+          ],
+          [
+            "q07_figure2",
+            "q07_figure3",
+            "q07_analysis",
+            "q07_attrition"
+          ],
+          [
+            "q07_limitations"
+          ],
+          [
+            "q07_education47",
+            "q07_angle47",
+            "q07_angle48",
+            "q07_limitations"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "report",
+          "report",
+          "report",
+          "check",
+          "report",
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          },
+          {
+            "mdBullet": 4,
+            "edited": true
+          },
+          {
+            "mdBullet": 5,
+            "edited": true
+          },
+          {
+            "mdBullet": 5,
+            "edited": true
+          }
         ]
       }
     ],
@@ -917,6 +1311,22 @@ window.CASP_QUESTIONS = [
       [
         "GEE｜廣義估計方程式",
         "用於分析重複測量等彼此相關的資料。"
+      ],
+      [
+        "效果量（Effect size）",
+        "用來表示差異或關係大小的數值，也是估算所需樣本數的設定之一。"
+      ],
+      [
+        "α｜顯著水準",
+        "在統計檢定前設定的判定標準，用來控制「實際沒有差異，卻判成有差異」的機率；本研究設定為 .05。"
+      ],
+      [
+        "Power｜檢定力",
+        "當實際存在差異時，統計檢定能夠發現差異的能力；本研究樣本數規劃設定為 .80。"
+      ],
+      [
+        "信度與 ICC｜組內相關係數",
+        "信度描述測量結果的一致性與穩定性。ICC 是用於描述重複測量一致程度的指標之一。"
       ]
     ]
   },
@@ -953,10 +1363,24 @@ window.CASP_QUESTIONS = [
         "english": "Was the precision of the estimate of the intervention or treatment effect reported?",
         "answer": "否",
         "reasons": [
-          "表二（p.51）列出 β、標準誤（SE）及 p 值，全文未報告信賴區間（CI）。"
+          "全文未報告信賴區間，表二僅列 β、SE、p。"
         ],
         "considers": [
           "是否列出信賴區間（CIs）？"
+        ],
+        "reasonEvidence": [
+          [
+            "q08_table2"
+          ]
+        ],
+        "reasonKinds": [
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": false
+          }
         ]
       }
     ],
@@ -1072,11 +1496,47 @@ window.CASP_QUESTIONS = [
         "english": "Do the benefits of the experimental intervention outweigh the harms and costs?",
         "answer": "無法判斷",
         "reasons": [
-          "研究結果及圖二、圖三顯示，第 16 週「現在的疼痛」實驗組為 1.5 分、控制組為 2.8 分；伸膝角度分別為 16.5° 與 21.0°，屈膝角度的組間差異未達統計顯著。止痛藥使用天數分別為 13.4 天與 21.81 天（p.48、50–51）。",
-          "實驗組有 1 人因胃穿孔住院而流失（p.47–48），但文中未提供完整的不良事件紀錄，也未進行成本效益分析。結論雖稱介入「安全且易於實施」（p.52），仍缺少判斷傷害與成本所需的資料。"
+          "第 16 週效果大小：現在的疼痛 1.5 vs 2.8（VAS 約差 1.3 分）；伸膝角度 16.5° vs 21.0°（差 4.5°）；屈膝角度無顯著差異；止痛藥使用 13.4 vs 21.8 天。",
+          "傷害未系統性收集或報告（跌倒、傷口問題、運動傷害）；實驗組有 1 人因胃穿孔住院而流失。",
+          "未做成本或成本效益分析；作者稱介入「安全」缺乏資料支持。"
         ],
         "considers": [
           "效果大小、各組傷害或非預期效應、成本效益分析。"
+        ],
+        "reasonEvidence": [
+          [
+            "q09_medication",
+            "q09_angleResults",
+            "q09_figure2",
+            "q09_figure3"
+          ],
+          [
+            "q09_flow",
+            "q09_attrition",
+            "q09_conclusion"
+          ],
+          [
+            "q09_conclusion"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "check",
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": false
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": false
+          }
         ]
       }
     ],
@@ -1137,6 +1597,50 @@ window.CASP_QUESTIONS = [
             5
           ]
         ]
+      },
+      {
+        "page": 1,
+        "label": "p.45 結果指標背景",
+        "blockIds": [
+          5
+        ],
+        "key": "q10_frontOutcomes"
+      },
+      {
+        "page": 3,
+        "label": "p.47 研究工具",
+        "blockIds": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "key": "q10_tools47"
+      },
+      {
+        "key": "q10_figure2",
+        "page": 6,
+        "label": "p.50 圖二疼痛結果",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          583
+        ]
+      },
+      {
+        "key": "q10_figure3",
+        "page": 7,
+        "label": "p.51 圖三關節角度",
+        "boxPoints": [
+          50,
+          86,
+          545,
+          483
+        ]
       }
     ],
     "sourceSections": [
@@ -1146,11 +1650,56 @@ window.CASP_QUESTIONS = [
         "english": "Can the results be applied to your local population/in your context?",
         "answer": "是",
         "reasons": [
-          "研究對象為臺灣北部某區域教學醫院、接受單側全膝關節置換術的老年病人，平均年齡 73.4 歲、女性居多（p.46、48）。研究結果可作為照護這類病人的參考。",
-          "研究為單一機構收案，排除雙側或再次置換手術者，以及家中沒有觀看 YouTube 衛教影片設施者（p.46）。研究僅追蹤至術後 16 週，未提供更長期的結果（p.52）。"
+          "受試者為台灣區域教學醫院的老年 TKR 病人。",
+          "需考量的差異：排除家中無法觀看 YouTube 者、雙側或再置換者；單一機構；僅追蹤 16 週。",
+          "疼痛與關節活動度為 TKR 復原的重要結果指標。",
+          "缺少身體功能、生活品質、跌倒、再入院、滿意度、實際運動執行率與長期效果等結果。"
         ],
         "considers": [
           "受試者是否相似？差異是否改變結果？結果是否重要？是否缺少想要的結果？研究限制是否影響決策？"
+        ],
+        "reasonEvidence": [
+          [
+            "q10_sample",
+            "q10_baseline48"
+          ],
+          [
+            "q10_sample",
+            "q10_limitations"
+          ],
+          [
+            "q10_frontOutcomes"
+          ],
+          [
+            "q10_tools47",
+            "q10_figure2",
+            "q10_figure3",
+            "q10_limitations"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "report",
+          "report",
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": false
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          }
         ]
       }
     ],
@@ -1219,6 +1768,15 @@ window.CASP_QUESTIONS = [
           7,
           8
         ]
+      },
+      {
+        "page": 8,
+        "label": "p.52 臨床應用",
+        "blockIds": [
+          10,
+          11
+        ],
+        "key": "q11_application"
       }
     ],
     "sourceSections": [
@@ -1228,11 +1786,53 @@ window.CASP_QUESTIONS = [
         "english": "Would the experimental intervention provide greater value to the people in your care than any of the existing interventions?",
         "answer": "無法判斷",
         "reasons": [
-          "混合式衛教包括手冊、復健運動影片、術後第 3 天一對一衛教與回覆示教，以及出院後 4 次、每次約 5–10 分鐘的電話諮詢；介入由具 22 年骨科專科護理經驗的研究者執行（p.46–47）。",
-          "本研究只與常規出院衛教比較（p.46），未比較其他介入方式，也未提供成本分析，尚不足以確認是否比現有介入更有價值。"
+          "所需資源：印製手冊、既有 YouTube 視頻、術後第 3 天一對一衛教、出院後 4 次 5–10 分鐘電話。",
+          "研究中由資深專科護理師執行介入。",
+          "僅與常規衛教比較，未與其他復健模式比較。",
+          "未提供成本或成本效益分析。"
         ],
         "considers": [
           "所需資源（時間、費用、技能與訓練）；能否從現有介入移出資源重新投入。"
+        ],
+        "reasonEvidence": [
+          [
+            "q11_education46",
+            "q11_education47"
+          ],
+          [
+            "q11_education46"
+          ],
+          [
+            "q11_design"
+          ],
+          [
+            "q11_education46",
+            "q11_application"
+          ]
+        ],
+        "reasonKinds": [
+          "report",
+          "report",
+          "check",
+          "check"
+        ],
+        "reasonOrigins": [
+          {
+            "mdBullet": 1,
+            "edited": true
+          },
+          {
+            "mdBullet": 2,
+            "edited": true
+          },
+          {
+            "mdBullet": 3,
+            "edited": true
+          },
+          {
+            "mdBullet": 4,
+            "edited": true
+          }
         ]
       }
     ],
