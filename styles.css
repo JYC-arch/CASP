@@ -118,3 +118,7 @@ summary #writingTitle{font-size:inherit;color:inherit;font-weight:inherit;displa
 .overall-link{border-top:1px solid #c5d4d2;margin-top:14px;padding-top:12px}
 @media(max-width:1100px){.bilingual-consider{grid-template-columns:1fr;gap:7px}}
 @media(max-width:600px){.summary-page h2{font-size:1.55rem}.evidence-grade{padding:3px 16px 14px}.grade-facts>div{grid-template-columns:1fr;gap:5px}.summary-page th,.summary-page td{padding:10px}}
+
+/* Red bold text identifies wording revised in the 2024 checklist. */
+#questionTitle.version-changed,#questionEnglish.version-changed,.bilingual-consider .version-changed{color:#b3261e;font-weight:700}
+.bilingual-consider .consider-zh{white-space:pre-line}

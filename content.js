@@ -1,24 +1,28 @@
-/* CASP RCT 2024. Bilingual considerations and appraisal reasons are integrated. Preliminary symbols answer the wording of each prompt; they are not quality scores. */
+/* CASP RCT 2024; wording synchronized with the approved bilingual presentation and 2020 translation. */
 window.CASP_SECTIONS = [
   {
     "id": "A",
     "title": "基本研究設計",
-    "full": "隨機對照試驗的基本研究設計是否有效？"
+    "full": "隨機對照試驗的基本研究設計是否有效？",
+    "english": "Is the basic study design valid for a randomised controlled trial?"
   },
   {
     "id": "B",
     "title": "研究方法",
-    "full": "研究方法是否嚴謹？"
+    "full": "研究的方法是否嚴謹？",
+    "english": "Was the study methodologically sound?"
   },
   {
     "id": "C",
     "title": "研究結果",
-    "full": "結果是什麼？"
+    "full": "結果是什麼？",
+    "english": "What are the results?"
   },
   {
     "id": "D",
     "title": "臨床應用",
-    "full": "結果對於當地是否有幫助？"
+    "full": "結果對於當地是否有幫助？",
+    "english": "Will the results help locally?"
   }
 ];
 window.CASP_PALETTE = [
@@ -137,11 +141,11 @@ window.CASP_QUESTIONS = [
     "english": "Did the study address a clearly formulated research question?",
     "consider": [
       [
-        "此研究是否設計用來評估一項介入措施的結果？",
+        "此研究是否設計來評估一種介入的結果？",
         "Was the study designed to assess the outcomes of an intervention?"
       ],
       [
-        "研究問題是否依下列要素建構：研究族群、給予的介入、選擇的對照、測量的結果？",
+        "研究問題是否依下列要素建構：\n研究族群\n介入措施\n對照組的選擇\n結果測量",
         "Is the research question ‘formulated’ in terms of:\nPopulation studied\nIntervention given\nComparator chosen\nOutcomes measured?"
       ]
     ],
@@ -396,7 +400,11 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       2
     ],
-    "overallLink": "兩個評讀提示均有支持研究問題清楚的資訊，連到本題總評「是」。"
+    "overallLink": "兩個評讀提示均有支持研究問題清楚的資訊，連到本題總評「是」。",
+    "versionChangedTitle": true,
+    "versionChangedPrompts": [
+      1
+    ]
   },
   {
     "id": 2,
@@ -407,15 +415,15 @@ window.CASP_QUESTIONS = [
     "english": "Was the assignment of participants to interventions randomised?",
     "consider": [
       [
-        "如何進行隨機分派？方法是否合適？",
+        "隨機分配方式為何？該方法是否合適？",
         "How was randomisation carried out? Was the method appropriate?"
       ],
       [
-        "隨機分派是否足以消除系統性偏差？",
+        "隨機分配方式是否足以消除系統性偏差？",
         "Was randomisation sufficient to eliminate systematic bias?"
       ],
       [
-        "分派順序是否對研究者及受試者隱匿？",
+        "分配序號是否對實驗者與受試者隱匿？",
         "Was the allocation sequence concealed from investigators and participants?"
       ]
     ],
@@ -583,7 +591,9 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       2
     ],
-    "overallLink": "總評依文中明載的隨機分派判為「是」；第 2、3 點的分派隱匿資訊不足仍須保留，不能由總評推定已消除所有偏差。"
+    "overallLink": "總評依文中明載的隨機分派判為「是」；第 2、3 點的分派隱匿資訊不足仍須保留，不能由總評推定已消除所有偏差。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 3,
@@ -594,11 +604,11 @@ window.CASP_QUESTIONS = [
     "english": "Were all participants who entered the study accounted for at its conclusion?",
     "consider": [
       [
-        "隨機分派後，失去追蹤與被排除的受試者是否都有交代？",
+        "是否納入隨機分配後失去追蹤與排除的患者？",
         "Were losses to follow-up and exclusions after randomisation accounted for?"
       ],
       [
-        "受試者是否依最初隨機分派的組別進行分析（治療意向分析，ITT）？",
+        "受試者是否按照他們被隨機分配的研究進行分析（治療意向分析法）？",
         "Were participants analysed in the study groups to which they were randomised (intention-to-treat analysis)?"
       ],
       [
@@ -784,26 +794,28 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       2
     ],
-    "overallLink": "第 1 點有交代人數，不代表第 2 點已符合；第 2 點為「否」是本題總評的主要依據，第 3 點則資訊不足。"
+    "overallLink": "第 1 點有交代人數，不代表第 2 點已符合；第 2 點為「否」是本題總評的主要依據，第 3 點則資訊不足。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 4,
     "section": "B",
     "short": "三個角色的盲法",
     "topic": "受試者 · 介入者 · 評估者",
-    "title": "受試者、介入執行者及結果評估／分析者是否盲化？",
+    "title": "受試者、健康相關工作人員及研究人員是否盲化？",
     "english": "(a) Were the participants ‘blind’ to intervention they were given? (b) Were the investigators ‘blind’ to the intervention they were giving to participants? (c) Were the people assessing/analysing outcome/s ‘blinded’?",
     "consider": [
       [
-        "受試者是否對其接受的介入措施盲化？",
+        "受試者是否盲化？",
         "Were the participants ‘blind’ to intervention they were given?"
       ],
       [
-        "研究者（給予介入者）是否對其給予受試者的介入措施盲化？",
+        "研究者（給予介入者）是否盲化？",
         "Were the investigators ‘blind’ to the intervention they were giving to participants?"
       ],
       [
-        "評估／分析結果的人員是否盲化？",
+        "研究者（評估/分析結果者）是否盲化？",
         "Were the people assessing/analysing outcome/s ‘blinded’?"
       ]
     ],
@@ -925,7 +937,7 @@ window.CASP_QUESTIONS = [
     "sourceSections": [
       {
         "id": "4(a)",
-        "title": "受試者是否對其接受的介入措施盲化？",
+        "title": "受試者是否盲化？",
         "english": "Were the participants ‘blind’ to intervention they were given?",
         "answer": "無法判斷",
         "reasons": [
@@ -961,7 +973,7 @@ window.CASP_QUESTIONS = [
       },
       {
         "id": "4(b)",
-        "title": "研究者（給予介入者）是否對其給予受試者的介入措施盲化？",
+        "title": "研究者（給予介入者）是否盲化？",
         "english": "Were the investigators ‘blind’ to the intervention they were giving to participants?",
         "answer": "否",
         "reasons": [
@@ -999,7 +1011,7 @@ window.CASP_QUESTIONS = [
       },
       {
         "id": "4(c)",
-        "title": "評估／分析結果的人員是否盲化？",
+        "title": "研究者（評估/分析結果者）是否盲化？",
         "english": "Were the people assessing/analysing outcome/s ‘blinded’?",
         "answer": "否",
         "reasons": [
@@ -1089,7 +1101,9 @@ window.CASP_QUESTIONS = [
       2,
       3
     ],
-    "overallLink": "4(b)、4(c) 為「否」，支持整體判讀「否」；4(a) 資訊不足。"
+    "overallLink": "4(b)、4(c) 為「否」，支持整體判讀「否」；4(a) 資訊不足。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 5,
@@ -1100,11 +1114,11 @@ window.CASP_QUESTIONS = [
     "english": "Were the study groups similar at the start of the randomised controlled trial?",
     "consider": [
       [
-        "是否清楚列出各組的基準特性，例如年齡、性別、社經群體？",
+        "文章中是否清楚呈現各組的基本特徵（如：年齡、性別、社經地位）？",
         "Were the baseline characteristics of each study group (e.g. age, sex, socio-economic group) clearly set out?"
       ],
       [
-        "各組之間是否存在可能影響結果的差異？",
+        "組間是否存在可能影響結果的差別？",
         "Were there any differences between the study groups that could affect the outcome/s?"
       ]
     ],
@@ -1259,26 +1273,28 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       3
     ],
-    "overallLink": "依文中所列起始特性，總評為「是」；第 2 點的差異是否影響結果仍不確定，需連同保留事項閱讀。"
+    "overallLink": "依文中所列起始特性，總評為「是」；第 2 點的差異是否影響結果仍不確定，需連同保留事項閱讀。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 6,
     "section": "B",
     "short": "其他照護是否一致",
     "topic": "共同照護 · 共同追蹤",
-    "title": "除了實驗的介入措施之外，各組是否接受相同程度的照護（亦即是否受到同等對待）？",
+    "title": "除了實驗的介入措施之外，各組的所有對待是否相同？",
     "english": "Apart from the experimental intervention, did each study group receive the same level of care (that is, were they treated equally)?",
     "consider": [
       [
-        "是否有清楚定義的試驗計畫？",
+        "試驗計畫是否清楚定義？",
         "Was there a clearly defined study protocol?"
       ],
       [
-        "若有提供額外介入，例如檢查或治療，各組是否相似？",
+        "若有給予額外介入（檢查或治療），各組給予的介入是否相似？",
         "If any additional interventions were given (e.g. tests or treatments), were they similar between the study groups?"
       ],
       [
-        "各組的追蹤間隔是否相同？",
+        "各組的追蹤期是否相同？",
         "Were the follow-up intervals the same for each study group?"
       ]
     ],
@@ -1341,7 +1357,7 @@ window.CASP_QUESTIONS = [
     "sourceSections": [
       {
         "id": "6",
-        "title": "除了實驗的介入措施之外，各組是否接受相同程度的照護（亦即是否受到同等對待）？",
+        "title": "除了實驗的介入措施之外，各組的所有對待是否相同？",
         "english": "Apart from the experimental intervention, did each study group receive the same level of care (that is, were they treated equally)?",
         "answer": "無法判斷",
         "reasons": [
@@ -1453,7 +1469,9 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       3
     ],
-    "overallLink": "第 3 點有交代相同追蹤時點，但第 1、2 點資訊不足，因此總評為「無法判斷」。"
+    "overallLink": "第 3 點有交代相同追蹤時點，但第 1、2 點資訊不足，因此總評為「無法判斷」。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 7,
@@ -1464,39 +1482,39 @@ window.CASP_QUESTIONS = [
     "english": "Were the effects of intervention reported comprehensively?",
     "consider": [
       [
-        "是否進行檢定力計算？",
+        "是否有計算檢定力？",
         "Was a power calculation undertaken?"
       ],
       [
-        "測量哪些結果？這些結果是否明確界定？",
+        "研究中測量哪些結果？是否明確定義？",
         "What outcomes were measured, and were they clearly specified?"
       ],
       [
-        "結果如何表達？若為二元結果，是否報告相對效果與絕對效果？",
+        "結果是如何表達的？對於二元結果，是否報告了相對和絕對效應？",
         "How were the results expressed? For binary outcomes, were relative and absolute effects reported?"
       ],
       [
-        "是否在每個追蹤時點，報告各研究組別的每項結果？",
+        "是否列出每一組在每次追蹤時的數據？",
         "Were the results reported for each outcome in each study group at each follow-up interval?"
       ],
       [
-        "是否有遺漏或不完整的資料？",
+        "是否有遺漏或是不完整的資料？",
         "Was there any missing or incomplete data?"
       ],
       [
-        "兩組退出情形是否不同，且可能影響結果？",
+        "不同組間的退出率是否足以影響結果？",
         "Was there differential drop-out between the study groups that could affect the results?"
       ],
       [
-        "是否指出潛在偏差來源？",
+        "是否列出潛在的偏差來源？",
         "Were potential sources of bias identified?"
       ],
       [
-        "使用哪些統計檢定？",
+        "使用到哪些統計方法？",
         "Which statistical tests were used?"
       ],
       [
-        "是否報告 p 值？",
+        "是否列出 p 值？",
         "Were p values reported?"
       ]
     ],
@@ -1937,18 +1955,20 @@ window.CASP_QUESTIONS = [
       3,
       4
     ],
-    "overallLink": "第 4 點顯示結果呈現不完整；第 5、6 點的 ✓ 表示有資料缺漏與退出差異，合併支持本題總評「否」，不以打勾多寡決定總評。"
+    "overallLink": "第 4 點顯示結果呈現不完整；第 5、6 點的 ✓ 表示有資料缺漏與退出差異，合併支持本題總評「否」，不以打勾多寡決定總評。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 8,
     "section": "C",
     "short": "效果估計的精確度",
     "topic": "信賴區間 · SE 與 p 值",
-    "title": "是否有列出介入／治療效果估計值的精確度？",
+    "title": "是否有列出介入/治療的精確度？",
     "english": "Was the precision of the estimate of the intervention or treatment effect reported?",
     "consider": [
       [
-        "是否報告信賴區間（CI）？",
+        "是否列出信賴區間？",
         "Were confidence intervals (CIs) reported?"
       ]
     ],
@@ -1986,7 +2006,7 @@ window.CASP_QUESTIONS = [
     "sourceSections": [
       {
         "id": "8",
-        "title": "是否有列出介入／治療效果估計值的精確度？",
+        "title": "是否有列出介入/治療的精確度？",
         "english": "Was the precision of the estimate of the intervention or treatment effect reported?",
         "answer": "否",
         "reasons": [
@@ -2056,7 +2076,9 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       4
     ],
-    "overallLink": "本題直接詢問是否報告 CI；第 1 點未報告，因此總評為「否」。"
+    "overallLink": "本題直接詢問是否報告 CI；第 1 點未報告，因此總評為「否」。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 9,
@@ -2067,15 +2089,15 @@ window.CASP_QUESTIONS = [
     "english": "Do the benefits of the experimental intervention outweigh the harms and costs?",
     "consider": [
       [
-        "介入或治療效果有多大？",
+        "介入或治療的效果有多好（大）？",
         "What was the size of the intervention or treatment effect?"
       ],
       [
-        "是否報告各研究組別的傷害或非預期影響？",
+        "是否列出各組中發生的不良效應？",
         "Were harms or unintended effects reported for each study group?"
       ],
       [
-        "是否進行成本效益分析？（成本效益分析可比較照護同一疾病或問題時所使用的不同介入措施。）",
+        "是否進行成本效益評估（成本效益分析能比較用於同一病症或問題中的不同介入措施）？",
         "Was a cost-effectiveness analysis undertaken? (Cost-effectiveness analysis allows a comparison to be made between different interventions used in the care of the same condition or problem.)"
       ]
     ],
@@ -2290,34 +2312,36 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       4
     ],
-    "overallLink": "第 1 點有效果數據，但第 2、3 點缺少完整傷害與成本資料，無法完成利弊權衡，因此總評為「無法判斷」。"
+    "overallLink": "第 1 點有效果數據，但第 2、3 點缺少完整傷害與成本資料，無法完成利弊權衡，因此總評為「無法判斷」。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 10,
     "section": "D",
     "short": "能否用在我的病人",
     "topic": "外部適用性 · 病人情境",
-    "title": "研究結果是否可以應用在你的當地族群或情境當中？",
+    "title": "研究結果是否可以應用在你的情境當中（或當地族群？）？",
     "english": "Can the results be applied to your local population/in your context?",
     "consider": [
       [
-        "研究受試者是否與您照護的人相似？",
+        "受試族群是否與您照顧的患者相似？",
         "Are the study participants similar to the people in your care?"
       ],
       [
-        "您的族群與研究受試者之間的差異，是否會改變研究所報告的結果？",
+        "你的患者(們)與本研究受試者群組的差異是否會影響到研究得出的結果？",
         "Would any differences between your population and the study participants alter the outcomes reported in the study?"
       ],
       [
-        "這些結果對您的族群是否重要？",
+        "研究結果對你的族群是否重要？",
         "Are the outcomes important to your population?"
       ],
       [
-        "是否有您想知道，卻未被研究或報告的結果？",
+        "是否有您想要的結果或資訊尚未被研究或提出？",
         "Are there any outcomes you would have wanted information on that have not been studied or reported?"
       ],
       [
-        "是否有會影響您決策的研究限制？",
+        "本研究是否有任何限制會影響到您的決策？",
         "Are there any limitations of the study that would affect your decision?"
       ]
     ],
@@ -2422,7 +2446,7 @@ window.CASP_QUESTIONS = [
     "sourceSections": [
       {
         "id": "10",
-        "title": "研究結果是否可以應用在你的當地族群或情境當中？",
+        "title": "研究結果是否可以應用在你的情境當中（或當地族群？）？",
         "english": "Can the results be applied to your local population/in your context?",
         "answer": "是",
         "reasons": [
@@ -2562,22 +2586,24 @@ window.CASP_QUESTIONS = [
       4,
       5
     ],
-    "overallLink": "本題的「是」以相近族群為應用範圍，仍須連同第 2 點的不確定性及第 4、5 點的缺項與限制閱讀。"
+    "overallLink": "本題的「是」以相近族群為應用範圍，仍須連同第 2 點的不確定性及第 4、5 點的缺項與限制閱讀。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   },
   {
     "id": 11,
     "section": "D",
     "short": "是否比現行照護有價值",
     "topic": "資源 · 可行性 · 決策",
-    "title": "研究中的介入方法對您照顧的對象，是否比起任何現存介入方式更有價值？",
+    "title": "研究中的介入方法對您的患者們是否比起任何現存介入方式更有價值？",
     "english": "Would the experimental intervention provide greater value to the people in your care than any of the existing interventions?",
     "consider": [
       [
-        "引進此介入需要哪些資源？請考量時間、經費、技能發展或訓練需求。",
+        "本介入方式所需要的時間、費用、技術訓練成本為何？",
         "What resources are needed to introduce this intervention taking into account time, finances, and skills development or training needs?"
       ],
       [
-        "是否能從一項或多項現有介入移出資源，重新投入新介入？",
+        "您是否可以將投入在現有介入方式的資源挪動至新的介入方式上？",
         "Are you able to disinvest resources in one or more existing interventions in order to be able to re-invest in the new intervention?"
       ]
     ],
@@ -2661,7 +2687,7 @@ window.CASP_QUESTIONS = [
     "sourceSections": [
       {
         "id": "11",
-        "title": "研究中的介入方法對您照顧的對象，是否比起任何現存介入方式更有價值？",
+        "title": "研究中的介入方法對您的患者們是否比起任何現存介入方式更有價值？",
         "english": "Would the experimental intervention provide greater value to the people in your care than any of the existing interventions?",
         "answer": "無法判斷",
         "reasons": [
@@ -2748,7 +2774,9 @@ window.CASP_QUESTIONS = [
     "considerPages": [
       5
     ],
-    "overallLink": "第 1 點尚缺費用及訓練成本，第 2 點未交代資源轉移可行性，因此總評為「無法判斷」。"
+    "overallLink": "第 1 點尚缺費用及訓練成本，第 2 點未交代資源轉移可行性，因此總評為「無法判斷」。",
+    "versionChangedTitle": false,
+    "versionChangedPrompts": []
   }
 ];
 window.CASP_EVIDENCE_LEVEL = {

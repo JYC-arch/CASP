@@ -21,11 +21,13 @@
   document.documentElement.style.setProperty('--mark-fill',color.mark);
   const section = window.CASP_SECTIONS.find(s=>s.id===question.section);
   nav();
-  $('sectionLabel').textContent = `${section.id} · ${section.full}`;
+  $('sectionLabel').textContent = `${section.id} · ${section.full} / ${section.english}`;
   $('questionNumber').textContent = String(question.id).padStart(2,'0');
   $('topicLabel').textContent = question.topic;
   $('questionTitle').textContent = question.title;
   $('questionEnglish').textContent = question.english;
+  $('questionTitle').className = question.versionChangedTitle?'version-changed':'';
+  $('questionEnglish').className = question.versionChangedTitle?'version-changed':'';
   const answer = window.CASP_ANSWERS[question.id-1];
   $('resultQuestion').textContent = `第 ${question.id} 題｜${question.title}`;
   $('overallLink').textContent = question.overallLink;
@@ -63,7 +65,9 @@
   $('sourceAppraisal').innerHTML=question.sourceSections.map(item=>`<section>${item.responses.map(response=>{
    const consider=question.consider[response.considerIndex],symbol={'是':'✓','無法判斷':'?','否':'✕'}[response.initialResult];
    const label=question.id===4?`分項 ${item.id}`:`評讀提示 ${response.considerIndex+1}`;
-   return `<div class="consider-response" data-consider-index="${response.considerIndex}"><div class="response-heading"><span>${escape(label)}</span><div class="bilingual-consider"><h4 class="consider-zh" lang="zh-Hant">${escape(consider[0])}</h4><p class="consider-en" lang="en">${escape(consider[1])}</p></div></div><div class="response-body"${isAnalysis?'':' hidden'}><ul class="appraisal-list">${response.points.map(point=>`<li><p class="appraisal-reason">${escape(point.text)}</p><div class="reason-links" aria-label="本點文獻位置">${point.refs.map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}${point.kind==='check'?'（查核範圍）':''}</button>`;}).join('')}</div></li>`).join('')}</ul><div class="preliminary-result" role="note" title="${escape(response.initialNote)}" aria-label="初步判讀：${escape(response.initialResult)}。${escape(response.initialNote)}"><span>初步判讀</span><strong><span aria-hidden="true">${symbol}</span> ${escape(response.initialResult)}</strong>${response.initialContext?`<small>${escape(response.initialContext)}</small>`:''}</div></div></div>`;
+   const changed=question.versionChangedPrompts.includes(response.considerIndex);
+   const promptText=value=>changed?`<strong class="version-changed">${escape(value.split('\n')[0])}</strong>${value.includes('\n')?'\n'+escape(value.split('\n').slice(1).join('\n')):''}`:escape(value);
+   return `<div class="consider-response" data-consider-index="${response.considerIndex}"><div class="response-heading"><span>${escape(label)}</span><div class="bilingual-consider"><h4 class="consider-zh" lang="zh-Hant">${promptText(consider[0])}</h4><p class="consider-en" lang="en">${promptText(consider[1])}</p></div></div><div class="response-body"${isAnalysis?'':' hidden'}><ul class="appraisal-list">${response.points.map(point=>`<li><p class="appraisal-reason">${escape(point.text)}</p><div class="reason-links" aria-label="本點文獻位置">${point.refs.map(key=>{const evidence=question.evidence.find(e=>e.key===key);return `<button class="evidence-link" data-evidence-key="${escape(key)}">${escape(evidence.label)}${point.kind==='check'?'（查核範圍）':''}</button>`;}).join('')}</div></li>`).join('')}</ul><div class="preliminary-result" role="note" title="${escape(response.initialNote)}" aria-label="初步判讀：${escape(response.initialResult)}。${escape(response.initialNote)}"><span>初步判讀</span><strong><span aria-hidden="true">${symbol}</span> ${escape(response.initialResult)}</strong>${response.initialContext?`<small>${escape(response.initialContext)}</small>`:''}</div></div></div>`;
   }).join('')}</section>`).join('')+`<p class="consider-source"><a href="assets/casp-rct-2024.pdf#page=${question.considerPages[0]}" target="_blank" rel="noopener">CASP 2024 英文原表，第 ${question.considerPages.join('–')} 頁</a></p>`;
  }
  function renderResult() {
@@ -126,7 +130,7 @@
  }
  function showInfo(eyebrow,html) {$('dialogEyebrow').textContent=eyebrow;$('dialogContent').innerHTML=html;$('infoDialog').showModal();$('infoDialog').scrollTop=0;}
  function showSources() {
-  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。中文題目與評讀理由以《CASP RCT 2024 中文版評讀・混合式衛教 TKR》（Markdown，評讀日期 2026 年 11 月 19 日）為主，依教師確認的刪除原則與第 1 題精簡 PICO 調整；非 CASP 官方中文譯本。評讀提示依 CASP 2024 英文原表逐項呈現，中文為教學翻譯；第 4 題呈現原始三個分項題目。各點符號為本教材的初步判讀，依評讀提示原問句作答，再綜合形成總評。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。</p><h3>文獻定位</h3><p>查找位置參照課堂資料《casp-華蘋》的「去原文哪裡找」欄，依本研究實際章節及頁碼標註；題目仍採 CASP 2024 架構。</p><h3>證據等級</h3><p>採用使用者提供的 Oxford CEBM 2011 中文版（台灣護理學會卓越中心知識轉譯組譯）。本次教學評讀的品質降級為評讀者判斷，並非依 CASP 題數換算。</p><h3>判讀說明</h3><p>各題結果依中文版評讀 Markdown；第 4 題整體判讀為「否」，並保留 4(a)、4(b)、4(c) 分項結果。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
+  showInfo('教材來源 · 版本說明',`<h2>工具版本與文獻來源</h2><h3>評讀工具</h3><p>英文原題依 <a href="assets/casp-rct-2024.pdf" target="_blank" rel="noopener">CASP RCT Checklist（2024）</a>。評讀理由以《CASP RCT 2024 中文版評讀・混合式衛教 TKR》（Markdown，評讀日期 2026 年 11 月 19 日）為主，依教師確認的刪除原則與第 1 題精簡 PICO 調整；非 CASP 官方中文譯本。中英文題目與評讀提示已與目前簡報統一；英文相同者採用所提供 2020 版譯文（翻譯：黃廷宇 MD；編輯：韓彥辰 MD），2024 修訂處中英文以紅色粗體標示。分派隱匿依課堂用語統一為「隱匿」。第 4 題英文三個分項與 2020 相同，2024 改為分項作答。各點符號為本教材的初步判讀，依評讀提示原問句作答，再綜合形成總評。</p><p>CASP 原工具採 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>。本教材對翻譯、版面及教學解析作了改編；改編文字以相同條款分享，不代表 CASP 認可本教材。</p><h3>示範研究</h3><p>張雪玲、黃曉令、鍾玉珠（2023）。混合式衛教對全膝關節置換術老年病人疼痛及關節角度之成效。<em>護理雜誌，70</em>（2），45–55。<a href="https://doi.org/10.6224/JN.202304_70(2).07" target="_blank" rel="noopener">DOI 與出版來源</a>。</p><p><a href="assets/study.pdf" target="_blank" rel="noopener">開啟完整研究 PDF</a>。網頁保留原始頁面；各題另提供完整研究的標註 PDF，依本題顏色標示相關段落與表圖。</p><h3>文獻定位</h3><p>查找位置參照課堂資料《casp-華蘋》的「去原文哪裡找」欄，依本研究實際章節及頁碼標註；題目仍採 CASP 2024 架構。</p><h3>證據等級</h3><p>採用使用者提供的 Oxford CEBM 2011 中文版（台灣護理學會卓越中心知識轉譯組譯）。本次教學評讀的品質降級為評讀者判斷，並非依 CASP 題數換算。</p><h3>判讀說明</h3><p>各題結果依中文版評讀 Markdown；第 4 題整體判讀為「否」，並保留 4(a)、4(b)、4(c) 分項結果。「是／否／無法判斷」應連同理由與原文閱讀，不將各題加總成研究品質分數。</p><p class="source-note">文獻及圖表權利屬原權利人；CASP 的授權不涵蓋研究全文。公開發布文獻檔案前須確認相應重用授權。</p>`);
  }
  function showSummary() {
   const rows=questions.map((item,i)=>{
